@@ -45,19 +45,20 @@
 # 
 # ## Useful links
 # 
-# 1. References
-# 
-# - [Documentation](https://pvlib-python.readthedocs.io/en/stable/)
-# - [Code Repository](https://github.com/pvlib/pvlib-python)
-# 
-# 1. Ask for help:
-# 
-# - Use the
-#   [pvlib-python](https://stackoverflow.com/questions/tagged/pvlib-python) on
-#   StackOverflow
-# - [GitHub Issues](https://github.com/pyvlib/pvlib-python/issues) for bug reports and
-#   feature requests
-# 
+# <ol>
+#     <li>References</li>
+#     <ul>
+#         <li> [Documentation](https://pvlib-python.readthedocs.io/en/stable/) </li>
+#         <li> [Code Repository](https://github.com/pvlib/pvlib-python) </li>
+#     </ul>
+#     <li> Ask for help:</li>
+#     <ul>
+#     <li> Use the   [pvlib-python](https://stackoverflow.com/questions/tagged/pvlib-python) on
+#   StackOverflow </li>
+#         <li> [GitHub Issues](https://github.com/pyvlib/pvlib-python/issues) for bug reports and
+#             feature requests </li>
+#         <li> [Google Group - Discussions and more!](https://groups.google.com/g/pvlib-python)</li>
+# </ol>
 # ## Tutorial Structure
 # 
 # This tutorial is made up of multiple Jupyter Notebooks. These notebooks mix
@@ -101,6 +102,7 @@
 # 
 
 # In[ ]:
+
 
 
 print("Hello, world!")
