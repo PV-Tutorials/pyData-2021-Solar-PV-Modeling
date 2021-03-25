@@ -13116,25 +13116,125 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Tutorial-1---TMY-Weather-Data">Tutorial 1 - TMY Weather Data<a class="anchor-link" href="#Tutorial-1---TMY-Weather-Data">&#182;</a></h1><p>This notebook explores a standard type of weather data, the typical meteorological year (TMY), and how to summarize it with python and pandas.</p>
-<p>TMY datasets are intended to represent the weather for a typical year at a given location.  TMY datasets provide hourly solar irradiance, air temperature, wind speed, and other weather measurements for a hypothetical year that represents more or less a "median year" for solar resource.  TMY datasets are created by selecting individual months out of an extended period of weather measurememts (say, 20 years of data) to construct a single year's worth of data.  There are several methods for selecting which months to include, but the general idea is to calculate monthly summary statistics and take the month that lies in the middle of the distribution.  For example, no two Januaries will be exactly the same, so summing the total solar irradiance for each January will give a bell curve, and the month that falls closest to the middle is chosen as the representative month.  The same process is followed for February, March, and so on, and all twelve representative months are stitched together into a year-long dataset.</p>
+<p><img src="images/tutorial_banner.PNG" alt="tutorialpromo"></p>
+<h1 id="Tutorial-1---Weather-Data:-Accesing-it,-understanding-it,-visualizing-it!">Tutorial 1 - Weather Data: Accesing it, understanding it, visualizing it!<a class="anchor-link" href="#Tutorial-1---Weather-Data:-Accesing-it,-understanding-it,-visualizing-it!">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This notebook explores a standard type of weather data, the typical meteorological year (TMY), and how to summarize it with python and pandas.</p>
+<p><img src="images/tutorial_1_overview.PNG" alt="Overview"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Steps:</p>
+<ul>
+<li><a href='#step1'> Weather data in PV performance models </a></li>
+<li>Looking at a sample weather data file</li>
+<li>Where to get weather data from? </li>
+<li>Weather data to API</li>
+</ul>
+<p>PV Concepts:</p>
+<ul>
+<li>TMY</li>
+<li>GHI, DNI, DHI</li>
+<li>DryBulb, Wspd</li>
+<li>Irradiance vs. Insolation</li>
+</ul>
+<p>Python Concepts:</p>
+<ul>
+<li>Dataframe and Pandas</li>
+<li>Exploring a dataframe: len(), .head(), .keys()</li>
+<li>pvlib input-output tools</li>
+<li>simple ploting .plot</li>
+<li>Aggregating data in dataframes: .sum()</li>
+<li>API</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a id='step1'> </a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Weather-Data-&amp;-PV">Weather Data &amp; PV<a class="anchor-link" href="#Weather-Data-&amp;-PV">&#182;</a></h1><p>Weather and irradiance data are used as input to PV performance models.</p>
+<p><img src="images/tutorial_1_SRRL.PNG" alt="SRRL"></p>
+<p>These data are directly measured, derived from measured data, or simulated using a stochastic model.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Typical-Meteorological-Year">Typical Meteorological Year<a class="anchor-link" href="#Typical-Meteorological-Year">&#182;</a></h2><p>TMY datasets are intended to represent the weather for a typical year at a given location.</p>
+<p>TMY datasets provide hourly <code>solar irradiance</code>, <code>air temperature</code>, <code>wind speed</code>, and other weather measurements for a hypothetical year that represents more or less a "median year" for solar resource.</p>
+<p><img src="images/tutorial_1_tmy3_example.PNG" alt="TMY3 screenshot"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>TMY datasets are created by selecting individual months out of an extended period of weather measurememts (say, 20 years of data) to construct a single year's worth of data.  There are several methods for selecting which months to include, but the general idea is to calculate monthly summary statistics and take the month that lies in the middle of the distribution.  For example, no two Januaries will be exactly the same, so summing the total solar irradiance for each January will give a bell curve, and the month that falls closest to the middle is chosen as the representative month.  The same process is followed for February, March, and so on, and all twelve representative months are stitched together into a year-long dataset.</p>
 <p>The oldest TMYs were calculated using data from the nearest weather station (air ports and such).  Today, it is common to use TMYs calculated using simulated weather data from satellite imagery because of the improved spatial resolution.</p>
 <p>To get a better feel for TMY data, we'll first explore an example TMY dataset that is bundled with pvlib.</p>
 
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="First-Step:-Import-Libraries">First Step: Import Libraries<a class="anchor-link" href="#First-Step:-Import-Libraries">&#182;</a></h4>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pvlib</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>  <span class="c1"># for data wrangling</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>  <span class="c1"># for visualization</span>
 <span class="kn">import</span> <span class="nn">pathlib</span>  <span class="c1"># for finding the example dataset</span>
+</pre></div>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">pvlib</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Query which version you are using of pvlib:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pvlib</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13163,14 +13263,15 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Reading-a-TMY-dataset-with-pandas">Reading a TMY dataset with pandas<a class="anchor-link" href="#Reading-a-TMY-dataset-with-pandas">&#182;</a></h2><p>First, we'll read the example dataset into a pandas DataFrame:</p>
+<h2 id="Reading-a-TMY-dataset-with-pandas">Reading a TMY dataset with pandas<a class="anchor-link" href="#Reading-a-TMY-dataset-with-pandas">&#182;</a></h2><p>First, we'll read the example dataset into a pandas DataFrame.</p>
+<p>We will use one of pvlib input-output functions: the .iotools.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">DATA_DIR</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">pvlib</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s1">&#39;data&#39;</span>
@@ -13192,7 +13293,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of rows:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_tmy</span><span class="p">))</span>
@@ -13223,6 +13324,56 @@ Number of columns: 71
 </div>
 
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_tmy</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[18]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Index([&#39;Date (MM/DD/YYYY)&#39;, &#39;Time (HH:MM)&#39;, &#39;ETR&#39;, &#39;ETRN&#39;, &#39;GHI&#39;, &#39;GHISource&#39;,
+       &#39;GHIUncertainty&#39;, &#39;DNI&#39;, &#39;DNISource&#39;, &#39;DNIUncertainty&#39;, &#39;DHI&#39;,
+       &#39;DHISource&#39;, &#39;DHIUncertainty&#39;, &#39;GHillum&#39;, &#39;GHillumSource&#39;,
+       &#39;GHillumUncertainty&#39;, &#39;DNillum&#39;, &#39;DNillumSource&#39;, &#39;DNillumUncertainty&#39;,
+       &#39;DHillum&#39;, &#39;DHillumSource&#39;, &#39;DHillumUncertainty&#39;, &#39;Zenithlum&#39;,
+       &#39;ZenithlumSource&#39;, &#39;ZenithlumUncertainty&#39;, &#39;TotCld&#39;, &#39;TotCldSource&#39;,
+       &#39;TotCldUncertainty&#39;, &#39;OpqCld&#39;, &#39;OpqCldSource&#39;, &#39;OpqCldUncertainty&#39;,
+       &#39;DryBulb&#39;, &#39;DryBulbSource&#39;, &#39;DryBulbUncertainty&#39;, &#39;DewPoint&#39;,
+       &#39;DewPointSource&#39;, &#39;DewPointUncertainty&#39;, &#39;RHum&#39;, &#39;RHumSource&#39;,
+       &#39;RHumUncertainty&#39;, &#39;Pressure&#39;, &#39;PressureSource&#39;, &#39;PressureUncertainty&#39;,
+       &#39;Wdir&#39;, &#39;WdirSource&#39;, &#39;WdirUncertainty&#39;, &#39;Wspd&#39;, &#39;WspdSource&#39;,
+       &#39;WspdUncertainty&#39;, &#39;Hvis&#39;, &#39;HvisSource&#39;, &#39;HvisUncertainty&#39;, &#39;CeilHgt&#39;,
+       &#39;CeilHgtSource&#39;, &#39;CeilHgtUncertainty&#39;, &#39;Pwat&#39;, &#39;PwatSource&#39;,
+       &#39;PwatUncertainty&#39;, &#39;AOD&#39;, &#39;AODSource&#39;, &#39;AODUncertainty&#39;, &#39;Alb&#39;,
+       &#39;AlbSource&#39;, &#39;AlbUncertainty&#39;, &#39;Lprecipdepth&#39;, &#39;Lprecipquantity&#39;,
+       &#39;LprecipSource&#39;, &#39;LprecipUncertainty&#39;, &#39;PresWth&#39;, &#39;PresWthSource&#39;,
+       &#39;PresWthUncertainty&#39;],
+      dtype=&#39;object&#39;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13231,9 +13382,48 @@ Number of columns: 71
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Irradiance">Irradiance<a class="anchor-link" href="#Irradiance">&#182;</a></h1><p>Irradiance is an instantaneous measurement of solar power over some area.  For practical purposes of measurement and interpretation, irradiance is expressed and separated into different components.</p>
+<p><img src="images/tutorial_1_DNIDHIGHI.PNG" alt="overview irradiance"></p>
+<p>The units of irradiance are watts per square meter.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Wind">Wind<a class="anchor-link" href="#Wind">&#182;</a></h3><p>Wind speed is measured with an anemometer.  The most common type is a the cup-type anemometer, shown on the right side of the picture below.  The number of rotations per time interval is used to calculate the wind speed.  The vane on the left is used to measure the direction of the wind.  Wind direction is reported as the direction from which the wind is blowing.</p>
+<p><img src="https://pvpmc.sandia.gov/wp-content/uploads/2012/04/anemometer.jpg"></img></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Air-temperature">Air temperature<a class="anchor-link" href="#Air-temperature">&#182;</a></h3><p>Also known as dry-bulb temperature, is the temperature of the ambient air when the measurement device is shielded from radiation and moisture. The most common method of air temperature measurement uses a resistive temperature device (RTD) or thermocouple within a radiation shield. The shield blocks sunlight from reaching the sensor (avoiding radiative heating), yet allows natural air flow around the sensor. More accurate temperature measurement devices utilize a shield which forces air across the sensor.</p>
+<p>Air temperature is typically measured on the Celsius scale.</p>
+<p>Air temperature plays a large role in PV system performance as PV modules and inverters are cooled convectively by the surrounding air.</p>
+<p><img src="https://pvpmc.sandia.gov/wp-content/uploads/2012/04/AmbTemp.jpg" width="400" height="400"> </img></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Downselect-columns">Downselect columns<a class="anchor-link" href="#Downselect-columns">&#182;</a></h4><p>There are a lot more weather data in that file that you can access. To investigate all the column headers, use '.keys'. Always go and read the Instruction Manual for the weather files to get more details on hwo the data is aggregated, units, etc.</p>
+<p>We are interested in GHI, DHI, DNI, DryBulb and Wind Speed.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># GHI, DHI, DNI are irradiance measurements</span>
@@ -13254,7 +13444,7 @@ Number of columns: 71
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[4]:</div>
+    <div class="prompt output_prompt">Out[17]:</div>
 
 
 
@@ -13408,64 +13598,6 @@ Number of columns: 71
   </tbody>
 </table>
 </div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>There are a lot more weather data in that file that you can access. To investigate all the column headers, use '.keys'. Always go and read the Instruction Manual for the weather files to get more details on hwo the data is aggregated, units, etc.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_tmy</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[18]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>Index([&#39;Date (MM/DD/YYYY)&#39;, &#39;Time (HH:MM)&#39;, &#39;ETR&#39;, &#39;ETRN&#39;, &#39;GHI&#39;, &#39;GHISource&#39;,
-       &#39;GHIUncertainty&#39;, &#39;DNI&#39;, &#39;DNISource&#39;, &#39;DNIUncertainty&#39;, &#39;DHI&#39;,
-       &#39;DHISource&#39;, &#39;DHIUncertainty&#39;, &#39;GHillum&#39;, &#39;GHillumSource&#39;,
-       &#39;GHillumUncertainty&#39;, &#39;DNillum&#39;, &#39;DNillumSource&#39;, &#39;DNillumUncertainty&#39;,
-       &#39;DHillum&#39;, &#39;DHillumSource&#39;, &#39;DHillumUncertainty&#39;, &#39;Zenithlum&#39;,
-       &#39;ZenithlumSource&#39;, &#39;ZenithlumUncertainty&#39;, &#39;TotCld&#39;, &#39;TotCldSource&#39;,
-       &#39;TotCldUncertainty&#39;, &#39;OpqCld&#39;, &#39;OpqCldSource&#39;, &#39;OpqCldUncertainty&#39;,
-       &#39;DryBulb&#39;, &#39;DryBulbSource&#39;, &#39;DryBulbUncertainty&#39;, &#39;DewPoint&#39;,
-       &#39;DewPointSource&#39;, &#39;DewPointUncertainty&#39;, &#39;RHum&#39;, &#39;RHumSource&#39;,
-       &#39;RHumUncertainty&#39;, &#39;Pressure&#39;, &#39;PressureSource&#39;, &#39;PressureUncertainty&#39;,
-       &#39;Wdir&#39;, &#39;WdirSource&#39;, &#39;WdirUncertainty&#39;, &#39;Wspd&#39;, &#39;WspdSource&#39;,
-       &#39;WspdUncertainty&#39;, &#39;Hvis&#39;, &#39;HvisSource&#39;, &#39;HvisUncertainty&#39;, &#39;CeilHgt&#39;,
-       &#39;CeilHgtSource&#39;, &#39;CeilHgtUncertainty&#39;, &#39;Pwat&#39;, &#39;PwatSource&#39;,
-       &#39;PwatUncertainty&#39;, &#39;AOD&#39;, &#39;AODSource&#39;, &#39;AODUncertainty&#39;, &#39;Alb&#39;,
-       &#39;AlbSource&#39;, &#39;AlbUncertainty&#39;, &#39;Lprecipdepth&#39;, &#39;Lprecipquantity&#39;,
-       &#39;LprecipSource&#39;, &#39;LprecipUncertainty&#39;, &#39;PresWth&#39;, &#39;PresWthSource&#39;,
-       &#39;PresWthUncertainty&#39;],
-      dtype=&#39;object&#39;)</pre>
 </div>
 
 </div>
@@ -13767,18 +13899,17 @@ Number of columns: 71
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Where-to-get-Solar-Irradiance-Data?">Where to get Solar Irradiance Data?<a class="anchor-link" href="#Where-to-get-Solar-Irradiance-Data?">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><ul> TMY3 link
-NSRDB -
-pvgis</p>
-<p>Some pros and cons... etc.</p>
-<p><a href="https://maps.nrel.gov/nsrdb-viewer/?aL=UdPEX9%255Bv%255D%3Dt%26f69KzE%255Bv%255D%3Dt%26f69KzE%255Bd%255D%3D1&amp;bL=clight&amp;cE=0&amp;lR=0&amp;mC=4.740675384778373%2C22.8515625&amp;zL=2">NSRDB</a></p>
+<h1 id="Where-to-get-Solar-Irradiance-Data?">Where to get Solar Irradiance Data?<a class="anchor-link" href="#Where-to-get-Solar-Irradiance-Data?">&#182;</a></h1><p>There are different sources of solar irradiance data. For your projects, these are some of the most common</p>
+<ul>
+<li><p>TMY3/TMY2 - like the data we loaded earlier on this example, this database of .csv files kept by NREL is now deprecated. Use instead:</p>
+</li>
+<li><p><a href="https://maps.nrel.gov/nsrdb-viewer/?aL=UdPEX9%255Bv%255D%3Dt%26f69KzE%255Bv%255D%3Dt%26f69KzE%255Bd%255D%3D1&amp;bL=clight&amp;cE=0&amp;lR=0&amp;mC=4.740675384778373%2C22.8515625&amp;zL=2">NSRDB</a> - National Solar Radiation DataBase. You can access data through the website for many locations accross the world, or you can use an API* to download it. Free data. Resolution:</p>
+</li>
+<li><p>EPW - available for many locations accross the world. It's in its own format file ('EPW') so you can't open it like an excel, but you can load it into a dataframe and use it. Not rigurous quality control - up to user.</p>
+</li>
+<li><p>pvgis - Costs. Commonly used in Europe.</p>
+</li>
+</ul>
 
 </div>
 </div>
@@ -13786,7 +13917,15 @@ pvgis</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Fetching-TMYs-from-the-NSRDB">Fetching TMYs from the NSRDB<a class="anchor-link" href="#Fetching-TMYs-from-the-NSRDB">&#182;</a></h2><p>The example TMY dataset used here is from an airport in North Carolina, but what if we wanted to model a PV system somewhere else?  The NSRDB, one of many sources of weather data intended for PV modeling, is free and easy to access using pvlib.  As an example, we'll fetch a TMY dataset for Albuquerque, New Mexico:</p>
+<p><img src="images/tutorial_1_NSRDB_example.PNG" alt="NSRDB Example"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Fetching-TMYs-from-the-NSRDB">Fetching TMYs from the NSRDB<a class="anchor-link" href="#Fetching-TMYs-from-the-NSRDB">&#182;</a></h3><p>The example TMY dataset used here is from an airport in North Carolina, but what if we wanted to model a PV system somewhere else?  The NSRDB, one of many sources of weather data intended for PV modeling, is free and easy to access using pvlib.  As an example, we'll fetch a TMY dataset for Albuquerque, New Mexico:</p>
 
 </div>
 </div>
