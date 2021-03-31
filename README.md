@@ -10,3 +10,6 @@ PVSC48 computing tutorial with focus on PV computing packages, Python, data wran
 3) Estimate module temperature from ambient
 4) Use POA irradiance and module temperature to model output power from a single-diode model.
 
+## Setup
+You can run the tutorial anytime in [Binder](https://mybinder.org) by clicking the link below:
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mikofski/PVSC48-Python-Tutorial/main)
