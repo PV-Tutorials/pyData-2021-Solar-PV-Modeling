@@ -16,7 +16,7 @@ wrangling with Pandas, and data viz
   and total array output
 
 ## Tutorial Setup
-These tutoriala are designed to run on [Jupyter](https://jupyter.org), a
+These tutorials are designed to run on [Jupyter](https://jupyter.org), a
 browser based interactive notebook that allows you to run the tutorial in the
 cloud without any additional setup. During the conference, June 20-25, you will
 be provided with a link and credentials to join the tutorial. After the
