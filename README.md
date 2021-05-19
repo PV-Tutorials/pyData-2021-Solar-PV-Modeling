@@ -50,7 +50,7 @@ steps:
 1. Start a Jupyter session:
 
    ```
-   jupyter lab
+   jupyter notebook
    ```
 
 1. Use the file explorer in Jupyter lab to browse to `PVSC48-Python-Tutorial`
