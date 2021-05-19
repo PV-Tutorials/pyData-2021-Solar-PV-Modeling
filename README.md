@@ -24,7 +24,7 @@ conference the tutorials will remain available here on GitHub, and you can run
 the tutorial anytime in [Binder](https://mybinder.org) by clicking the
 following link:
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mikofski/PVSC48-Python-Tutorial/main)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/PVSC-Python-Tutorials/PVSC48-Python-Tutorial/main)
 
 You can also run the tutorial locally with
 [miniconda](https://docs.conda.io/en/latest/miniconda.html) by following thes
@@ -35,7 +35,7 @@ steps:
 1. Clone the repository:
 
    ```
-   git clone https://github.com/mikofski/PVSC48-Python-Tutorial.git
+   git clone https://github.com/PVSC-Python-Tutorials/PVSC48-Python-Tutorial.git
    ```
 
 1. Create the environment and install the requirements. The repository includes
@@ -43,8 +43,8 @@ steps:
    this tutorial. To install them using conda run:
 
    ```
-   conda create -n pvsc jupyter -c pvlib --file requirements.txt
-   conda activate pvsc
+   conda create -n pvsc48 jupyter -c pvlib --file requirements.txt
+   conda activate pvsc48
    ```
 
 1. Start a Jupyter session:
