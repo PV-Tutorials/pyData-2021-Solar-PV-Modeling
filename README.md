@@ -18,9 +18,34 @@ wrangling with Pandas, and data viz
 ## Tutorial Setup
 These tutorials are designed to run on [Jupyter](https://jupyter.org), a
 browser based interactive notebook that allows you to run the tutorial in the
-cloud without any additional setup. During the conference, June 20-25, you will
-be provided with a link and credentials to join the tutorial. After the
-conference the tutorials will remain available here on GitHub, and you can run
+cloud without any additional setup. On the day of the tutorial, you can log
+into the tutorial [here](http://pvsc-python-tutorial.ml/):
+
+http://pvsc-python-tutorial.ml/
+
+The first time you visit the tutorial, you will need to create an account. Use
+any username and password you like.
+
+![jupyter login](https://user-images.githubusercontent.com/1385621/119911747-c9bd3600-bf0e-11eb-8f7b-c622d8890f04.png)
+
+The first time you log into the tutorial, you will only see the scratch and shared-data folders.
+
+![first login](https://user-images.githubusercontent.com/1385621/119912003-5cf66b80-bf0f-11eb-874d-67ba2ff1bb66.png)
+
+After you log in, you need to download the tutorial from this GitHub repository by following this
+[link](https://pvsc-python-tutorial.ml/hub/user-redirect/git-pull?repo=https://github.com/PVSC-Python-Tutorials/PVSC48-Python-Tutorial&branch=main):
+
+https://pvsc-python-tutorial.ml/hub/user-redirect/git-pull?repo=https://github.com/PVSC-Python-Tutorials/PVSC48-Python-Tutorial&branch=main
+
+You can also use this link to update the tutorial. From now on you will see the PVSC48-Python-Tutorial folder in the list.
+
+![download tutorial](https://user-images.githubusercontent.com/1385621/119912192-ce361e80-bf0f-11eb-8f62-36e54509fdcc.png)
+
+Click the folder to open, and you'll see the full list. Click `Tutorial 0 - Overview.ipynb` to get started.
+
+![full list of tutorials](https://user-images.githubusercontent.com/1385621/119912314-15241400-bf10-11eb-8a2c-1fc371e0f4e8.png)
+
+After the conference the tutorials will remain available here on GitHub, and you can run
 the tutorial anytime in [Binder](https://mybinder.org) by clicking the
 following link:
 
