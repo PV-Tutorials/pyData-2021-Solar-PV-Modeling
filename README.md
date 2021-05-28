@@ -37,7 +37,8 @@ After you log in, you need to download the tutorial from this GitHub repository 
 
 https://pvsc-python-tutorial.ml/hub/user-redirect/git-pull?repo=https://github.com/PVSC-Python-Tutorials/PVSC48-Python-Tutorial&branch=main
 
-You can also use this link to update the tutorial. From now on you will see the PVSC48-Python-Tutorial folder in the list.
+You only need to download the repository once, but you can always use either link to start the tutorial during the conference.
+From now on you will see the PVSC48-Python-Tutorial folder in the list.
 
 ![download tutorial](https://user-images.githubusercontent.com/1385621/119912192-ce361e80-bf0f-11eb-8f62-36e54509fdcc.png)
 
@@ -45,11 +46,19 @@ Click the folder to open, and you'll see the full list. Click `Tutorial 0 - Over
 
 ![full list of tutorials](https://user-images.githubusercontent.com/1385621/119912314-15241400-bf10-11eb-8a2c-1fc371e0f4e8.png)
 
+Sometimes, if you are idle too long, the tutorial dies. Just click the [link to the tutorial](http://pvsc-python-tutorial.ml/) again to reconnect.
+
+http://pvsc-python-tutorial.ml/
+
+### My Binder
+
 After the conference the tutorials will remain available here on GitHub, and you can run
 the tutorial anytime in [Binder](https://mybinder.org) by clicking the
 following link:
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/PVSC-Python-Tutorials/PVSC48-Python-Tutorial/main)
+
+### Locally
 
 You can also run the tutorial locally with
 [miniconda](https://docs.conda.io/en/latest/miniconda.html) by following thes
