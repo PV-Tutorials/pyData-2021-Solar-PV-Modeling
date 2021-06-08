@@ -50,6 +50,12 @@ Sometimes, if you are idle too long, the tutorial dies. Just click the [link to 
 
 http://pvsc-python-tutorial.ml/
 
+### Jupyter Book docs
+
+The full tutorial is now also hosted as a beautiful [Jupyter book](https://jupyterbook.org/intro.html). This book has navigation, search, and can even run code cells interactively. Check it out!
+
+https://pvsc-python-tutorials.github.io/PVSC48-Python-Tutorial/index.html
+
 ### My Binder
 
 After the conference the tutorials will remain available here on GitHub, and you can run
