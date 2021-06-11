@@ -2,4 +2,5 @@
 *.py
 *.html
 
-_build
+_build/
+venv/
