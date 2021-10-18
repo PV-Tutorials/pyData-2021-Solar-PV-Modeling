@@ -1,0 +1,593 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorial A - Single Diode Model &#8212; PVSC 48 Python Tutorial</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tutorial B - pvfree" href="Tutorial%20B%20-%20pvfree.html" />
+    <link rel="prev" title="Tutorial 5 - Array Power" href="Tutorial%205%20-%20Array%20Power.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/tutorial_banner.PNG" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">PVSC 48 Python Tutorial</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Tutorial%200%20-%20Overview.html">
+   Welcome!
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Tutorial%201%20-%20TMY%20Weather%20Data.html">
+   Tutorial 1 - Weather Data: Accesing it, understanding it, visualizing it!
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Tutorial%202%20-%20POA%20Irradiance.html">
+   Tutorial 2 - POA Irradiance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Tutorial%203%20-%20Module%20Temperature.html">
+   Tutorial 3 - Module Temperature
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Tutorial%204%20-%20Model%20a%20Module%27s%20Performance.html">
+   Tutorial 4 - PV Module Performance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Tutorial%205%20-%20Array%20Power.html">
+   Tutorial 5 - Array Power
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Tutorial A - Single Diode Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Tutorial%20B%20-%20pvfree.html">
+   Tutorial B - pvfree
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Tutorial A - Single Diode Model.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/PVSC-Python-Tutorials/PVSC48-Python-Tutorial"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/PVSC-Python-Tutorials/PVSC48-Python-Tutorial/issues/new?title=Issue%20on%20page%20%2FTutorial A - Single Diode Model.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/PVSC-Python-Tutorials/PVSC48-Python-Tutorial/main?urlpath=tree/Tutorial A - Single Diode Model.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        <a class="jupyterhub-button" href="https://pvsc-python-tutorial.ml/hub/user-redirect/git-pull?repo=https://github.com/PVSC-Python-Tutorials/PVSC48-Python-Tutorial&urlpath=tree/PVSC48-Python-Tutorial/Tutorial A - Single Diode Model.ipynb&branch=main"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
+                data-placement="left"><img class="jupyterhub-button-logo"
+                    src="_static/images/logo_jupyterhub.svg"
+                    alt="Interact on JupyterHub">JupyterHub</button></a>
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#string-length">
+   String Length
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ac-output">
+   AC Output
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><img alt="tutorialpromo" src="_images/tutorial_banner.PNG" /></p>
+<div class="tex2jax_ignore mathjax_ignore section" id="tutorial-a-single-diode-model">
+<h1>Tutorial A - Single Diode Model<a class="headerlink" href="#tutorial-a-single-diode-model" title="Permalink to this headline">¶</a></h1>
+<p>Let’s put together what we know of modeling POA irradiance and cell temperature and calculate a module’s performance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import pvlib and other useful python packages</span>
+<span class="kn">import</span> <span class="nn">pvlib</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># a &quot;typical meteorological year&quot; or TMY is made of individual months</span>
+<span class="c1"># cherry picked from several years, but to run a simulation we need</span>
+<span class="c1"># to calculate solar positions for an actual year. EG: PVsyst defaults</span>
+<span class="c1"># to 1990</span>
+<span class="n">YEAR</span> <span class="o">=</span> <span class="mi">1990</span>
+<span class="n">STARTDATE</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%d</span><span class="s1">-01-01T00:00:00&#39;</span> <span class="o">%</span> <span class="n">YEAR</span>
+<span class="n">ENDDATE</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%d</span><span class="s1">-12-31T23:59:59&#39;</span> <span class="o">%</span> <span class="n">YEAR</span>
+<span class="n">TIMES</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">STARTDATE</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">ENDDATE</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;H&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># pvlib python can retrieve CEC module and inverter parameters from the</span>
+<span class="c1"># SAM libraries</span>
+<span class="n">CECMODS</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">pvsystem</span><span class="o">.</span><span class="n">retrieve_sam</span><span class="p">(</span><span class="s1">&#39;CECMod&#39;</span><span class="p">)</span>
+<span class="n">INVERTERS</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">pvsystem</span><span class="o">.</span><span class="n">retrieve_sam</span><span class="p">(</span><span class="s1">&#39;CECInverter&#39;</span><span class="p">)</span>
+
+<span class="c1"># It can be tricky to find the modules you want so you can visit their</span>
+<span class="c1"># GitHub page to search the CSV files manually, or use pvfree</span>
+<span class="c1"># https://pvfree.herokuapp.com/cec_modules/ and ditto for inverters</span>
+<span class="c1"># https://pvfree.herokuapp.com/pvinverters/</span>
+<span class="c1"># NOTE: whitespace, hyphens, dashes, etc. are replaced by underscores</span>
+<span class="c1"># These are some basic 300-W Canadian Solar poly and mono Si modules</span>
+<span class="n">CECMOD_POLY</span> <span class="o">=</span> <span class="n">CECMODS</span><span class="p">[</span><span class="s1">&#39;Canadian_Solar_Inc__CS6X_300P&#39;</span><span class="p">]</span>
+<span class="n">CECMOD_MONO</span> <span class="o">=</span> <span class="n">CECMODS</span><span class="p">[</span><span class="s1">&#39;Canadian_Solar_Inc__CS6X_300M&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># here&#39;s a trick, transpose the database, and search the index using</span>
+<span class="c1"># strings</span>
+<span class="n">INVERTERS</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="n">INVERTERS</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;SMA_America__STP&#39;</span><span class="p">)]</span>
+<span class="c1">#                                       Vac         Pso     Paco  ... Mppt_high    CEC_Date             CEC_Type</span>
+<span class="c1"># SMA_America__STP_33_US_41__480V_      480  126.152641  33300.0  ...     800.0         NaN  Utility Interactive</span>
+<span class="c1"># SMA_America__STP_50_US_41__480V_      480  111.328354  50010.0  ...     800.0    1/2/2019  Utility Interactive</span>
+<span class="c1"># SMA_America__STP_60_US_10__400V_      400   97.213982  59860.0  ...     800.0         NaN  Utility Interactive</span>
+<span class="c1"># SMA_America__STP_60_US_10__480V_      480  116.969749  60000.0  ...     800.0         NaN  Utility Interactive</span>
+<span class="c1"># SMA_America__STP_62_US_41__480V_      480  133.166687  62500.0  ...     800.0         NaN  Utility Interactive</span>
+<span class="c1"># SMA_America__STP12000TL_US_10__480V_  480   56.013401  12000.0  ...     800.0  10/15/2018  Utility Interactive</span>
+<span class="c1"># SMA_America__STP15000TL_US_10__480V_  480   52.128044  15000.0  ...     800.0  10/15/2018  Utility Interactive</span>
+<span class="c1"># SMA_America__STP20000TL_US_10__480V_  480   46.517708  20000.0  ...     800.0  10/15/2018  Utility Interactive</span>
+<span class="c1"># SMA_America__STP24000TL_US_10__480V_  480   46.893803  24060.0  ...     800.0  10/15/2018  Utility Interactive</span>
+<span class="c1"># SMA_America__STP30000TL_US_10__480V_  480    62.93433  30010.0  ...     800.0  10/15/2018  Utility Interactive</span>
+<span class="c1"># SMA_America__STP50_US_40__480V_       480  125.080681  50072.0  ...     800.0  10/15/2018  Utility Interactive</span>
+
+<span class="c1"># that was almost too easy, let&#39;s use the 60-kW Sunny TriPower, it&#39;s a good inverter.</span>
+<span class="n">INVERTER_60K</span> <span class="o">=</span> <span class="n">INVERTERS</span><span class="p">[</span><span class="s1">&#39;SMA_America__STP_60_US_10__480V_&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># I know we already did this in the other tutorials, but now we have</span>
+<span class="c1"># to do it again, sorry. Think of it as a review or pop quiz</span>
+<span class="c1"># we need to get:</span>
+<span class="c1"># * weather</span>
+<span class="c1"># * solar position</span>
+<span class="c1"># * PV surface orientation, aoi, etc.</span>
+<span class="c1"># * plane of array irradiance</span>
+<span class="c1"># * module temperatures</span>
+<span class="c1"># but first we need to know where in the world are we?</span>
+<span class="n">LATITUDE</span><span class="p">,</span> <span class="n">LONGITUDE</span> <span class="o">=</span> <span class="mf">40.5137</span><span class="p">,</span> <span class="o">-</span><span class="mf">108.5449</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># now we can get some weather, before we used TMY,</span>
+<span class="c1"># now we&#39;ll get some data from PVGIS</span>
+<span class="n">data</span><span class="p">,</span> <span class="n">months</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">meta</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">iotools</span><span class="o">.</span><span class="n">get_pvgis_tmy</span><span class="p">(</span><span class="n">lat</span><span class="o">=</span><span class="n">LATITUDE</span><span class="p">,</span> <span class="n">lon</span><span class="o">=</span><span class="n">LONGITUDE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get solar position</span>
+<span class="n">data</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">TIMES</span>
+<span class="n">sp</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">solarposition</span><span class="o">.</span><span class="n">get_solarposition</span><span class="p">(</span>
+        <span class="n">TIMES</span><span class="p">,</span> <span class="n">LATITUDE</span><span class="p">,</span> <span class="n">LONGITUDE</span><span class="p">)</span>
+<span class="n">solar_zenith</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">apparent_zenith</span><span class="o">.</span><span class="n">values</span>
+<span class="n">solar_azimuth</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">azimuth</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get tracker positions</span>
+<span class="n">tracker</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">tracking</span><span class="o">.</span><span class="n">singleaxis</span><span class="p">(</span><span class="n">solar_zenith</span><span class="p">,</span> <span class="n">solar_azimuth</span><span class="p">)</span>
+<span class="n">surface_tilt</span> <span class="o">=</span> <span class="n">tracker</span><span class="p">[</span><span class="s1">&#39;surface_tilt&#39;</span><span class="p">]</span>
+<span class="n">surface_azimuth</span> <span class="o">=</span> <span class="n">tracker</span><span class="p">[</span><span class="s1">&#39;surface_azimuth&#39;</span><span class="p">]</span>
+<span class="n">aoi</span> <span class="o">=</span> <span class="n">tracker</span><span class="p">[</span><span class="s1">&#39;aoi&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get irradiance</span>
+<span class="n">dni</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Gb(n)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">ghi</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;G(h)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">dhi</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Gd(h)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">surface_albedo</span> <span class="o">=</span> <span class="mf">0.25</span>
+<span class="n">temp_air</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;T2m&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">dni_extra</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">irradiance</span><span class="o">.</span><span class="n">get_extra_radiation</span><span class="p">(</span><span class="n">TIMES</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+
+<span class="c1"># we use the Hay Davies transposition model</span>
+<span class="n">poa_sky_diffuse</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">irradiance</span><span class="o">.</span><span class="n">get_sky_diffuse</span><span class="p">(</span>
+        <span class="n">surface_tilt</span><span class="p">,</span> <span class="n">surface_azimuth</span><span class="p">,</span> <span class="n">solar_zenith</span><span class="p">,</span> <span class="n">solar_azimuth</span><span class="p">,</span>
+        <span class="n">dni</span><span class="p">,</span> <span class="n">ghi</span><span class="p">,</span> <span class="n">dhi</span><span class="p">,</span> <span class="n">dni_extra</span><span class="o">=</span><span class="n">dni_extra</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;haydavies&#39;</span><span class="p">)</span>
+<span class="n">poa_ground_diffuse</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">irradiance</span><span class="o">.</span><span class="n">get_ground_diffuse</span><span class="p">(</span>
+        <span class="n">surface_tilt</span><span class="p">,</span> <span class="n">ghi</span><span class="p">,</span> <span class="n">albedo</span><span class="o">=</span><span class="n">surface_albedo</span><span class="p">)</span>
+<span class="n">poa</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">irradiance</span><span class="o">.</span><span class="n">poa_components</span><span class="p">(</span>
+        <span class="n">aoi</span><span class="p">,</span> <span class="n">dni</span><span class="p">,</span> <span class="n">poa_sky_diffuse</span><span class="p">,</span> <span class="n">poa_ground_diffuse</span><span class="p">)</span>
+<span class="n">poa_direct</span> <span class="o">=</span> <span class="n">poa</span><span class="p">[</span><span class="s1">&#39;poa_direct&#39;</span><span class="p">]</span>
+<span class="n">poa_diffuse</span> <span class="o">=</span> <span class="n">poa</span><span class="p">[</span><span class="s1">&#39;poa_diffuse&#39;</span><span class="p">]</span>
+<span class="n">poa_global</span> <span class="o">=</span> <span class="n">poa</span><span class="p">[</span><span class="s1">&#39;poa_global&#39;</span><span class="p">]</span>
+<span class="n">iam</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">iam</span><span class="o">.</span><span class="n">ashrae</span><span class="p">(</span><span class="n">aoi</span><span class="p">)</span>
+<span class="n">effective_irradiance</span> <span class="o">=</span> <span class="n">poa_direct</span><span class="o">*</span><span class="n">iam</span> <span class="o">+</span> <span class="n">poa_diffuse</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># module temperature</span>
+<span class="n">temp_cell</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">temperature</span><span class="o">.</span><span class="n">pvsyst_cell</span><span class="p">(</span><span class="n">poa_global</span><span class="p">,</span> <span class="n">temp_air</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># finally this is the magic</span>
+<span class="n">cecparams</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">pvsystem</span><span class="o">.</span><span class="n">calcparams_cec</span><span class="p">(</span>
+        <span class="n">effective_irradiance</span><span class="p">,</span> <span class="n">temp_cell</span><span class="p">,</span>
+        <span class="n">CECMOD_MONO</span><span class="o">.</span><span class="n">alpha_sc</span><span class="p">,</span> <span class="n">CECMOD_MONO</span><span class="o">.</span><span class="n">a_ref</span><span class="p">,</span>
+        <span class="n">CECMOD_MONO</span><span class="o">.</span><span class="n">I_L_ref</span><span class="p">,</span> <span class="n">CECMOD_MONO</span><span class="o">.</span><span class="n">I_o_ref</span><span class="p">,</span>
+        <span class="n">CECMOD_MONO</span><span class="o">.</span><span class="n">R_sh_ref</span><span class="p">,</span> <span class="n">CECMOD_MONO</span><span class="o">.</span><span class="n">R_s</span><span class="p">,</span> <span class="n">CECMOD_MONO</span><span class="o">.</span><span class="n">Adjust</span><span class="p">)</span>
+<span class="n">mpp</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">pvsystem</span><span class="o">.</span><span class="n">max_power_point</span><span class="p">(</span><span class="o">*</span><span class="n">cecparams</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;newton&#39;</span><span class="p">)</span>
+<span class="n">mpp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">mpp</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">TIMES</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the goods</span>
+<span class="n">mpp</span><span class="o">.</span><span class="n">p_mp</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Daily Energy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Production [Wh]&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Tutorial A - Single Diode Model_12_0.png" src="_images/Tutorial A - Single Diode Model_12_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># now your turn, do the same thing for the poly-Si module.</span>
+<span class="c1"># how does it compare?</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="string-length">
+<h2>String Length<a class="headerlink" href="#string-length" title="Permalink to this headline">¶</a></h2>
+<p>Before we can do the AC side we need to build up our array. The first thing is the string length, which is determined by the open circuit voltage, the lowest expected temperature at the site, and the open circuit temperature coefficient.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_ref</span> <span class="o">=</span> <span class="mf">25.0</span>  <span class="c1"># degC</span>
+<span class="n">dc_ac</span> <span class="o">=</span> <span class="mf">1.3</span>
+<span class="c1"># maximum open circuit voltage</span>
+<span class="n">MAX_VOC</span> <span class="o">=</span> <span class="n">CECMOD_MONO</span><span class="o">.</span><span class="n">V_oc_ref</span> <span class="o">+</span> <span class="n">CECMOD_MONO</span><span class="o">.</span><span class="n">beta_oc</span> <span class="o">*</span> <span class="p">(</span><span class="n">temp_air</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="n">temp_ref</span><span class="p">)</span>
+<span class="n">STRING_LENGTH</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">INVERTER_60K</span><span class="p">[</span><span class="s1">&#39;Vdcmax&#39;</span><span class="p">]</span> <span class="o">//</span> <span class="n">MAX_VOC</span><span class="p">)</span>
+<span class="n">STRING_VOLTAGE</span> <span class="o">=</span> <span class="n">STRING_LENGTH</span> <span class="o">*</span> <span class="n">MAX_VOC</span>
+<span class="n">STRING_OUTPUT</span> <span class="o">=</span> <span class="n">CECMOD_MONO</span><span class="o">.</span><span class="n">STC</span> <span class="o">*</span> <span class="n">STRING_LENGTH</span>
+<span class="n">STRING_COUNT</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">dc_ac</span> <span class="o">*</span> <span class="n">INVERTER_60K</span><span class="p">[</span><span class="s1">&#39;Paco&#39;</span><span class="p">]</span> <span class="o">//</span> <span class="n">STRING_OUTPUT</span><span class="p">)</span>
+<span class="n">DC_CAPACITY</span> <span class="o">=</span> <span class="n">STRING_COUNT</span> <span class="o">*</span> <span class="n">STRING_OUTPUT</span>
+<span class="n">DCAC</span> <span class="o">=</span> <span class="n">DC_CAPACITY</span> <span class="o">/</span> <span class="n">INVERTER_60K</span><span class="p">[</span><span class="s1">&#39;Paco&#39;</span><span class="p">]</span>
+<span class="n">MAX_VOC</span><span class="p">,</span> <span class="n">STRING_LENGTH</span><span class="p">,</span> <span class="n">STRING_VOLTAGE</span><span class="p">,</span> <span class="n">STRING_OUTPUT</span><span class="p">,</span> <span class="n">STRING_COUNT</span><span class="p">,</span> <span class="n">DC_CAPACITY</span><span class="p">,</span> <span class="n">DCAC</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(52.2110052, 15, 783.165078, 4500.45, 17, 76507.65, 1.2751275)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ac-output">
+<h2>AC Output<a class="headerlink" href="#ac-output" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://energy.sandia.gov/wp-content/gallery/uploads/Performance-Model-for-Grid-Connected-Photovoltaic-Inverters.pdf">Sandia grid inverter</a> is a convenient model. The coefficients in the NREL SAM library are derived from California Energy Commision (CEC) testing (see <a class="reference external" href="https://www.energy.ca.gov/programs-and-topics/programs/solar-equipment-lists">CEC Solar Equipment List</a>). Use <a class="reference external" href="https://pvlib-python.readthedocs.io/en/stable/generated/pvlib.inverter.sandia.html"><code class="docutils literal notranslate"><span class="pre">pvlib.inverter.sandia</span></code></a> to calculate AC output given DC voltage and power and the inverter parameters from the NREL SAM library which we downloaded earlier into <code class="docutils literal notranslate"><span class="pre">INVERTER_60K</span></code> for the SMA STP 60kW inverter.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">EDAILY</span> <span class="o">=</span> <span class="n">mpp</span><span class="o">.</span><span class="n">p_mp</span> <span class="o">*</span> <span class="n">STRING_LENGTH</span> <span class="o">*</span> <span class="n">STRING_COUNT</span>
+<span class="n">AC_OUTPUT</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">inverter</span><span class="o">.</span><span class="n">sandia</span><span class="p">(</span>
+    <span class="n">mpp</span><span class="o">.</span><span class="n">v_mp</span> <span class="o">*</span> <span class="n">STRING_LENGTH</span><span class="p">,</span>
+    <span class="n">mpp</span><span class="o">.</span><span class="n">p_mp</span> <span class="o">*</span> <span class="n">STRING_LENGTH</span> <span class="o">*</span> <span class="n">STRING_COUNT</span><span class="p">,</span>
+    <span class="n">INVERTER_60K</span><span class="p">)</span>
+<span class="n">AC_OUTPUT</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>60000.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the goods</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">14</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">EDAILY</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;DC&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Daily Energy&#39;</span><span class="p">)</span>
+<span class="n">AC_OUTPUT</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;AC&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Energy [Wh/day]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Tutorial A - Single Diode Model_18_0.png" src="_images/Tutorial A - Single Diode Model_18_0.png" />
+</div>
+</div>
+<p><a class="reference external" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
+<p>This work is licensed under a <a class="reference external" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "PVSC-Python-Tutorials/PVSC48-Python-Tutorial",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="Tutorial%205%20-%20Array%20Power.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Tutorial 5 - Array Power</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="Tutorial%20B%20-%20pvfree.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Tutorial B - pvfree</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Silvana Ayala Pelaez, Mark Mikofski, Kevin Anderson<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

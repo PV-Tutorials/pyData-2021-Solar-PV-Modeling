@@ -1,0 +1,745 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome! &#8212; PVSC 48 Python Tutorial</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tutorial 1 - Weather Data: Accesing it, understanding it, visualizing it!" href="Tutorial%201%20-%20TMY%20Weather%20Data.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/tutorial_banner.PNG" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">PVSC 48 Python Tutorial</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1 current">
+  <a class="reference internal" href="#">
+   Welcome!
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Tutorial%201%20-%20TMY%20Weather%20Data.html">
+   Tutorial 1 - Weather Data: Accesing it, understanding it, visualizing it!
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Tutorial%202%20-%20POA%20Irradiance.html">
+   Tutorial 2 - POA Irradiance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Tutorial%203%20-%20Module%20Temperature.html">
+   Tutorial 3 - Module Temperature
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Tutorial%204%20-%20Model%20a%20Module%27s%20Performance.html">
+   Tutorial 4 - PV Module Performance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Tutorial%205%20-%20Array%20Power.html">
+   Tutorial 5 - Array Power
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Tutorial%20A%20-%20Single%20Diode%20Model.html">
+   Tutorial A - Single Diode Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Tutorial%20B%20-%20pvfree.html">
+   Tutorial B - pvfree
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Tutorial 0 - Overview.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/PVSC-Python-Tutorials/PVSC48-Python-Tutorial"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/PVSC-Python-Tutorials/PVSC48-Python-Tutorial/issues/new?title=Issue%20on%20page%20%2FTutorial 0 - Overview.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/PVSC-Python-Tutorials/PVSC48-Python-Tutorial/main?urlpath=tree/Tutorial 0 - Overview.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        <a class="jupyterhub-button" href="https://pvsc-python-tutorial.ml/hub/user-redirect/git-pull?repo=https://github.com/PVSC-Python-Tutorials/PVSC48-Python-Tutorial&urlpath=tree/PVSC48-Python-Tutorial/Tutorial 0 - Overview.ipynb&branch=main"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
+                data-placement="left"><img class="jupyterhub-button-logo"
+                    src="_static/images/logo_jupyterhub.svg"
+                    alt="Interact on JupyterHub">JupyterHub</button></a>
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-on-your-teachers">
+   More on your teachers:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning Objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   Overview
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-learn-this">
+     Why learn this?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-use-this-tutorial">
+   How to use this tutorial?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#useful-links">
+   Useful links
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tutorial-structure">
+   Tutorial Structure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-print-hello-world">
+   Exercise: Print Hello, world!
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-1-modify-to-print-something-else">
+   Exercise 1: Modify to print something else:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#let-s-go-over-some-python-concepts">
+   Let’s go over some Python Concepts
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-arithmetic-operations">
+   Basic Arithmetic Operations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-libraries">
+   Python Libraries
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#concatenation">
+   Concatenation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loops">
+   Loops
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-dictionaries">
+   Working with Dictionaries
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting">
+   Plotting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#going-deeper">
+   Going Deeper
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pvlib-and-weather-climate-model-data">
+     PVLIB and Weather/Climate Model Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#open-pv-tools">
+     Open PV Tools
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><img alt="tutorial banner" src="_images/tutorial_banner.PNG" /></p>
+<div class="tex2jax_ignore mathjax_ignore section" id="welcome">
+<h1>Welcome!<a class="headerlink" href="#welcome" title="Permalink to this headline">¶</a></h1>
+<p>Welcome to the  PV Software 101: from Sun position to AC Output! tutorial</p>
+<p>Modeling tools for all aspects of photovoltaic systems are rapidly growing, and there are solutions for many of the things you might want to simulate. Python is becoming one of the scientific languages of choice, and many open-source tools are available for PV modeling. This tutorial will focus on teaching attendees PV modeling in python through the use of PVlib.</p>
+<p>In this interactive tutorial we will go from getting acquainted with some common data used or measured in pv systems (i.e. weather), to modeling the AC energy output of a single-axis tracker system. This includes learning and simulating sun position, plane of array irradiances, temperature models, single-diode models and more.</p>
+<p>We will review common vocabulary around python and <code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">aggregation</span></code> by hour, week, month, and visualization.</p>
+<p>The tutorial will present hands-on examples in python, enabled via jupyter notebooks and a Jupyterhub (remote hosted server for jupyter notebooks and python language) so you, the attendee, don’t have to install anything, and can follow along while we go over the theory and code! In case it’s not obvious, a computer <b> is </b> required.</p>
+<p>The tutorial will wrap up with an overview of other available open-source tools for other aspects of modeling PV systems.</p>
+<div class="section" id="more-on-your-teachers">
+<h2>More on your teachers:<a class="headerlink" href="#more-on-your-teachers" title="Permalink to this headline">¶</a></h2>
+<p>The three of us have ample experience in data, coding, and PV field performance modeling, so we look forward to all of your questions.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="text-align:left head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><img alt="Mark Mikofski" src="_images/tutorial_0_mark.PNG" /></p></td>
+<td class="text-align:left"><p><h2>Mark Mikofski</h2><br/>I am a principal solar engineer at DNV and product manager for SolarFarmer. I research, analyze, and predict PV system performance, degradation, and reliability. I have contributed to a few Python projects like <a class="reference external" href="https://pvlib-python.readthedocs.io/en/latest/">pvlib python</a>, <a class="reference external" href="https://sunpower.github.io/PVMismatch/">PVMismatch</a>, and <a class="reference external" href="https://scipy.org/">SciPy</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><img alt="Silvana Ayala Pelaez" src="_images/tutorial_0_silvana.PNG" /></p></td>
+<td class="text-align:left"><p><h2>Silvana Ayala Pelaez</h2><br/>I am a research scientist at NREL, focusing mostly on bifacial PV system’s performance, and circular economy. Python is my daily bread and butter for data analysis and building tools. Silvana has made substantial contributions to the NREL <a class="reference external" href="https://github.com/NREL/bifacialvf">bifacialvf pvmismatch</a> and <a class="reference external" href="https://bifacial-radiance.readthedocs.io/en/latest/">bifacial radiance</a> software packages.</p></td>
+</tr>
+<tr class="row-even"><td><p><img alt="Kevin Anderson" src="_images/tutorial_0_kevin.PNG" /></p></td>
+<td class="text-align:left"><p><h2>Kevin Anderson</h2><br/>I am a research scientist at NREL doing cool stuff! I have contributed to work on slope aware backtracking, clipping loss errors in hourly yield estimates, and am a maintainer for <a class="reference external" href="https://pvlib-python.readthedocs.io/en/latest/">pvlib python</a> and a frequent contributor to <a class="reference external" href="https://rdtools.readthedocs.io/en/latest/">RdTools</a>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="learning-objectives">
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Access weather data (TMY3), understand irradiance data, and visualize it monthly.</p></li>
+<li><p>Calculate sun position, plane of array irradiance, and aggregate irradiance data into average daily insolation by month and year.</p></li>
+<li><p>Calculate module temperature from ambient data.</p></li>
+<li><p>Use POA and module temperature to forecast a module’s performance.</p></li>
+</ol>
+</div>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The sketch below from <a class="reference external" href="https://pvpmc.sandia.gov/">the Sandia PV Performance Modeling Collaborative (PVPMC)</a> outlines the topics we will cover in this tutorial:</p>
+<p><img alt="Overview" src="_images/tutorial_overview.PNG" /></p>
+<div class="section" id="why-learn-this">
+<h3>Why learn this?<a class="headerlink" href="#why-learn-this" title="Permalink to this headline">¶</a></h3>
+<p>PV-lib is a library of algorithms and routines that you might encounter the need to use if you’re doing anything PV-modeling related.  It is managed by members of the PV research community, who make sure the formulas and code are not only sleek but accurate.</p>
+<ul class="simple">
+<li><p>You want to know the sun position? No need to code from zero the SPA (Solar Position algorithm), it’s in PVlib.</p></li>
+<li><p>You want to reproduce the Sandia-King model to calculate module performance? It’s there, also.</p></li>
+<li><p>You can find the most well-known <a class="reference external" href="https://pvpmc.sandia.gov/">models</a>, as well as recently accepted values and approaches in published PV literature.</p></li>
+<li><p>We hope adding this tool to your skillset will empower you to do better, faster research with an already solid foundation. Don’t reinvent the wheel!</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="how-to-use-this-tutorial">
+<h2>How to use this tutorial?<a class="headerlink" href="#how-to-use-this-tutorial" title="Permalink to this headline">¶</a></h2>
+<p>This tutorial is a <a class="reference external" href="https://jupyter.org">Jupyter</a> notebook. Jupyter is a browser based interactive tool that combines text, images, equations, and code that can be shared with others. Please see the setup section in the <a class="reference internal" href="README.html"><span class="doc std std-doc">README</span></a> to learn more about how to get started.</p>
+</div>
+<div class="section" id="useful-links">
+<h2>Useful links<a class="headerlink" href="#useful-links" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>References</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pvlib-python.readthedocs.io/en/stable/">PVlib Documentation</a></p></li>
+<li><p><a class="reference external" href="https://github.com/pvlib/pvlib-python">Github Code Repository</a></p></li>
+</ul>
+</li>
+<li><p>Ask for help:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://stackoverflow.com/questions/tagged/pvlib-python">Use the pvlib-python tag on StackOverflow</a></p></li>
+<li><p><a class="reference external" href="https://groups.google.com/g/pvlib-python">Google Group - Discussions and more!</a></p></li>
+<li><p><a class="reference external" href="https://github.com/pyvlib/pvlib-python/issues">Open an Issue on the Github Repository</a></p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="tutorial-structure">
+<h2>Tutorial Structure<a class="headerlink" href="#tutorial-structure" title="Permalink to this headline">¶</a></h2>
+<p>This tutorial is made up of multiple Jupyter Notebooks. These notebooks mix
+code, text, visualization, and exercises.</p>
+<p>If you haven’t used JupyterLab before, it’s similar to the Jupyter Notebook. If
+you haven’t used the Notebook, the quick intro is</p>
+<ol class="simple">
+<li><p>There are two modes: <code class="docutils literal notranslate"><span class="pre">command</span></code> and <code class="docutils literal notranslate"><span class="pre">edit</span></code></p></li>
+<li><p>From <code class="docutils literal notranslate"><span class="pre">command</span></code> mode, press <code class="docutils literal notranslate"><span class="pre">Enter</span></code> to edit a cell (like this markdown cell)</p></li>
+<li><p>From <code class="docutils literal notranslate"><span class="pre">edit</span></code> mode, press <code class="docutils literal notranslate"><span class="pre">Esc</span></code> to change to command mode</p></li>
+<li><p>Press <code class="docutils literal notranslate"><span class="pre">shift+enter</span></code> to execute a cell and move to the next cell.</p></li>
+<li><p>The toolbar has commands for executing, converting, and creating cells.</p></li>
+</ol>
+<p>The layout of the tutorial will be as follows:</p>
+</div>
+<div class="section" id="exercise-print-hello-world">
+<h2>Exercise: Print Hello, world!<a class="headerlink" href="#exercise-print-hello-world" title="Permalink to this headline">¶</a></h2>
+<p>Each notebook will have exercises for you to solve. You’ll be given a blank or
+partially completed cell, followed by a hidden cell with a solution. For
+example.</p>
+<p>Print the text “Hello, world!”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello, world!
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-1-modify-to-print-something-else">
+<h2>Exercise 1: Modify to print something else:<a class="headerlink" href="#exercise-1-modify-to-print-something-else" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_string</span> <span class="o">=</span>    <span class="c1"># Add your text here. Remember to put it inside of single quotes or double quotes ( &quot; &quot; or &#39;&#39; )</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_string</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/tmp/ipykernel_1664/3863091146.py&quot;</span><span class="gt">, line </span><span class="mi">1</span>
+    <span class="n">my_string</span> <span class="o">=</span>    <span class="c1"># Add your text here. Remember to put it inside of single quotes or double quotes ( &quot; &quot; or &#39;&#39; )</span>
+                                                                                                                  <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="let-s-go-over-some-python-concepts">
+<h2>Let’s go over some Python Concepts<a class="headerlink" href="#let-s-go-over-some-python-concepts" title="Permalink to this headline">¶</a></h2>
+<p>(A lot of this examples were shamely taken from <a class="reference external" href="https://jckantor.github.io/CBE30338/01.01-Getting-Started-with-Python-and-Jupyter-Notebooks.html">https://jckantor.github.io/CBE30338/01.01-Getting-Started-with-Python-and-Jupyter-Notebooks.html</a> :$)</p>
+</div>
+<div class="section" id="basic-arithmetic-operations">
+<h2>Basic Arithmetic Operations<a class="headerlink" href="#basic-arithmetic-operations" title="Permalink to this headline">¶</a></h2>
+<p>Basic arithmetic operations are built into the Python langauge. Here are some examples. In particular, note that exponentiation is done with the ** operator.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">**</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+8
+0.6666666666666666
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="python-libraries">
+<h2>Python Libraries<a class="headerlink" href="#python-libraries" title="Permalink to this headline">¶</a></h2>
+<p>The Python language has only very basic operations. Most math functions are in various math libraries. The numpy library is convenient library. This next cell shows how to import numpy with the prefix np, then use it to call a common mathematical functions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># mathematical constants</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">e</span><span class="p">)</span>
+
+<span class="c1"># trignometric functions</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">angle</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.141592653589793
+2.718281828459045
+0.7071067811865476
+0.7071067811865476
+0.9999999999999999
+</pre></div>
+</div>
+</div>
+</div>
+<p>Lists are a versatile way of organizing your data in Python. Here are some examples, more can be found on this Khan Academy video.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xList</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">xList</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="concatenation">
+<h2>Concatenation<a class="headerlink" href="#concatenation" title="Permalink to this headline">¶</a></h2>
+<p>Concatentation is the operation of joining one list to another.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">];</span>
+
+<span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4, 5, 6, 7, 8]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="loops">
+<h2>Loops<a class="headerlink" href="#loops" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xList</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sin(</span><span class="si">{0}</span><span class="s2">) = </span><span class="si">{1:8.5f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sin(1) =  0.84147
+sin(2) =  0.90930
+sin(3) =  0.14112
+sin(4) = -0.75680
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="working-with-dictionaries">
+<h2>Working with Dictionaries<a class="headerlink" href="#working-with-dictionaries" title="Permalink to this headline">¶</a></h2>
+<p>Dictionaries are useful for storing and retrieving data as key-value pairs. For example, here is a short dictionary of molar masses. The keys are molecular formulas, and the values are the corresponding molar masses.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">States_SolarInstallations2020</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Arizona&#39;</span><span class="p">:</span> <span class="mf">16.04</span><span class="p">,</span> <span class="s1">&#39;California&#39;</span><span class="p">:</span> <span class="mf">30.02</span><span class="p">,</span> <span class="s1">&#39;Texas&#39;</span><span class="p">:</span><span class="mf">18.00</span><span class="p">,</span> <span class="s1">&#39;Colorado&#39;</span><span class="p">:</span> <span class="mf">44.01</span><span class="p">}</span>  <span class="c1"># GW</span>
+<span class="n">States_SolarInstallations2020</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Arizona&#39;: 16.04, &#39;California&#39;: 30.02, &#39;Texas&#39;: 18.0, &#39;Colorado&#39;: 44.01}
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can a value to an existing dictionary.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">States_SolarInstallations2020</span><span class="p">[</span><span class="s1">&#39;New Mexico&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">22.4</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="plotting">
+<h2>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h2>
+<p>Importing the matplotlib.pyplot library gives IPython notebooks plotting functionality very similar to Matlab’s. Here are some examples using functions from the</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Radians&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Plotting Demonstration&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Sin&#39;</span><span class="p">,</span><span class="s1">&#39;Cos&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Tutorial 0 - Overview_27_0.png" src="_images/Tutorial 0 - Overview_27_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="going-deeper">
+<h2>Going Deeper<a class="headerlink" href="#going-deeper" title="Permalink to this headline">¶</a></h2>
+<p>We’ve designed the notebooks above to cover the basics of pvlib from beginning
+to end. To help you go deeper, we’ve also create a list of notebooks that
+demonstrate real-world applications of pvlib in a variety of use cases. These
+need not be explored in any particular sequence, instead they are meant to
+provide a sampling of what pvlib can be used for.</p>
+<div class="section" id="pvlib-and-weather-climate-model-data">
+<h3>PVLIB and Weather/Climate Model Data<a class="headerlink" href="#pvlib-and-weather-climate-model-data" title="Permalink to this headline">¶</a></h3>
+<p>Check out the pvlib python <a class="reference external" href="https://pvlib-python.readthedocs.io/en/stable/auto_examples/index.html">examples gallery</a>.
+Start with <a class="reference external" href="https://pvlib-python.readthedocs.io/en/stable/auto_examples/plot_sunpath_diagrams.html">Sun path diagram</a>,
+then feel free to explore the rest of the notebooks.</p>
+</div>
+<div class="section" id="open-pv-tools">
+<h3>Open PV Tools<a class="headerlink" href="#open-pv-tools" title="Permalink to this headline">¶</a></h3>
+<p>There is a curated list of <a class="reference external" href="https://openpvtools.readthedocs.io/">open source PV tools</a> from <a class="reference external" href="http://dx.doi.org/10.1109/PVSC.2018.8548231">“Review of Open Source Tools for PV Modeling” by Will Holmgren, <em>et al.</em> at IEEE 7th World Conference on PV Energy Conversion 2018</a>.</p>
+<p><a class="reference external" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
+<p>This work is licensed under a <a class="reference external" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+</div>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "PVSC-Python-Tutorials/PVSC48-Python-Tutorial",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+     <div id="next">
+        <a class="right-next" href="Tutorial%201%20-%20TMY%20Weather%20Data.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Tutorial 1 - Weather Data: Accesing it, understanding it, visualizing it!</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Silvana Ayala Pelaez, Mark Mikofski, Kevin Anderson<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

@@ -1,0 +1,685 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorial 2 - POA Irradiance &#8212; PVSC 48 Python Tutorial</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tutorial 3 - Module Temperature" href="Tutorial%203%20-%20Module%20Temperature.html" />
+    <link rel="prev" title="Tutorial 1 - Weather Data: Accesing it, understanding it, visualizing it!" href="Tutorial%201%20-%20TMY%20Weather%20Data.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/tutorial_banner.PNG" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">PVSC 48 Python Tutorial</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Tutorial%200%20-%20Overview.html">
+   Welcome!
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Tutorial%201%20-%20TMY%20Weather%20Data.html">
+   Tutorial 1 - Weather Data: Accesing it, understanding it, visualizing it!
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Tutorial 2 - POA Irradiance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Tutorial%203%20-%20Module%20Temperature.html">
+   Tutorial 3 - Module Temperature
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Tutorial%204%20-%20Model%20a%20Module%27s%20Performance.html">
+   Tutorial 4 - PV Module Performance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Tutorial%205%20-%20Array%20Power.html">
+   Tutorial 5 - Array Power
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Tutorial%20A%20-%20Single%20Diode%20Model.html">
+   Tutorial A - Single Diode Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Tutorial%20B%20-%20pvfree.html">
+   Tutorial B - pvfree
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Tutorial 2 - POA Irradiance.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/PVSC-Python-Tutorials/PVSC48-Python-Tutorial"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/PVSC-Python-Tutorials/PVSC48-Python-Tutorial/issues/new?title=Issue%20on%20page%20%2FTutorial 2 - POA Irradiance.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/PVSC-Python-Tutorials/PVSC48-Python-Tutorial/main?urlpath=tree/Tutorial 2 - POA Irradiance.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        <a class="jupyterhub-button" href="https://pvsc-python-tutorial.ml/hub/user-redirect/git-pull?repo=https://github.com/PVSC-Python-Tutorials/PVSC48-Python-Tutorial&urlpath=tree/PVSC48-Python-Tutorial/Tutorial 2 - POA Irradiance.ipynb&branch=main"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
+                data-placement="left"><img class="jupyterhub-button-logo"
+                    src="_static/images/logo_jupyterhub.svg"
+                    alt="Interact on JupyterHub">JupyterHub</button></a>
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pv-concepts">
+   PV Concepts
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-concepts">
+   Python Concepts
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-transposition">
+   What is transposition?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-is-array-orientation-defined">
+   How is array orientation defined?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modeling-poa-from-ghi-dhi-and-dni">
+   Modeling POA from GHI, DHI, and DNI
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fixed-tilt-poa">
+   Fixed Tilt POA
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-angle-should-you-tilt-your-modules-at">
+     What angle should you tilt your modules at?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modeling-poa-for-a-tracking-system">
+   Modeling POA for a tracking system
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><img alt="tutorialpromo" src="_images/tutorial_banner.PNG" /></p>
+<div class="tex2jax_ignore mathjax_ignore section" id="tutorial-2-poa-irradiance">
+<h1>Tutorial 2 - POA Irradiance<a class="headerlink" href="#tutorial-2-poa-irradiance" title="Permalink to this headline">¶</a></h1>
+<p>This notebook shows how to use pvlib to transform the three irradiance components (GHI, DHI, and DNI) into POA irradiance, the main driver of a PV system.</p>
+<p><img alt="Overview" src="_images/tutorial_2_overview.PNG" /></p>
+<div class="section" id="pv-concepts">
+<h2>PV Concepts<a class="headerlink" href="#pv-concepts" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Plane of Array Irradiance</p></li>
+<li><p>Angle of Incidence</p></li>
+<li><p>Time delta for solar position</p></li>
+<li><p>GHI vs POA for fixed tilt system and tracked systems</p></li>
+</ul>
+</div>
+<div class="section" id="python-concepts">
+<h2>Python Concepts<a class="headerlink" href="#python-concepts" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>pandas Timedelta</p></li>
+<li><p>making a new dataframe from existing columns</p></li>
+<li><p>resampling</p></li>
+<li><p>bar ploting</p></li>
+</ul>
+</div>
+<div class="section" id="what-is-transposition">
+<h2>What is transposition?<a class="headerlink" href="#what-is-transposition" title="Permalink to this headline">¶</a></h2>
+<p>The amount of sunlight collected by a PV panel depends on how well the panel orientation matches incoming sunlight.  For example, a rooftop array facing West will produce hardly any energy in the morning when the sun is in the East because the panel can only “see” the dim part of the sky away from the sun.</p>
+<p><img alt="Overview" src="_images/t2_solarpanel_directions.PNG" /></p>
+<p>As the sun comes into view and moves towards the center of the panel’s field of view, the panel will collect more and more irradiance.  This concept is what defines plane-of-array irradiance – the amount of sunlight available to be collected at a given panel orientation.  Like the three “basic” irradiance components, POA irradiance is measured in watts per square meter.</p>
+<p>Each irradiance component is considered separately when modeling POA irradiance.  For example, calculating the component of direct irradiance (DNI) that is incident on a panel is solved with straightforward geometry based on the angle of incidence.  Finding the POA component of diffuse irradiance (DHI) is more complex and can vary based on atmospheric conditions.  Many models, ranging from simple models with lots of assumptions to strongly empirical models, have been published to transpose DHI into the diffuse POA component.  A third component of POA irradiance is light that reflects off the ground before being collected by the PV panel.  Functions to calculate each of these components are provided by pvlib.</p>
+<p><img alt="Overview" src="_images/t2_POA.PNG" /></p>
+</div>
+<div class="section" id="how-is-array-orientation-defined">
+<h2>How is array orientation defined?<a class="headerlink" href="#how-is-array-orientation-defined" title="Permalink to this headline">¶</a></h2>
+<p>Two parameters define the panel orientation, one that measures the cardinal direction (North, East, South, West), and one that measures how high in the sky the panel faces:</p>
+<ul class="simple">
+<li><p>tilt; measured in degrees from horizontal.  A flat panel is at tilt=0 and a panel standing on its edge has tilt=90.</p></li>
+<li><p>azimuth; measured in degrees from North.  The direction along the horizon the panel is facing.  N=0, E=90, S=180, W=270.</p></li>
+</ul>
+<p>A fixed array has fixed tilt and azimuth, but a tracker array constantly changes its orientation to best match the sun’s position.  So depending on the system configuration, tilt and azimuth may or may not be time series values.</p>
+</div>
+<div class="section" id="modeling-poa-from-ghi-dhi-and-dni">
+<h2>Modeling POA from GHI, DHI, and DNI<a class="headerlink" href="#modeling-poa-from-ghi-dhi-and-dni" title="Permalink to this headline">¶</a></h2>
+<p>As mentioned earlier, pvlib makes it easy to calculate POA irradiance.  First, let’s load in the example TMY dataset from the previous tutorial:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pvlib</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>  <span class="c1"># for data wrangling</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>  <span class="c1"># for visualization</span>
+<span class="kn">import</span> <span class="nn">pathlib</span>  <span class="c1"># for finding the example dataset</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pvlib</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+
+<span class="n">DATA_DIR</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">pvlib</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s1">&#39;data&#39;</span>
+<span class="n">df_tmy</span><span class="p">,</span> <span class="n">metadata</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">iotools</span><span class="o">.</span><span class="n">read_tmy3</span><span class="p">(</span><span class="n">DATA_DIR</span> <span class="o">/</span> <span class="s1">&#39;723170TYA.CSV&#39;</span><span class="p">,</span> <span class="n">coerce_year</span><span class="o">=</span><span class="mi">1990</span><span class="p">)</span>
+
+<span class="c1"># make a Location object corresponding to this TMY</span>
+<span class="n">location</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">Location</span><span class="p">(</span><span class="n">latitude</span><span class="o">=</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">],</span>
+                                   <span class="n">longitude</span><span class="o">=</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8.1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;We are looking at data from &quot;</span><span class="p">,</span> <span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span> <span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;State&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>We are looking at data from  &quot;GREENSBORO PIEDMONT TRIAD INT&quot; , NC
+</pre></div>
+</div>
+</div>
+</div>
+<p>Because part of the transposition process requires knowing where the sun is in the sky, let’s use pvlib to calculate solar position.  There is a gotcha here!  TMY data represents the average weather conditions across each hour, meaning we need to calculate solar position in the middle of each hour.  pvlib calculates solar position for the exact timestamps you specify, so we need to adjust the times by half an interval (30 minutes):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Note: TMY datasets are right-labeled hourly intervals, e.g. the</span>
+<span class="c1"># 10AM to 11AM interval is labeled 11.  We should calculate solar position in</span>
+<span class="c1"># the middle of the interval (10:30), so we subtract 30 minutes:</span>
+<span class="n">times</span> <span class="o">=</span> <span class="n">df_tmy</span><span class="o">.</span><span class="n">index</span> <span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="s1">&#39;30min&#39;</span><span class="p">)</span>
+<span class="n">solar_position</span> <span class="o">=</span> <span class="n">location</span><span class="o">.</span><span class="n">get_solarposition</span><span class="p">(</span><span class="n">times</span><span class="p">)</span>
+<span class="c1"># but remember to shift the index back to line up with the TMY data:</span>
+<span class="n">solar_position</span><span class="o">.</span><span class="n">index</span> <span class="o">+=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="s1">&#39;30min&#39;</span><span class="p">)</span>
+
+<span class="n">solar_position</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>apparent_zenith</th>
+      <th>zenith</th>
+      <th>apparent_elevation</th>
+      <th>elevation</th>
+      <th>azimuth</th>
+      <th>equation_of_time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1990-01-01 01:00:00-05:00</th>
+      <td>166.841893</td>
+      <td>166.841893</td>
+      <td>-76.841893</td>
+      <td>-76.841893</td>
+      <td>6.889661</td>
+      <td>-3.395097</td>
+    </tr>
+    <tr>
+      <th>1990-01-01 02:00:00-05:00</th>
+      <td>160.512529</td>
+      <td>160.512529</td>
+      <td>-70.512529</td>
+      <td>-70.512529</td>
+      <td>52.424214</td>
+      <td>-3.414863</td>
+    </tr>
+    <tr>
+      <th>1990-01-01 03:00:00-05:00</th>
+      <td>149.674856</td>
+      <td>149.674856</td>
+      <td>-59.674856</td>
+      <td>-59.674856</td>
+      <td>73.251821</td>
+      <td>-3.434619</td>
+    </tr>
+    <tr>
+      <th>1990-01-01 04:00:00-05:00</th>
+      <td>137.777090</td>
+      <td>137.777090</td>
+      <td>-47.777090</td>
+      <td>-47.777090</td>
+      <td>85.208599</td>
+      <td>-3.454365</td>
+    </tr>
+    <tr>
+      <th>1990-01-01 05:00:00-05:00</th>
+      <td>125.672180</td>
+      <td>125.672180</td>
+      <td>-35.672180</td>
+      <td>-35.672180</td>
+      <td>94.134730</td>
+      <td>-3.474102</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The two values needed here are the solar zenith (how close the sun is to overhead) and azimuth (what direction along the horizon the sun is, like panel azimuth).  The difference between <code class="docutils literal notranslate"><span class="pre">apparent_zenith</span></code> and <code class="docutils literal notranslate"><span class="pre">zenith</span></code> is that <code class="docutils literal notranslate"><span class="pre">apparent_zenith</span></code> includes the effect of atmospheric refraction.</p>
+<p>Now that we have a time series of solar position that matches our irradiance data, let’s run a transposition model using the convenient wrapper function <a class="reference external" href="https://pvlib-python.readthedocs.io/en/latest/generated/pvlib.irradiance.get_total_irradiance.html"><code class="docutils literal notranslate"><span class="pre">pvlib.irradiance.get_total_irradiance</span></code></a>. The more complex transposition models like Perez and Hay Davies require additional weather inputs, so for simplicity we’ll just use the basic <code class="docutils literal notranslate"><span class="pre">isotropic</span></code> model here, which is the default if nothing is passed for <code class="docutils literal notranslate"><span class="pre">model</span></code> keyword argument.  As an example, we’ll model a fixed array tilted south at 20 degrees.</p>
+</div>
+<div class="section" id="fixed-tilt-poa">
+<h2>Fixed Tilt POA<a class="headerlink" href="#fixed-tilt-poa" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_poa</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">irradiance</span><span class="o">.</span><span class="n">get_total_irradiance</span><span class="p">(</span>
+    <span class="n">surface_tilt</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>  <span class="c1"># tilted 20 degrees from horizontal</span>
+    <span class="n">surface_azimuth</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span>  <span class="c1"># facing South</span>
+    <span class="n">dni</span><span class="o">=</span><span class="n">df_tmy</span><span class="p">[</span><span class="s1">&#39;DNI&#39;</span><span class="p">],</span>
+    <span class="n">ghi</span><span class="o">=</span><span class="n">df_tmy</span><span class="p">[</span><span class="s1">&#39;GHI&#39;</span><span class="p">],</span>
+    <span class="n">dhi</span><span class="o">=</span><span class="n">df_tmy</span><span class="p">[</span><span class="s1">&#39;DHI&#39;</span><span class="p">],</span>
+    <span class="n">solar_zenith</span><span class="o">=</span><span class="n">solar_position</span><span class="p">[</span><span class="s1">&#39;apparent_zenith&#39;</span><span class="p">],</span>
+    <span class="n">solar_azimuth</span><span class="o">=</span><span class="n">solar_position</span><span class="p">[</span><span class="s1">&#39;azimuth&#39;</span><span class="p">],</span>
+    <span class="n">model</span><span class="o">=</span><span class="s1">&#39;isotropic&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">get_total_irradiance</span></code> returns a DataFrame containing each of the POA components mentioned earlier (direct, diffuse, and ground), along with the total in-plane irradiance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_poa</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;poa_global&#39;, &#39;poa_direct&#39;, &#39;poa_diffuse&#39;, &#39;poa_sky_diffuse&#39;,
+       &#39;poa_ground_diffuse&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="what-angle-should-you-tilt-your-modules-at">
+<h3>What angle should you tilt your modules at?<a class="headerlink" href="#what-angle-should-you-tilt-your-modules-at" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.pveducation.org/pvcdrom/properties-of-sunlight/solar-radiation-on-a-tilted-surface">PVEducation Solar Radiation on a Tilted Surface</a></p>
+<p>The total POA irradiance is called <code class="docutils literal notranslate"><span class="pre">poa_global</span></code> and is the one we’ll focus on. Like the previous tutorial, let’s visualize monthly irradiance to summarize the difference between the insolation received by a flat panel (GHI) and that of a tilted panel (POA):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;ghi&#39;</span><span class="p">:</span> <span class="n">df_tmy</span><span class="p">[</span><span class="s1">&#39;GHI&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;poa&#39;</span><span class="p">:</span> <span class="n">df_poa</span><span class="p">[</span><span class="s1">&#39;poa_global&#39;</span><span class="p">],</span>
+<span class="p">})</span>
+<span class="n">df_monthly</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">df_monthly</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Monthly Insolation [W h/m$^2$]&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Tutorial 2 - POA Irradiance_17_0.png" src="_images/Tutorial 2 - POA Irradiance_17_0.png" />
+</div>
+</div>
+<p>This plot shows that, compared with a flat array, a tilted array receives significantly more insolation in the winter.  However, it comes at the cost of slightly less insolation in the summer.  The difference is all about solar position – tilting up from horizontal gives a better match to solar position in winter, when the sun is low in the sky.  However it gives a slightly worse match in summer when the sun is very high in the sky.</p>
+<p>As an example, here’s a sunny day in winter vs a sunny day in summer.  Note that the daily profile doesn’t just change its height, it also changes its width (summer POA is “skinnier” than GHI).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;1990-01-15&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Irradiance [W/m$^2$]&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Tutorial 2 - POA Irradiance_19_0.png" src="_images/Tutorial 2 - POA Irradiance_19_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;1990-07-08&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Irradiance [W/m$^2$]&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Tutorial 2 - POA Irradiance_20_0.png" src="_images/Tutorial 2 - POA Irradiance_20_0.png" />
+</div>
+</div>
+<p>The difference between GHI and POA is of course dependent on the tilt defining POA, but because it also depends on solar position, it varies from location to location.  Luckily, tools like pvlib make it easy to model!</p>
+</div>
+</div>
+<div class="section" id="modeling-poa-for-a-tracking-system">
+<h2>Modeling POA for a tracking system<a class="headerlink" href="#modeling-poa-for-a-tracking-system" title="Permalink to this headline">¶</a></h2>
+<p>The previous section calculated the transposition assuming a fixed array tilt and azimuth.  Now we’ll do the same for a tracking array that follows the sun across the sky.  The most common type of tracking array is what’s called a single-axis tracker (SAT) that rotates from East to West to follow the sun.  We can calculate the time-dependent orientation of a SAT array with pvlib:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tracker_data</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">tracking</span><span class="o">.</span><span class="n">singleaxis</span><span class="p">(</span>
+    <span class="n">solar_position</span><span class="p">[</span><span class="s1">&#39;apparent_zenith&#39;</span><span class="p">],</span>
+    <span class="n">solar_position</span><span class="p">[</span><span class="s1">&#39;azimuth&#39;</span><span class="p">],</span>
+    <span class="n">axis_azimuth</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span>  <span class="c1"># axis is aligned N-S</span>
+    <span class="p">)</span>  <span class="c1"># leave the rest of the singleaxis parameters like backtrack and gcr at their defaults</span>
+<span class="n">tilt</span> <span class="o">=</span> <span class="n">tracker_data</span><span class="p">[</span><span class="s1">&#39;surface_tilt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">azimuth</span> <span class="o">=</span> <span class="n">tracker_data</span><span class="p">[</span><span class="s1">&#39;surface_azimuth&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># plot a day to illustrate:</span>
+<span class="n">tracker_data</span><span class="p">[</span><span class="s1">&#39;tracker_theta&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Tracker Rotation [degrees]&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Tutorial 2 - POA Irradiance_22_0.png" src="_images/Tutorial 2 - POA Irradiance_22_0.png" />
+</div>
+</div>
+<p>This plot shows a single day of tracker operation.  The y-axis shows the tracker rotation from horizontal, so 0 degrees means the panels are flat.  In the morning, the trackers rotate to negative angles to face East towards the morning sun; in the afternoon they rotate to positive angles to face West towards the evening sun.  In the middle of the day, the trackers are flat because the sun is more or less overhead.</p>
+<p>Now we can model the irradiance collected by a tracking array – we follow the same procedure as before, but using the timeseries tilt and azimuth this time:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_poa_tracker</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">irradiance</span><span class="o">.</span><span class="n">get_total_irradiance</span><span class="p">(</span>
+    <span class="n">surface_tilt</span><span class="o">=</span><span class="n">tilt</span><span class="p">,</span>  <span class="c1"># time series for tracking array</span>
+    <span class="n">surface_azimuth</span><span class="o">=</span><span class="n">azimuth</span><span class="p">,</span>  <span class="c1"># time series for tracking array</span>
+    <span class="n">dni</span><span class="o">=</span><span class="n">df_tmy</span><span class="p">[</span><span class="s1">&#39;DNI&#39;</span><span class="p">],</span>
+    <span class="n">ghi</span><span class="o">=</span><span class="n">df_tmy</span><span class="p">[</span><span class="s1">&#39;GHI&#39;</span><span class="p">],</span>
+    <span class="n">dhi</span><span class="o">=</span><span class="n">df_tmy</span><span class="p">[</span><span class="s1">&#39;DHI&#39;</span><span class="p">],</span>
+    <span class="n">solar_zenith</span><span class="o">=</span><span class="n">solar_position</span><span class="p">[</span><span class="s1">&#39;apparent_zenith&#39;</span><span class="p">],</span>
+    <span class="n">solar_azimuth</span><span class="o">=</span><span class="n">solar_position</span><span class="p">[</span><span class="s1">&#39;azimuth&#39;</span><span class="p">])</span>
+<span class="n">tracker_poa</span> <span class="o">=</span> <span class="n">df_poa_tracker</span><span class="p">[</span><span class="s1">&#39;poa_global&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Like before, let’s compare GHI and POA:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;1990-01-15&#39;</span><span class="p">,</span> <span class="s1">&#39;ghi&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">tracker_poa</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;1990-01-15&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Irradiance [W/m$^2$]&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Tutorial 2 - POA Irradiance_26_0.png" src="_images/Tutorial 2 - POA Irradiance_26_0.png" />
+</div>
+</div>
+<p>Notice how different the daily profile is for the tracker array!  This is because the array can tilt steeply East and West to face towards the sun in early morning and late afternoon, meaning the edges of day get much higher irradiance than for a south-facing array.</p>
+<p>Note also that in the middle of the day, GHI and POA just touch each other – this is because at solar noon, the array lies flat, and so POA is momentarily identical to GHI.</p>
+<p>Note that the POA calculations discussed above do not address the partial blocking of diffuse light in arrays with multiple tilted rows of PV modules, so the results will be slightly (typically 1-3%) optimistic relative to real conditions or to commercial modeling software. Such corrections are likely to be added to pvlib in the future for specific generic geometries like fixed racks.</p>
+<p><a class="reference external" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
+<p>This work is licensed under a <a class="reference external" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "PVSC-Python-Tutorials/PVSC48-Python-Tutorial",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="Tutorial%201%20-%20TMY%20Weather%20Data.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Tutorial 1 - Weather Data: Accesing it, understanding it, visualizing it!</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="Tutorial%203%20-%20Module%20Temperature.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Tutorial 3 - Module Temperature</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Silvana Ayala Pelaez, Mark Mikofski, Kevin Anderson<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

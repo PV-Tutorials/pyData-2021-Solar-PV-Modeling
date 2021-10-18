@@ -1,0 +1,1170 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorial 4 - PV Module Performance &#8212; PVSC 48 Python Tutorial</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tutorial 5 - Array Power" href="Tutorial%205%20-%20Array%20Power.html" />
+    <link rel="prev" title="Tutorial 3 - Module Temperature" href="Tutorial%203%20-%20Module%20Temperature.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/tutorial_banner.PNG" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">PVSC 48 Python Tutorial</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Tutorial%200%20-%20Overview.html">
+   Welcome!
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Tutorial%201%20-%20TMY%20Weather%20Data.html">
+   Tutorial 1 - Weather Data: Accesing it, understanding it, visualizing it!
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Tutorial%202%20-%20POA%20Irradiance.html">
+   Tutorial 2 - POA Irradiance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Tutorial%203%20-%20Module%20Temperature.html">
+   Tutorial 3 - Module Temperature
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Tutorial 4 - PV Module Performance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Tutorial%205%20-%20Array%20Power.html">
+   Tutorial 5 - Array Power
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Tutorial%20A%20-%20Single%20Diode%20Model.html">
+   Tutorial A - Single Diode Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Tutorial%20B%20-%20pvfree.html">
+   Tutorial B - pvfree
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Tutorial 4 - Model a Module's Performance.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/PVSC-Python-Tutorials/PVSC48-Python-Tutorial"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/PVSC-Python-Tutorials/PVSC48-Python-Tutorial/issues/new?title=Issue%20on%20page%20%2FTutorial 4 - Model a Module's Performance.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/PVSC-Python-Tutorials/PVSC48-Python-Tutorial/main?urlpath=tree/Tutorial 4 - Model a Module's Performance.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        <a class="jupyterhub-button" href="https://pvsc-python-tutorial.ml/hub/user-redirect/git-pull?repo=https://github.com/PVSC-Python-Tutorials/PVSC48-Python-Tutorial&urlpath=tree/PVSC48-Python-Tutorial/Tutorial 4 - Model a Module's Performance.ipynb&branch=main"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
+                data-placement="left"><img class="jupyterhub-button-logo"
+                    src="_static/images/logo_jupyterhub.svg"
+                    alt="Interact on JupyterHub">JupyterHub</button></a>
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pv-concepts">
+   PV Concepts:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-concepts">
+   Python Concepts:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#standard-test-conditions-stc">
+   Standard Test Conditions (STC)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#air-mass-am">
+     Air mass (AM)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#iec-61853-test-conditions">
+   IEC 61853 test conditions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#single-diode-model-sdm-iv-curve">
+   Single Diode Model (SDM) &amp; IV Curve
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cec-model-aka-sam-or-6-parameter-model">
+   CEC Model (
+   <em>
+    aka
+   </em>
+   SAM or 6-parameter model)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pvlib-python">
+     pvlib python
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cec-modules-library">
+     CEC modules library
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pop-quiz-1">
+     Pop Quiz #1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculate-cec-parameters">
+   Calculate CEC Parameters
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nnsvth-what-s-this">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       nNsVth
+      </span>
+     </code>
+     , what’s this?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#iv-curve-info">
+   IV Curve Info
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusions">
+   Conclusions
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p><img alt="tutorialpromo" src="_images/tutorial_banner.PNG" /></p>
+<div class="tex2jax_ignore mathjax_ignore section" id="tutorial-4-pv-module-performance">
+<h1>Tutorial 4 - PV Module Performance<a class="headerlink" href="#tutorial-4-pv-module-performance" title="Permalink to this headline">¶</a></h1>
+<p>Now that we know how to obtain the plane of array (POA) irradiance and cell temperature, let’s calculate a module’s performance assuming a subset of irradiance and temperature conditions. The objectives for this tutorial are to use pvlib python to do the following:</p>
+<ol class="simple">
+<li><p>Retrieve a set of module CEC parameters from the latest <a class="reference external" href="https://sam.nrel.gov/">NREL System Advisor Model (SAM)</a> library.</p></li>
+<li><p>Calculate the single diode model (SDM) parameters at standard test conditions (STC) and for a set of PV module test conditions known as IEC61853.</p></li>
+<li><p>Produce an IV curve for each of the IEC61853 test conditions.</p></li>
+<li><p>Derive the California Energy Commission (CEC) model parameters based on standard CEC test measurements.</p></li>
+</ol>
+<p><img alt="Overview" src="_images/tutorial_4_overview.PNG" /></p>
+<div class="section" id="pv-concepts">
+<h2>PV Concepts:<a class="headerlink" href="#pv-concepts" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>STC Parameters</p></li>
+<li><p>IV Curve</p></li>
+<li><p>PV module energy conversion models</p>
+<ul>
+<li><p>Point Models</p>
+<ul>
+<li><p><a class="reference external" href="https://pvwatts.nrel.gov/">PVWatts</a></p></li>
+<li><p><a class="reference external" href="https://energy.sandia.gov/wp-content/gallery/uploads/043535.pdf">Sandia Array Performance Model (SAPM)</a></p></li>
+</ul>
+</li>
+<li><p>Continuous Models</p>
+<ul>
+<li><p>CEC</p></li>
+<li><p><a class="reference external" href="https://www.pvsyst.com/">PVSyst</a></p></li>
+<li><p><a class="reference external" href="https://doi.org/10.1016/j.solener.2005.06.010">DeSoto</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Low light and temperature module performance</p></li>
+<li><p>IEC 61853 standard</p></li>
+</ul>
+</div>
+<div class="section" id="python-concepts">
+<h2>Python Concepts:<a class="headerlink" href="#python-concepts" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.meshgrid.html"><code class="docutils literal notranslate"><span class="pre">numpy.meshgrid</span></code></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">try:</span> <span class="pre">except</span></code> clauses to catch errors</p></li>
+<li><p>Transpose a Pandas dataframe</p></li>
+<li><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/text.html#string-methods">Pandas series and index string methods</a>: <em>e.g.</em> <code class="docutils literal notranslate"><span class="pre">df.index.str.startswith('Canadian')</span></code> where <code class="docutils literal notranslate"><span class="pre">df</span></code> is a dataframe of PV modules.</p></li>
+</ul>
+</div>
+<div class="section" id="standard-test-conditions-stc">
+<h2>Standard Test Conditions (STC)<a class="headerlink" href="#standard-test-conditions-stc" title="Permalink to this headline">¶</a></h2>
+<p>The most basic condition is called “standard test conditions” or STC, which is considered the reference for most PV modules. For example, all of the PV modules in the SAM CEC module database list their nameplate power at STC.</p>
+<ul class="simple">
+<li><p>irradiance: 1000-W/m²</p></li>
+<li><p>cell temperature: 25°C</p></li>
+<li><p>angle of incidence (AOI): 0°</p></li>
+<li><p>spectrum: AM1.5g (ASTM G-173)</p></li>
+</ul>
+<div class="section" id="air-mass-am">
+<h3>Air mass (AM)<a class="headerlink" href="#air-mass-am" title="Permalink to this headline">¶</a></h3>
+<p>The standard reference AM1.5g (ASTM G-173) is defined as the solar spectrum of global irradiance that passes through 1.5 atmospheres. For more information see <a class="reference external" href="https://www.nrel.gov/grid/solar-resource/spectra.html">NREL Solar Spectra</a>.</p>
+</div>
+</div>
+<div class="section" id="iec-61853-test-conditions">
+<h2>IEC 61853 test conditions<a class="headerlink" href="#iec-61853-test-conditions" title="Permalink to this headline">¶</a></h2>
+<p>Another common set of test conditions is the IEC 61853 standard which provides a PV module test matrix that covers the expected range of inicident irradiance and cell temperatures for PV modules assuming that the irradiance is normal and the solar spectrum is similar to AM1.5g.</p>
+<ul class="simple">
+<li><p>irradiance (W/m²): 100, 200, 400, 600, 800, 1000, 1100</p></li>
+<li><p>module temperature (°C): 15, 25, 50, 75</p></li>
+<li><p>angle of incidence: 0°</p></li>
+<li><p>spectrum: AM1.5g (ASTM G-173)</p></li>
+</ul>
+<p>The figure below shows IEC 61853 test results performed at CFV labs:</p>
+<p><img alt="Overview" src="_images/t4_PANOverview.PNG" /></p>
+<p>Certain combinations are excluded because they’re unlikely: (1100-W/m², 15°C), (400-W/m², 75°C), (200-W/m², 50°C), (200-W/m², 75°C), (100-W/m², 50°C), and (100-W/m², 75°C). The figure below shows SAM parametrs fit to IEC61853 test results for two different cell technologies. The white space shows combinations of irradiance and temperature which were intentionally excluded from testing.</p>
+<p><img alt="Overview" src="_images/t4_SingleDiodeParameterBehavior_to_TemperatureandIrradiance.PNG" /></p>
+<p>Attribution: <a class="reference external" href="https://www.nrel.gov/docs/fy19osti/68637.pdf">NREL Dobos, Freeman 2019</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import pvlib and other useful python packages</span>
+<span class="kn">import</span> <span class="nn">pvlib</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set STC reference conditions</span>
+<span class="n">E0</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># W/m^2</span>
+<span class="n">T0</span> <span class="o">=</span> <span class="mi">25</span>  <span class="c1"># degC</span>
+
+<span class="c1"># set the IEC61853 test matrix</span>
+<span class="n">E_IEC61853</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1100</span><span class="p">]</span>  <span class="c1"># irradiances [W/m^2]</span>
+<span class="n">T_IEC61853</span> <span class="o">=</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">75</span><span class="p">]</span>  <span class="c1"># temperatures [degC]</span>
+
+<span class="c1"># create a meshgrid of temperatures and irradiances</span>
+<span class="c1"># for all 28 combinations in the test matrix</span>
+<span class="n">IEC61853</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">T_IEC61853</span><span class="p">,</span> <span class="n">E_IEC61853</span><span class="p">)</span>
+
+<span class="c1"># meshgrid returns two 2-D arrays in the same order as the input arguments</span>
+<span class="c1"># so the first item in the output is a 2-D array of temperatures and</span>
+<span class="c1"># the second item is the mesh of irradiances</span>
+<span class="c1"># display temperature and irradiance test matrices</span>
+<span class="n">IEC61853</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([[15, 25, 50, 75],
+        [15, 25, 50, 75],
+        [15, 25, 50, 75],
+        [15, 25, 50, 75],
+        [15, 25, 50, 75],
+        [15, 25, 50, 75],
+        [15, 25, 50, 75]]),
+ array([[ 100,  100,  100,  100],
+        [ 200,  200,  200,  200],
+        [ 400,  400,  400,  400],
+        [ 600,  600,  600,  600],
+        [ 800,  800,  800,  800],
+        [1000, 1000, 1000, 1000],
+        [1100, 1100, 1100, 1100]])]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="single-diode-model-sdm-iv-curve">
+<h2>Single Diode Model (SDM) &amp; IV Curve<a class="headerlink" href="#single-diode-model-sdm-iv-curve" title="Permalink to this headline">¶</a></h2>
+<p>PV module performance can be modeled using <em>point</em> or <em>continuous</em> IV-curve models.</p>
+<p>Point models like PVWatts and The Sandia Array Performance Model (SAPM, <em>aka</em> King model) yield the current (I), voltage (V), and power (P) at a single or discrete set of points.
+PVWatts only yields the performance at the max power point (MPP) of the module, whereas the SAPM also yields the short circuit current (Isc), open circuit voltage (Voc).</p>
+<p>Continuous IV curve models like the CEC, PVsyst, and DeSoto models yield a relation between current and voltage called an IV curve, and therefore yield a continuous set of (V, I) points spanning from Isc to Voc and beyond. The domain of the IV curve is in quadrants 1, 2, and 4 where voltage is on the horizontal and current is on the vertical axis. The figure below from <a class="reference external" href="https://www.pveducation.org/pvcdrom/welcome-to-pvcdrom">PV Education PVCDROM</a> shows an IV curve of an “ideal” cell.</p>
+<p><a class="reference external" href="https://www.pveducation.org/pvcdrom/modules-and-arrays/mismatch-effects"><img alt="IV curve" src="_images/t4_PVEducation_IVCurve.PNG" /></a></p>
+<p>Attribution: <a class="reference external" href="https://www.pveducation.org/pvcdrom/modules-and-arrays/mismatch-effects">PV Education, UNSW, ASU, <em>et al.</em></a></p>
+<p>The IV curve relationship is based on an electrical analog called the “single diode model” or SDM which is defined by 5 parameters: the light current (<span class="math notranslate nohighlight">\(I_L\)</span>), shunt resistance (<span class="math notranslate nohighlight">\(R_{sh}\)</span>), series resistance (<span class="math notranslate nohighlight">\(R_s\)</span>), diode saturation current (<span class="math notranslate nohighlight">\(I_o\)</span> or <span class="math notranslate nohighlight">\(I_{sat}\)</span>), and the diode ideality factor (<span class="math notranslate nohighlight">\(n\)</span>). Other symbols for diode ideality factor are (<span class="math notranslate nohighlight">\(\gamma\)</span>) used by PVsyst and (<span class="math notranslate nohighlight">\(a\)</span>) used by SAM, but (<span class="math notranslate nohighlight">\(\gamma\)</span>) is also frequently used for power temperature coefficient. This “ideal” cell is described by the electrical schematic drawing below.</p>
+<p><a class="reference external" href="https://pvpmc.sandia.gov/modeling-steps/2-dc-module-iv/diode-equivalent-circuit-models/"><img alt="single diode model" src="https://pvpmc.sandia.gov/wp-content/uploads/2012/04/Single-Diode-EC2.png" /></a></p>
+<p>Attribution: <a class="reference external" href="https://pvpmc.sandia.gov/modeling-steps/2-dc-module-iv/diode-equivalent-circuit-models/">Sandia NL PV Performance Modeling Collaborative</a></p>
+<p>Combining the components in the SDM using Ohm’s and Kirchhoff’s laws yields the following equation, which is implicit because current (I) is on both sides of the equation, and cannot be solved explicitly:</p>
+<div class="math notranslate nohighlight">
+\[ I = I_L - I_o \left( \exp \left( \frac{V + I R_s}{n V_T} \right) - 1 \right) - \frac{V + I R_s}{R_{sh}} \]</div>
+<p>with the diode voltage (<span class="math notranslate nohighlight">\(V_D = V + I R_s\)</span>), the diode current (<span class="math notranslate nohighlight">\(I_D\)</span>) given by the ideal diode equation:</p>
+<div class="math notranslate nohighlight">
+\[ I_D = I_o \left( \exp \left( \frac{V_D}{n V_T} \right) - 1 \right) \]</div>
+<p>the thermal voltage (<span class="math notranslate nohighlight">\(V_T = k_T / q_e\)</span>), elementary charge (<span class="math notranslate nohighlight">\(q_e\)</span>), Boltzmann constant (<span class="math notranslate nohighlight">\(k_T\)</span>), and the shunt current (<span class="math notranslate nohighlight">\(I_{sh} = V_D / R_{sh}\)</span>)</p>
+</div>
+<div class="section" id="cec-model-aka-sam-or-6-parameter-model">
+<h2>CEC Model (<em>aka</em> SAM or 6-parameter model)<a class="headerlink" href="#cec-model-aka-sam-or-6-parameter-model" title="Permalink to this headline">¶</a></h2>
+<p>The California Energy Commision (CEC) contracted authorized testing labs to measure at STC the nameplate power (Pmp), Isc, Voc, and the MPP voltage and current (Vmp, Imp), as well as Isc and Voc temperature coefficients, the module dimensions, the number of series cells (Ns), parallel substrings (Np), module area in m² (Ac), and more. Tables of the CEC module parameters are available from the <a class="reference external" href="https://www.energy.ca.gov/programs-and-topics/programs/solar-equipment-lists">Solar Equipment Lists</a>. These measurements have been fit to the SDM by the NREL System Advisor Model (SAM) and stored in a CSV file that is bundled with SAM. You can access the <a class="reference external" href="https://github.com/NREL/SAM/tree/develop/deploy/libraries">SAM library on GitHub</a>. This SAM library of module coefficients derived from the CEC measurements are collectively called CEC modules and the SAM model that uses the derived SDM coefficients is called the CEC model. The CEC model used in SAM is sometimes also called the 6-parameter model because of the <code class="docutils literal notranslate"><span class="pre">Adjust</span></code> additional parameter which differentiates it from the DeSoto model.</p>
+<div class="section" id="pvlib-python">
+<h3>pvlib python<a class="headerlink" href="#pvlib-python" title="Permalink to this headline">¶</a></h3>
+<p>There are several functions we can use in pvlib python:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pvlib-python.readthedocs.io/en/latest/generated/pvlib.pvsystem.retrieve_sam.html#pvlib.pvsystem.retrieve_sam"><code class="docutils literal notranslate"><span class="pre">pvlib.pvsystem.retrieve_sam()</span></code></a></p></li>
+<li><p><a class="reference external" href="https://pvlib-python.readthedocs.io/en/latest/generated/pvlib.pvsystem.calcparams_cec.html"><code class="docutils literal notranslate"><span class="pre">pvlib.pvsystem.calcparams_cec()</span></code></a></p></li>
+<li><p><a class="reference external" href="https://pvlib-python.readthedocs.io/en/latest/generated/pvlib.pvsystem.singlediode.html"><code class="docutils literal notranslate"><span class="pre">pvlib.pvsystem.singlediode()</span></code></a></p></li>
+<li><p><a class="reference external" href="https://pvlib-python.readthedocs.io/en/latest/generated/pvlib.ivtools.sdm.fit_cec_sam.html"><code class="docutils literal notranslate"><span class="pre">pvlib.ivtools.sdm.fit_cec_sam()</span></code></a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use pvlib python to retrieve CEC module parameters from the SAM libraries</span>
+<span class="c1"># with the &quot;name&quot; argument set to &quot;CECMod&quot;</span>
+<span class="n">CECMODS</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">pvsystem</span><span class="o">.</span><span class="n">retrieve_sam</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;CECMod&#39;</span><span class="p">)</span>
+
+<span class="c1"># the CEC modules are a pandas DataFrame oriented as columns, transpose to arrange</span>
+<span class="c1"># as indices</span>
+<span class="n">CECMODS</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Technology</th>
+      <th>Bifacial</th>
+      <th>STC</th>
+      <th>PTC</th>
+      <th>A_c</th>
+      <th>Length</th>
+      <th>Width</th>
+      <th>N_s</th>
+      <th>I_sc_ref</th>
+      <th>V_oc_ref</th>
+      <th>...</th>
+      <th>a_ref</th>
+      <th>I_L_ref</th>
+      <th>I_o_ref</th>
+      <th>R_s</th>
+      <th>R_sh_ref</th>
+      <th>Adjust</th>
+      <th>gamma_r</th>
+      <th>BIPV</th>
+      <th>Version</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A10Green_Technology_A10J_S72_175</th>
+      <td>Mono-c-Si</td>
+      <td>0</td>
+      <td>175.0914</td>
+      <td>151.2</td>
+      <td>1.3</td>
+      <td>1.576</td>
+      <td>0.825</td>
+      <td>72</td>
+      <td>5.17</td>
+      <td>43.99</td>
+      <td>...</td>
+      <td>1.981696</td>
+      <td>5.175703</td>
+      <td>0.0</td>
+      <td>0.316688</td>
+      <td>287.102203</td>
+      <td>16.057121</td>
+      <td>-0.5072</td>
+      <td>N</td>
+      <td>SAM 2018.11.11 r2</td>
+      <td>1/3/2019</td>
+    </tr>
+    <tr>
+      <th>A10Green_Technology_A10J_S72_180</th>
+      <td>Mono-c-Si</td>
+      <td>0</td>
+      <td>179.928</td>
+      <td>155.7</td>
+      <td>1.3</td>
+      <td>1.576</td>
+      <td>0.825</td>
+      <td>72</td>
+      <td>5.31</td>
+      <td>44.06</td>
+      <td>...</td>
+      <td>1.988414</td>
+      <td>5.316148</td>
+      <td>0.0</td>
+      <td>0.299919</td>
+      <td>259.047943</td>
+      <td>16.418983</td>
+      <td>-0.5072</td>
+      <td>N</td>
+      <td>SAM 2018.11.11 r2</td>
+      <td>1/3/2019</td>
+    </tr>
+    <tr>
+      <th>A10Green_Technology_A10J_S72_185</th>
+      <td>Mono-c-Si</td>
+      <td>0</td>
+      <td>184.7016</td>
+      <td>160.2</td>
+      <td>1.3</td>
+      <td>1.576</td>
+      <td>0.825</td>
+      <td>72</td>
+      <td>5.43</td>
+      <td>44.14</td>
+      <td>...</td>
+      <td>1.984817</td>
+      <td>5.435676</td>
+      <td>0.0</td>
+      <td>0.311962</td>
+      <td>298.424438</td>
+      <td>15.688233</td>
+      <td>-0.5072</td>
+      <td>N</td>
+      <td>SAM 2018.11.11 r2</td>
+      <td>1/3/2019</td>
+    </tr>
+    <tr>
+      <th>A10Green_Technology_A10J_M60_220</th>
+      <td>Multi-c-Si</td>
+      <td>0</td>
+      <td>219.876</td>
+      <td>189.1</td>
+      <td>1.624</td>
+      <td>1.632</td>
+      <td>0.995</td>
+      <td>60</td>
+      <td>7.95</td>
+      <td>36.06</td>
+      <td>...</td>
+      <td>1.673094</td>
+      <td>7.959062</td>
+      <td>0.0</td>
+      <td>0.140393</td>
+      <td>123.168404</td>
+      <td>21.875164</td>
+      <td>-0.5196</td>
+      <td>N</td>
+      <td>SAM 2018.11.11 r2</td>
+      <td>1/3/2019</td>
+    </tr>
+    <tr>
+      <th>A10Green_Technology_A10J_M60_225</th>
+      <td>Multi-c-Si</td>
+      <td>0</td>
+      <td>224.9856</td>
+      <td>193.5</td>
+      <td>1.624</td>
+      <td>1.632</td>
+      <td>0.995</td>
+      <td>60</td>
+      <td>8.04</td>
+      <td>36.24</td>
+      <td>...</td>
+      <td>1.671782</td>
+      <td>8.047206</td>
+      <td>0.0</td>
+      <td>0.14737</td>
+      <td>164.419479</td>
+      <td>20.698376</td>
+      <td>-0.5196</td>
+      <td>N</td>
+      <td>SAM 2018.11.11 r2</td>
+      <td>1/3/2019</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 25 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="cec-modules-library">
+<h3>CEC modules library<a class="headerlink" href="#cec-modules-library" title="Permalink to this headline">¶</a></h3>
+<p>Periodically a static copy of CEC module parameters is copied from the SAM library to pvlib python. The modules are roughly named according the following scheme:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;manufacturer name&gt; &lt;model name&gt;
+</pre></div>
+</div>
+<p>Whitespace, dashes, and other non-alphanumerical characters are all replaced by underscores in pvlib python.</p>
+<p>EG: “Canadian Solar Inc. CS6X-300M” becomes</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Canadian_Solar_Inc__CS6X_300M
+</pre></div>
+</div>
+<div class="alert alert-block alert-info">
+<b>Let's Explore:</b> <a href='https://www.ecodirect.com/Canadian-Solar-CS6X-300M-300W-36V-PV-Panel-p/canadian-solar-cs6x-300m.htm'> Click here to see the panel's Datasheet. </a></div>
+<p>The main CEC module parameters are defined as follows:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>parameter</p></th>
+<th class="head"><p>data type</p></th>
+<th class="head"><p>description and units</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Technology</span></code></p></td>
+<td><p>string</p></td>
+<td><p>one of “Mono-c-Si”, “Multi-c-Si”, “Thin Film”, “CdTe”, or “CIGS” families of cells</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Bifacial</span></code></p></td>
+<td><p>boolean</p></td>
+<td><p>is bifacial?</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">STC</span></code></p></td>
+<td><p>float</p></td>
+<td><p>nameplate in W at STC</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">PTC</span></code></p></td>
+<td><p>float</p></td>
+<td><p>nameplate in W at PVUSA test conditions (1-sun, 20° ambient temperature, 1-m/s windspeed)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">A_c</span></code></p></td>
+<td><p>float</p></td>
+<td><p>module area in m²</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Length</span></code></p></td>
+<td><p>float</p></td>
+<td><p>module length in m;</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Width</span></code></p></td>
+<td><p>float</p></td>
+<td><p>module width in m;</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">N_s</span></code></p></td>
+<td><p>int</p></td>
+<td><p>number of cells in series</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">I_sc_ref</span></code></p></td>
+<td><p>float</p></td>
+<td><p>short circuit current in A at reference condition</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">V_oc_ref</span></code></p></td>
+<td><p>float</p></td>
+<td><p>open circuit voltage in V at reference condition</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">I_mp_ref</span></code></p></td>
+<td><p>float</p></td>
+<td><p>max power current in A at reference condition</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">V_mp_ref</span></code></p></td>
+<td><p>float</p></td>
+<td><p>max power voltage in V at reference condition</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">alpha_sc</span></code></p></td>
+<td><p>float</p></td>
+<td><p>short circuit current temperature coefficient in A/Δ°C</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">beta_oc</span></code></p></td>
+<td><p>float</p></td>
+<td><p>open circuit voltage temperature coefficient in V/Δ°C</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">T_NOCT</span></code></p></td>
+<td><p>float</p></td>
+<td><p>normal operating cell temperature in °C</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">a_ref</span></code></p></td>
+<td><p>float</p></td>
+<td><p>diode ideality factor</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">I_L_ref</span></code></p></td>
+<td><p>float</p></td>
+<td><p>light or photogenerated current at reference condition in A</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">I_o_ref</span></code></p></td>
+<td><p>float</p></td>
+<td><p>diode saturation current at reference condition in A</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">R_s</span></code></p></td>
+<td><p>float</p></td>
+<td><p>series resistance in Ω</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">R_sh_ref</span></code></p></td>
+<td><p>float</p></td>
+<td><p>shunt resistance at reference condition in Ω</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Adjust</span></code></p></td>
+<td><p>float</p></td>
+<td><p>adjustment to short circuit temperature coefficient in %</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gamma_r</span></code></p></td>
+<td><p>float</p></td>
+<td><p>power temperature coefficient at reference condition in %/Δ°C</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">BIPV</span></code></p></td>
+<td><p>boolean</p></td>
+<td><p>is building integrated PV?</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># One trick to find the modules is to search the indices using string filters</span>
+<span class="c1"># For example: find all Candian Solar 220-W mono-Si modules</span>
+<span class="n">cs_220m_mods</span> <span class="o">=</span> <span class="n">CECMODS</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Canadian_Solar&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">CECMODS</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;220M&#39;</span><span class="p">)</span>
+<span class="n">CECMODS</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="n">cs_220m_mods</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Technology</th>
+      <th>Bifacial</th>
+      <th>STC</th>
+      <th>PTC</th>
+      <th>A_c</th>
+      <th>Length</th>
+      <th>Width</th>
+      <th>N_s</th>
+      <th>I_sc_ref</th>
+      <th>V_oc_ref</th>
+      <th>...</th>
+      <th>a_ref</th>
+      <th>I_L_ref</th>
+      <th>I_o_ref</th>
+      <th>R_s</th>
+      <th>R_sh_ref</th>
+      <th>Adjust</th>
+      <th>gamma_r</th>
+      <th>BIPV</th>
+      <th>Version</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Canadian_Solar_Inc__CS5P_220M</th>
+      <td>Mono-c-Si</td>
+      <td>0</td>
+      <td>219.961</td>
+      <td>200.1</td>
+      <td>1.7</td>
+      <td>1.602</td>
+      <td>1.061</td>
+      <td>96</td>
+      <td>5.1</td>
+      <td>59.4</td>
+      <td>...</td>
+      <td>2.635926</td>
+      <td>5.11426</td>
+      <td>0.0</td>
+      <td>1.066023</td>
+      <td>381.254425</td>
+      <td>8.619516</td>
+      <td>-0.476</td>
+      <td>N</td>
+      <td>SAM 2018.11.11 r2</td>
+      <td>1/3/2019</td>
+    </tr>
+    <tr>
+      <th>Canadian_Solar_Inc__CS6P_220M</th>
+      <td>Mono-c-Si</td>
+      <td>0</td>
+      <td>219.775</td>
+      <td>198.5</td>
+      <td>1.549</td>
+      <td>1.615</td>
+      <td>0.959</td>
+      <td>60</td>
+      <td>7.97</td>
+      <td>36.9</td>
+      <td>...</td>
+      <td>1.515583</td>
+      <td>7.980784</td>
+      <td>0.0</td>
+      <td>0.397651</td>
+      <td>293.871094</td>
+      <td>-3.311191</td>
+      <td>-0.436</td>
+      <td>N</td>
+      <td>SAM 2018.11.11 r2</td>
+      <td>1/3/2019</td>
+    </tr>
+  </tbody>
+</table>
+<p>2 rows × 25 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># that was almost too easy, let&#39;s use the CS5P-220M</span>
+<span class="c1"># NOTE: don&#39;t transpose CECMODS, get column with desired module </span>
+<span class="n">CS_220M</span> <span class="o">=</span> <span class="n">CECMODS</span><span class="p">[</span><span class="s1">&#39;Canadian_Solar_Inc__CS5P_220M&#39;</span><span class="p">]</span>
+<span class="n">CS_220M</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Technology            Mono-c-Si
+Bifacial                      0
+STC                     219.961
+PTC                       200.1
+A_c                         1.7
+Length                    1.602
+Width                     1.061
+N_s                          96
+I_sc_ref                    5.1
+V_oc_ref                   59.4
+I_mp_ref                   4.69
+V_mp_ref                   46.9
+alpha_sc               0.004539
+beta_oc               -0.222156
+T_NOCT                     42.4
+a_ref                  2.635926
+I_L_ref                 5.11426
+I_o_ref                     0.0
+R_s                    1.066023
+R_sh_ref             381.254425
+Adjust                 8.619516
+gamma_r                  -0.476
+BIPV                          N
+Version       SAM 2018.11.11 r2
+Date                   1/3/2019
+Name: Canadian_Solar_Inc__CS5P_220M, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="pop-quiz-1">
+<h3>Pop Quiz #1<a class="headerlink" href="#pop-quiz-1" title="Permalink to this headline">¶</a></h3>
+<p>Get any CEC module from the <code class="docutils literal notranslate"><span class="pre">CECMODS</span></code> or pvfree.</p>
+<ul class="simple">
+<li><p>Which module did you get?</p></li>
+<li><p>How did you get it?</p></li>
+<li><p>What is the module’s nameplate power, Isc, Voc, Imp, and Vmp?</p></li>
+<li><p>Who is the manufacturer?</p></li>
+<li><p>What cell technology is it?</p></li>
+<li><p>How does it differ from CS5P-220M?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use this cell to search CECMODS.T or pvfree</span>
+<span class="n">your_mod</span> <span class="o">=</span> <span class="s1">&#39;your module goes here&#39;</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">your_mod</span> <span class="o">=</span> <span class="n">CECMODS</span><span class="p">[</span><span class="n">your_mod</span><span class="p">]</span>
+<span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;*** Sorry, &#39;</span><span class="si">{</span><span class="n">your_mod</span><span class="si">}</span><span class="s2">&#39; wasn&#39;t found in CECMODS. Please try again. ***&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># display your module</span>
+    <span class="n">your_mod</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>*** Sorry, &#39;your module goes here&#39; wasn&#39;t found in CECMODS. Please try again. ***
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="calculate-cec-parameters">
+<h2>Calculate CEC Parameters<a class="headerlink" href="#calculate-cec-parameters" title="Permalink to this headline">¶</a></h2>
+<p>The module parameters are given at the reference condition. Use <a class="reference external" href="https://pvlib-python.readthedocs.io/en/latest/generated/pvlib.pvsystem.calcparams_cec.html"><code class="docutils literal notranslate"><span class="pre">pvlib.pvsystem.calcparams_cec()</span></code></a> to generate the five SDM parameters at your desired irradiance and temperature to use with <a class="reference external" href="https://pvlib-python.readthedocs.io/en/latest/generated/pvlib.pvsystem.singlediode.html"><code class="docutils literal notranslate"><span class="pre">pvlib.pvsystem.singlediode()</span></code></a> to calculate the IV curve information.</p>
+<div class="section" id="nnsvth-what-s-this">
+<h3><code class="docutils literal notranslate"><span class="pre">nNsVth</span></code>, what’s this?<a class="headerlink" href="#nnsvth-what-s-this" title="Permalink to this headline">¶</a></h3>
+<p>The diode ideality factor (n) is combined with the number of cells (Ns) and the thermal voltage (Vth) to create a convenience parameter. This is <a class="reference external" href="https://en.wikipedia.org/wiki/Syntactic_sugar">syntactic sugar</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># finally this is the magic</span>
+<span class="n">temp_cell</span><span class="p">,</span> <span class="n">effective_irradiance</span> <span class="o">=</span> <span class="n">IEC61853</span>
+<span class="n">cecparams</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">pvsystem</span><span class="o">.</span><span class="n">calcparams_cec</span><span class="p">(</span>
+        <span class="n">effective_irradiance</span><span class="o">=</span><span class="n">effective_irradiance</span><span class="p">,</span>
+        <span class="n">temp_cell</span><span class="o">=</span><span class="n">temp_cell</span><span class="p">,</span>
+        <span class="n">alpha_sc</span><span class="o">=</span><span class="n">CS_220M</span><span class="o">.</span><span class="n">alpha_sc</span><span class="p">,</span>
+        <span class="n">a_ref</span><span class="o">=</span><span class="n">CS_220M</span><span class="o">.</span><span class="n">a_ref</span><span class="p">,</span>
+        <span class="n">I_L_ref</span><span class="o">=</span><span class="n">CS_220M</span><span class="o">.</span><span class="n">I_L_ref</span><span class="p">,</span>
+        <span class="n">I_o_ref</span><span class="o">=</span><span class="n">CS_220M</span><span class="o">.</span><span class="n">I_o_ref</span><span class="p">,</span>
+        <span class="n">R_sh_ref</span><span class="o">=</span><span class="n">CS_220M</span><span class="o">.</span><span class="n">R_sh_ref</span><span class="p">,</span>
+        <span class="n">R_s</span><span class="o">=</span><span class="n">CS_220M</span><span class="o">.</span><span class="n">R_s</span><span class="p">,</span>
+        <span class="n">Adjust</span><span class="o">=</span><span class="n">CS_220M</span><span class="o">.</span><span class="n">Adjust</span><span class="p">,</span>
+        <span class="n">EgRef</span><span class="o">=</span><span class="mf">1.121</span><span class="p">,</span>
+        <span class="n">dEgdT</span><span class="o">=-</span><span class="mf">0.0002677</span><span class="p">)</span>
+<span class="n">IL</span><span class="p">,</span> <span class="n">I0</span><span class="p">,</span> <span class="n">Rs</span><span class="p">,</span> <span class="n">Rsh</span><span class="p">,</span> <span class="n">nNsVth</span> <span class="o">=</span> <span class="n">cecparams</span>
+<span class="c1"># display the photogenerated current</span>
+<span class="n">IL</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.50727824, 0.511426  , 0.5217954 , 0.5321648 ],
+       [1.01455648, 1.022852  , 1.0435908 , 1.0643296 ],
+       [2.02911296, 2.045704  , 2.0871816 , 2.1286592 ],
+       [3.04366944, 3.068556  , 3.1307724 , 3.19298881],
+       [4.05822592, 4.091408  , 4.1743632 , 4.25731841],
+       [5.0727824 , 5.11426   , 5.217954  , 5.32164801],
+       [5.58006064, 5.625686  , 5.7397494 , 5.85381281]])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="iv-curve-info">
+<h2>IV Curve Info<a class="headerlink" href="#iv-curve-info" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have the 5 SDM parameters (<code class="docutils literal notranslate"><span class="pre">IL</span></code>, <code class="docutils literal notranslate"><span class="pre">Io</span></code>, <code class="docutils literal notranslate"><span class="pre">Rs</span></code>, <code class="docutils literal notranslate"><span class="pre">Rsh</span></code>, and <code class="docutils literal notranslate"><span class="pre">nNsVth</span></code>) corresponding to each of the test conditions in the IEC61853 test matrix, we can calculate the IV curve information for that irradiance and cell temperature.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># flatten the meshgrid to allow single diode to broadcast the output</span>
+<span class="n">curve_info</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">pvsystem</span><span class="o">.</span><span class="n">singlediode</span><span class="p">(</span>
+    <span class="n">photocurrent</span><span class="o">=</span><span class="n">IL</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span>
+    <span class="n">saturation_current</span><span class="o">=</span><span class="n">I0</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span>
+    <span class="n">resistance_series</span><span class="o">=</span><span class="n">Rs</span><span class="p">,</span>
+    <span class="n">resistance_shunt</span><span class="o">=</span><span class="n">Rsh</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span>
+    <span class="n">nNsVth</span><span class="o">=</span><span class="n">nNsVth</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span>
+    <span class="n">ivcurve_pnts</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s1">&#39;lambertw&#39;</span><span class="p">)</span>
+<span class="c1"># display the max power points</span>
+<span class="n">curve_info</span><span class="p">[</span><span class="s1">&#39;p_mp&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 22.47343394,  21.33361989,  18.40248885,  15.37301683,
+        46.09149166,  43.8742866 ,  38.16845408,  32.26328096,
+        93.53042326,  89.21121134,  78.09399194,  66.58417955,
+       140.31155148, 133.92211282, 117.4814962 , 100.47025604,
+       186.01690382, 177.57186861, 155.8544359 , 133.40606247,
+       230.45392244, 219.96093865, 192.99618253, 165.16041729,
+       252.16127408, 240.6459279 , 211.06605369, 180.55357125])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the calculated curves:</span>
+<span class="n">exclude</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1100</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">75</span><span class="p">),</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">75</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">75</span><span class="p">)]</span>
+<span class="n">kolor</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#1f77b4&#39;</span><span class="p">,</span> <span class="s1">&#39;#2ca02c&#39;</span><span class="p">,</span> <span class="s1">&#39;#8c564b&#39;</span><span class="p">,</span> <span class="s1">&#39;#9467bd&#39;</span><span class="p">,</span> <span class="s1">&#39;#d62728&#39;</span><span class="p">,</span> <span class="s1">&#39;#e377c2&#39;</span><span class="p">,</span> <span class="s1">&#39;#ff7f0e&#39;</span><span class="p">]</span>
+<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">m</span><span class="p">,</span> <span class="n">irr</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">E_IEC61853</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">tc</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">T_IEC61853</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">irr</span><span class="p">,</span> <span class="n">tc</span><span class="p">)</span> <span class="ow">in</span> <span class="n">exclude</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">m</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">n</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="s2">&quot;$G_</span><span class="si">{eff}</span><span class="s2">$ &quot;</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">irr</span><span class="si">}</span><span class="s2"> $W/m^2$&quot;</span>
+        <span class="p">)</span>
+        <span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">curve_info</span><span class="p">[</span><span class="s1">&#39;v&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="n">curve_info</span><span class="p">[</span><span class="s1">&#39;i&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">kolor</span><span class="p">[</span><span class="n">m</span><span class="p">])</span>
+        <span class="n">v_mp</span> <span class="o">=</span> <span class="n">curve_info</span><span class="p">[</span><span class="s1">&#39;v_mp&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">i_mp</span> <span class="o">=</span> <span class="n">curve_info</span><span class="p">[</span><span class="s1">&#39;i_mp&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+        <span class="c1"># mark the MPP</span>
+        <span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">v_mp</span><span class="p">,</span> <span class="n">i_mp</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">kolor</span><span class="p">[</span><span class="n">m</span><span class="p">])</span>
+        <span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">v_mp</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">i_mp</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">kolor</span><span class="p">[</span><span class="n">m</span><span class="p">])</span>
+        <span class="c1"># just repeat this every time doesn&#39;t hurt anyone</span>
+        <span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">j</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Module voltage [V]&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Module current [A]&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">CS_220M</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">, &quot;</span> <span class="o">+</span> <span class="s2">&quot;$T_</span><span class="si">{cell}</span><span class="s2">$ &quot;</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">tc</span><span class="si">}</span><span class="s2"> &quot;</span> <span class="o">+</span> <span class="s2">&quot;$^{\circ}C$&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">80</span><span class="p">])</span>
+
+<span class="n">f</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Tutorial 4 - Model a Module's Performance_21_0.png" src="_images/Tutorial 4 - Model a Module's Performance_21_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="conclusions">
+<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">¶</a></h2>
+<p>So is this what you expected? What do you notice about the relation between voltage and temperature? What about the relation between current and irradiance? What other patterns do you observe?</p>
+<p><a class="reference external" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
+<p>This work is licensed under a <a class="reference external" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "PVSC-Python-Tutorials/PVSC48-Python-Tutorial",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="Tutorial%203%20-%20Module%20Temperature.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Tutorial 3 - Module Temperature</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="Tutorial%205%20-%20Array%20Power.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Tutorial 5 - Array Power</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Silvana Ayala Pelaez, Mark Mikofski, Kevin Anderson<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
