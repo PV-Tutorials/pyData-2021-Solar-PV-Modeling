@@ -1,8 +1,7 @@
 ![tutorialpromo](images/tutorial_banner.PNG)
 
-# PVSC48-Python-Tutorial
-PVSC48 computing tutorial with focus on PV computing packages, Python, data
-wrangling with Pandas, and data viz
+# pyData 2021 Global - Solar Modeling Tutorial
+This tutorial focuses on PV computing packages, Python, data wrangling with Pandas, and data viz
 
 ## Tutorial Summary:
 * **Tutorial 0**: Introduction to the tutorial, the lesson plan, and resources (~30 minutes)
@@ -56,7 +55,7 @@ http://pvsc-python-tutorial.ml/
 
 The full tutorial is now also hosted as a beautiful [Jupyter book](https://jupyterbook.org/intro.html). This book has navigation, search, and can even run code cells interactively. Check it out!
 
-https://pvsc-python-tutorials.github.io/PVSC48-Python-Tutorial/index.html
+https://pvsc-python-tutorials.github.io/pyData-2021-Solar-PV-Modeling/index.html
 
 ### My Binder
 
@@ -64,7 +63,7 @@ After the conference the tutorials will remain available here on GitHub, and you
 the tutorial anytime in [Binder](https://mybinder.org) by clicking the
 following link:
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/PVSC-Python-Tutorials/PVSC48-Python-Tutorial/main)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/main)
 
 ### Locally
 
@@ -77,7 +76,7 @@ steps:
 1. Clone the repository:
 
    ```
-   git clone https://github.com/PVSC-Python-Tutorials/PVSC48-Python-Tutorial.git
+   git clone https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling.git
    ```
 
 1. Create the environment and install the requirements. The repository includes
