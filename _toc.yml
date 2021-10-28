@@ -5,8 +5,7 @@ format: jb-book
 root: Tutorial 1 - TMY Weather Data
 chapters:
 - file: Tutorial 2 - POA Irradiance
-- file: Tutorial 3 - Module Temperature
-- file: Tutorial 4 - Array Power
+- file: Tutorial 3 - Array Power
 - file: Tutorial A - Single Diode Model
 - file: Tutorial B - pvfree
 - file: Tutorial C - Modeling Module's Performance Advanced
