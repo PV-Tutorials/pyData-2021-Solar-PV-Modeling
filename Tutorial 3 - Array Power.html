@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tutorial 4 - Modeling an Array Power &#8212; PyData 2021: Solar PV Modeling</title>
+    <title>Tutorial 3 - Modeling an Array Power &#8212; PyData 2021: Solar PV Modeling</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,8 +51,6 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Tutorial A - Single Diode Model" href="Tutorial%20A%20-%20Single%20Diode%20Model.html" />
-    <link rel="prev" title="Tutorial 3 - Module Temperature" href="Tutorial%203%20-%20Module%20Temperature.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -93,20 +91,10 @@
   </a>
  </li>
 </ul>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Tutorial%202%20-%20POA%20Irradiance.html">
    Tutorial 2 - POA Irradiance
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Tutorial%203%20-%20Module%20Temperature.html">
-   Tutorial 3 - Module Temperature
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Tutorial 4 - Modeling an Array Power
   </a>
  </li>
  <li class="toctree-l1">
@@ -170,7 +158,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/Tutorial 4 - Array Power.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/Tutorial 3 - Array Power.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -190,7 +178,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/issues/new?title=Issue%20on%20page%20%2FTutorial 4 - Array Power.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/issues/new?title=Issue%20on%20page%20%2FTutorial 3 - Array Power.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -211,14 +199,14 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/main?urlpath=tree/Tutorial 4 - Array Power.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/main?urlpath=tree/Tutorial 3 - Array Power.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
                     alt="Interact on binder">Binder</button></a>
         
         
-        <a class="jupyterhub-button" href="https://pvsc-python-tutorial.ml/hub/user-redirect/git-pull?repo=https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling&urlpath=tree/pyData-2021-Solar-PV-Modeling/Tutorial 4 - Array Power.ipynb&branch=main"><button type="button"
+        <a class="jupyterhub-button" href="https://pvsc-python-tutorial.ml/hub/user-redirect/git-pull?repo=https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling&urlpath=tree/pyData-2021-Solar-PV-Modeling/Tutorial 3 - Array Power.ipynb&branch=main"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
                 data-placement="left"><img class="jupyterhub-button-logo"
                     src="_static/images/logo_jupyterhub.svg"
@@ -248,6 +236,18 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modeling-the-temperature-of-the-system">
+   Modeling the Temperature of the system
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calculating-hte-power">
+     Calculating hte Power
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ac-dc">
    AC/DC
   </a>
@@ -269,8 +269,8 @@
               <div>
                 
   <p><img alt="tutorialpromo" src="_images/tutorial_banner.PNG" /></p>
-<div class="tex2jax_ignore mathjax_ignore section" id="tutorial-4-modeling-an-array-power">
-<h1>Tutorial 4 - Modeling an Array Power<a class="headerlink" href="#tutorial-4-modeling-an-array-power" title="Permalink to this headline">¶</a></h1>
+<div class="tex2jax_ignore mathjax_ignore section" id="tutorial-3-modeling-an-array-power">
+<h1>Tutorial 3 - Modeling an Array Power<a class="headerlink" href="#tutorial-3-modeling-an-array-power" title="Permalink to this headline">¶</a></h1>
 <p>This notebook shows how to use pvlib to model an array’s output power given POA irradiance and cell temperature.</p>
 <p>The physics of a solar cell are fairly complex.  Models of a cell’s response to light and temperature range from high-level approximations that need only one or two coefficients, to electrical circuit models that require more detailed cell characteristics, to full physics-based semiconductor models.  The level of detail should match the application – first-order approximations can be surprisingly accurate but probably shouldn’t be used for financial decisions, while physics-based semiconductor models are rarely practical outside of a laboratory setting.</p>
 <p>We will model a system similar to one you might have or want to place on your house:</p>
@@ -322,8 +322,20 @@
                                                        <span class="n">solar_zenith</span><span class="o">=</span><span class="n">solar_position</span><span class="p">[</span><span class="s1">&#39;apparent_zenith&#39;</span><span class="p">],</span>
                                                        <span class="n">solar_azimuth</span><span class="o">=</span><span class="n">solar_position</span><span class="p">[</span><span class="s1">&#39;azimuth&#39;</span><span class="p">])</span>
 <span class="n">tracker_poa</span> <span class="o">=</span> <span class="n">df_poa_tracker</span><span class="p">[</span><span class="s1">&#39;poa_global&#39;</span><span class="p">]</span>
-
-<span class="n">parameters</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">temperature</span><span class="o">.</span><span class="n">TEMPERATURE_MODEL_PARAMETERS</span><span class="p">[</span><span class="s1">&#39;sapm&#39;</span><span class="p">][</span><span class="s1">&#39;open_rack_glass_polymer&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="modeling-the-temperature-of-the-system">
+<h2>Modeling the Temperature of the system<a class="headerlink" href="#modeling-the-temperature-of-the-system" title="Permalink to this headline">¶</a></h2>
+<p>If PV modules were 100% efficient, they would convert 100% of collected irradiance into electrical energy. However, today’s PV modules are on the order of 20% efficient, meaning that after accounting for reflection, soiling, spectral mismatch, and the glass, the other 80% of sunlight collected is converted to thermal energy. This thermal energy causes the temperature of the module to rise above ambient conditions, eventually reaching a steady state defined by a heat balance of power in (solar irradiance) vs power out (thermal radiation, convective cooling, etc). With that in mind, the primary drivers of module temperature are POA irradiance, ambient temperature, and wind speed.</p>
+<p>A distinction that is often ignored is the difference between module temperature and cell temperature. In theory, the temperature of the P-N junction inside the cell is what affects conversion efficiency, but this is difficult to measure. In practice, the temperature of the module backsheet is often a usable approximation, though it is often 1-2 degrees Celsius cooler than the junction temperature.</p>
+<p>Modeling module temperature
+Some PV thermal models go to the trouble of modeling the entire heat balance equation, but much simpler models are available and are often accurate enough. Here we will use the thermal model from the Sandia Array Performance Model (SAPM) to estimate cell temperature from ambient conditions. The SAPM thermal model takes only POA irradiance, ambient temperature, and wind speed as weather inputs, but it also requires a set of parameters that characterize the thermal properties of the module of interest. Pvlib has common literature values, and we will access those for a common racking format.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">temperature</span><span class="o">.</span><span class="n">TEMPERATURE_MODEL_PARAMETERS</span><span class="p">[</span><span class="s1">&#39;sapm&#39;</span><span class="p">][</span><span class="s1">&#39;open_rack_glass_polymer&#39;</span><span class="p">]</span>
 <span class="n">cell_temperature</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">temperature</span><span class="o">.</span><span class="n">sapm_cell</span><span class="p">(</span><span class="n">tracker_poa</span><span class="p">,</span>
                                                <span class="n">df_tmy</span><span class="p">[</span><span class="s1">&#39;DryBulb&#39;</span><span class="p">],</span>
                                                <span class="n">df_tmy</span><span class="p">[</span><span class="s1">&#39;Wspd&#39;</span><span class="p">],</span>
@@ -332,6 +344,41 @@
 </div>
 </div>
 </div>
+<p>If we wanted to use other parameters, here are the options</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_parameters</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">temperature</span><span class="o">.</span><span class="n">TEMPERATURE_MODEL_PARAMETERS</span><span class="p">[</span><span class="s1">&#39;sapm&#39;</span><span class="p">]</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">all_parameters</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;open_rack_glass_glass&#39;,
+ &#39;close_mount_glass_glass&#39;,
+ &#39;open_rack_glass_polymer&#39;,
+ &#39;insulated_back_glass_polymer&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s compare ambient temperature with cell temperature.  Notice how our modeled cell temperature rises significantly above ambient temperature during the day, especially on sunny days:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_tmy</span><span class="p">[</span><span class="s1">&#39;DryBulb&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">24</span><span class="o">*</span><span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">cell_temperature</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">24</span><span class="o">*</span><span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Dry Bulb&#39;</span><span class="p">,</span> <span class="s1">&#39;Cell Temperature&#39;</span><span class="p">])</span>
+<span class="c1"># note Python 3 can use unicode characters like the degrees symbol</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature [°C]&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Tutorial 3 - Array Power_9_0.png" src="_images/Tutorial 3 - Array Power_9_0.png" />
+</div>
+</div>
+<div class="section" id="calculating-hte-power">
+<h3>Calculating hte Power<a class="headerlink" href="#calculating-hte-power" title="Permalink to this headline">¶</a></h3>
 <p>For demonstration purposes, we’ll assume a 1kW array with a temperature coefficient of -0.4%/°C:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -351,7 +398,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Tutorial 4 - Array Power_5_0.png" src="_images/Tutorial 4 - Array Power_5_0.png" />
+<img alt="_images/Tutorial 3 - Array Power_13_0.png" src="_images/Tutorial 3 - Array Power_13_0.png" />
 </div>
 </div>
 <p>Let’s take a look at the array’s response to irradiance and temperature:</p>
@@ -366,7 +413,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Tutorial 4 - Array Power_7_0.png" src="_images/Tutorial 4 - Array Power_7_0.png" />
+<img alt="_images/Tutorial 3 - Array Power_15_0.png" src="_images/Tutorial 3 - Array Power_15_0.png" />
 </div>
 </div>
 <p>This plot shows a strong, near-linear trend of power with POA irradiance.  However, it also shows a performance change with temperature – as ambient temperature increases, array output drops.  The gradient is smoother if we color by cell temperature:</p>
@@ -381,7 +428,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Tutorial 4 - Array Power_9_0.png" src="_images/Tutorial 4 - Array Power_9_0.png" />
+<img alt="_images/Tutorial 3 - Array Power_17_0.png" src="_images/Tutorial 3 - Array Power_17_0.png" />
 </div>
 </div>
 <p>We can also compare with a hypothetical module with a smaller temperature coefficient, which shows a correspondingly smaller temperature effect:</p>
@@ -397,7 +444,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Tutorial 4 - Array Power_11_0.png" src="_images/Tutorial 4 - Array Power_11_0.png" />
+<img alt="_images/Tutorial 3 - Array Power_19_0.png" src="_images/Tutorial 3 - Array Power_19_0.png" />
 </div>
 </div>
 <p>Another way of viewing the temperature effect is to compare monthly energy production with monthly POA insolation, noticing how production dips relative to insolation in the summertime.  Note that insolation and production happen to be about the same scale here; that’s just a coincidence because of the array size we chose.</p>
@@ -417,7 +464,8 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Energy [Wh]&#39;)
 </pre></div>
 </div>
-<img alt="_images/Tutorial 4 - Array Power_13_1.png" src="_images/Tutorial 4 - Array Power_13_1.png" />
+<img alt="_images/Tutorial 3 - Array Power_21_1.png" src="_images/Tutorial 3 - Array Power_21_1.png" />
+</div>
 </div>
 </div>
 </div>
@@ -446,10 +494,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fbeca7acc90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fddaf412d50&gt;
 </pre></div>
 </div>
-<img alt="_images/Tutorial 4 - Array Power_16_1.png" src="_images/Tutorial 4 - Array Power_16_1.png" />
+<img alt="_images/Tutorial 3 - Array Power_24_1.png" src="_images/Tutorial 3 - Array Power_24_1.png" />
 </div>
 </div>
 </div>
@@ -490,24 +538,6 @@
 
 <div class='prev-next-bottom'>
     
-    <div id="prev">
-        <a class="left-prev" href="Tutorial%203%20-%20Module%20Temperature.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Tutorial 3 - Module Temperature</p>
-            </div>
-        </a>
-    </div>
-     <div id="next">
-        <a class="right-next" href="Tutorial%20A%20-%20Single%20Diode%20Model.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Tutorial A - Single Diode Model</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
 
 </div>
         
