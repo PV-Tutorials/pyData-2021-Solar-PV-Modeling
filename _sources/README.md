@@ -36,16 +36,16 @@ The first time you log into the tutorial, you will only see the scratch and shar
 ![first login](https://user-images.githubusercontent.com/1385621/119912003-5cf66b80-bf0f-11eb-874d-67ba2ff1bb66.png)
 
 After you log in, you need to download the tutorial from this GitHub repository by following this
-[link](https://pvsc-python-tutorial.ml/hub/user-redirect/git-pull?repo=https://github.com/PVSC-Python-Tutorials/PVSC48-Python-Tutorial&branch=main):
+[link (step 2)](https://pvsc-python-tutorial.ml/hub/user-redirect/git-pull?repo=https://github.com/PVSC-Python-Tutorials/PVSC48-Python-Tutorial&branch=main):
 
 You only need to download the repository once, but you can always use either link to start the tutorial during the conference.
-From now on you will see the PVSC48-Python-Tutorial folder in the list.
+From now on you will see the pyData-2021-Solar-PV-Modeling tutorial folder in the list.
 
-![download tutorial](https://user-images.githubusercontent.com/1385621/119912192-ce361e80-bf0f-11eb-8f62-36e54509fdcc.png)
+![download tutorial](images/readme_step2.PNG)
 
 Click the folder to open, and you'll see the full list. Click `Tutorial 0 - Overview.ipynb` to get started.
 
-![full list of tutorials](https://user-images.githubusercontent.com/1385621/119912314-15241400-bf10-11eb-8a2c-1fc371e0f4e8.png)
+![full list of tutorials](images/readme_foldercontents.PNG)
 
 Sometimes, if you are idle too long, the tutorial dies. Just click the [link to the tutorial](http://pvsc-python-tutorial.ml/) again to reconnect.
 
