@@ -24,7 +24,7 @@ into the tutorial [here](http://pvsc-python-tutorial.ml/).
 ### THIS IS A 2-STEP PROCESS
 
 - **STEP 1**: click [this](http://pvsc-python-tutorial.ml/) --> http://pvsc-python-tutorial.ml/
-- **STEP 2**: click [this](https://pvsc-python-tutorial.ml/hub/user-redirect/git-pull?repo=https://github.com/PVSC-Python-Tutorials/PVSC48-Python-Tutorial&branch=main) --> https://pvsc-python-tutorial.ml/hub/user-redirect/git-pull?repo=https://github.com/PVSC-Python-Tutorials/PVSC48-Python-Tutorial&branch=main
+- **STEP 2**: click [this](https://pvsc-python-tutorial.ml/hub/user-redirect/git-pull?repo=https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling&branch=main) --> https://pvsc-python-tutorial.ml/hub/user-redirect/git-pull?repo=https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling&branch=main
 
 The first time you visit the tutorial, you will need to create an account. Use
 any username and password you like.
