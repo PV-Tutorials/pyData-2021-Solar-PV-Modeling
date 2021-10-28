@@ -240,13 +240,6 @@
   <a class="reference internal nav-link" href="#">
    6 - pySAM Simulation
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#comparison-of-values-and-variables">
-     Comparison of Values and Variables
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#create-default-pv">
@@ -329,20 +322,9 @@
         <li> <a href='#step4b'> Get File from the SAM repository URL </a></li></ul>
     <li> <a href='#step5'> Run, Save and Explore Outputs </a></li>
     </ol> <li> <a href='#stepExtra1'> Extra: Comparison of pySAM Default vs SAM GUI exported values </a></li>
-<div class="section" id="comparison-of-values-and-variables">
-<h2>Comparison of Values and Variables<a class="headerlink" href="#comparison-of-values-and-variables" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hub_height</span> <span class="o">=</span> <span class="mf">1.5</span><span class="o">/</span><span class="mi">2</span>            <span class="c1">#1.5m / 2m collector width</span>
-<span class="n">pitch</span> <span class="o">=</span> <span class="mf">5.7</span><span class="o">/</span><span class="mi">2</span>              <span class="c1"># 1 / 0.35 where 0.35 is gcr --- row to row spacing in normalized panel lengths. </span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Resultsfolder</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;BEST_Sam_PVsyst_BR_BVF_Results/pySAM&#39;</span>
-<span class="n">testfolder</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;TEMP&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datafolder</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;data&#39;</span>
 <span class="n">exampleflag</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="n">debugflag</span> <span class="o">=</span> <span class="kc">False</span>
 </pre></div>
@@ -364,7 +346,7 @@
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1762</span><span class="o">/</span><span class="mf">3484156543.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1760</span><span class="o">/</span><span class="mf">3484156543.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">PySAM.Pvsamv1</span> <span class="k">as</span> <span class="nn">pv</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">PySAM</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">xlsxwriter</span>
@@ -389,7 +371,6 @@
 </div>
 </div>
 <p><a id='step1'></a></p>
-</div>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="create-default-pv">
 <h1>1. Create default PV<a class="headerlink" href="#create-default-pv" title="Permalink to this headline">¶</a></h1>
@@ -8568,7 +8549,7 @@
 <p>Or save it as a csv if you want to explore the categories and variables</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filesave</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Resultsfolder</span><span class="p">,</span><span class="s1">&#39;JSON_Default.xlsx&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filesave</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">datafolder</span><span class="p">,</span><span class="s1">&#39;JSON_Default.xlsx&#39;</span><span class="p">)</span>
 
 <span class="n">workbook</span> <span class="o">=</span> <span class="n">xlsxwriter</span><span class="o">.</span><span class="n">Workbook</span><span class="p">(</span><span class="n">filesave</span><span class="p">)</span>
 <span class="n">worksheet</span> <span class="o">=</span> <span class="n">workbook</span><span class="o">.</span><span class="n">add_worksheet</span><span class="p">()</span>
@@ -8596,7 +8577,7 @@
 <h1>2.  Set values that should not be default to represent our system:<a class="headerlink" href="#set-values-that-should-not-be-default-to-represent-our-system" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">solar_resource_file</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:/Users/sayala/SAM Downloaded Weather Files/SRRL_WeatherFile_SAM_60_2020.csv&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">solar_resource_file</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;data/SAM Downloaded Weather Files/SRRL_WeatherFile_SAM_60_2020.csv&#39;</span>
 <span class="n">albedo</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.20000000298023224</span><span class="p">,</span> <span class="mf">0.20000000298023224</span><span class="p">,</span> <span class="mf">0.20000000298023224</span><span class="p">,</span> <span class="mf">0.20000000298023224</span><span class="p">,</span> <span class="mf">0.20000000298023224</span><span class="p">,</span> <span class="mf">0.20000000298023224</span><span class="p">,</span> <span class="mf">0.20000000298023224</span><span class="p">,</span> <span class="mf">0.20000000298023224</span><span class="p">,</span> <span class="mf">0.20000000298023224</span><span class="p">,</span> <span class="mf">0.20000000298023224</span><span class="p">,</span> <span class="mf">0.20000000298023224</span><span class="p">,</span> <span class="mf">0.20000000298023224</span><span class="p">]</span>
 
 <span class="n">module_aspect_ratio</span> <span class="o">=</span> <span class="mi">2</span>
@@ -9665,7 +9646,7 @@ Patch database is dated: 11/25/2020
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filesave</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Resultsfolder</span><span class="p">,</span><span class="s1">&#39;pySAM_Outputs.xlsx&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filesave</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">datafolder</span><span class="p">,</span><span class="s1">&#39;pySAM_Outputs.xlsx&#39;</span><span class="p">)</span>
 
 <span class="n">workbook</span> <span class="o">=</span> <span class="n">xlsxwriter</span><span class="o">.</span><span class="n">Workbook</span><span class="p">(</span><span class="n">filesave</span><span class="p">)</span>
 <span class="n">worksheet</span> <span class="o">=</span> <span class="n">workbook</span><span class="o">.</span><span class="n">add_worksheet</span><span class="p">()</span>
@@ -9691,7 +9672,7 @@ Patch database is dated: 11/25/2020
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prism File</span>
-<span class="n">Prismfile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Resultsfolder</span><span class="p">,</span><span class="s1">&#39;Row2Prism.json&#39;</span><span class="p">)</span>
+<span class="n">Prismfile</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">datafolder</span><span class="p">,</span><span class="s1">&#39;Row2Prism.json&#39;</span><span class="p">)</span>
 
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">Prismfile</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">dic</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
@@ -9702,7 +9683,7 @@ Patch database is dated: 11/25/2020
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">filesave = os.path.join(Resultsfolder,&#39;JSON_Prism.xlsx&#39;)</span>
+<span class="sd">filesave = os.path.join(datafolder,&#39;JSON_Prism.xlsx&#39;)</span>
 
 <span class="sd">workbook = xlsxwriter.Workbook(filesave)</span>
 <span class="sd">worksheet = workbook.add_worksheet()</span>
@@ -9780,41 +9761,6 @@ Patch database is dated: 11/25/2020
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">guiSAMdic</span><span class="p">,</span> <span class="n">pySAMdic</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">)</span>
 <span class="n">result</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;guiSAM&#39;</span><span class="p">,</span> <span class="s1">&#39;pySAM&#39;</span><span class="p">]</span>
 <span class="n">result</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Resultsfolder</span><span class="p">,</span> <span class="s1">&#39;Side Comparison.csv&#39;</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 6 - pySAM Simulation</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Resultsfolder</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;BEST_Sam_PVsyst_BR_BVF_Results/pySAM&#39;</span>
-<span class="n">testfolder</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;TEMP&#39;</span>
-<span class="n">exampleflag</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="n">debugflag</span> <span class="o">=</span> <span class="kc">False</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">PySAM.Pvsamv1</span> <span class="k">as</span> <span class="nn">pv</span>
-<span class="kn">import</span> <span class="nn">PySAM</span>
-<span class="kn">import</span> <span class="nn">xlsxwriter</span>
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PySAM</span><span class="o">.</span><span class="n">__version__</span>
 </pre></div>
 </div>
 </div>
