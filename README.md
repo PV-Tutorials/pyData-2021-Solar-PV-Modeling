@@ -36,7 +36,7 @@ The first time you log into the tutorial, you will only see the scratch and shar
 ![first login](https://user-images.githubusercontent.com/1385621/119912003-5cf66b80-bf0f-11eb-874d-67ba2ff1bb66.png)
 
 After you log in, you need to download the tutorial from this GitHub repository by following this
-[link (step 2)](https://pvsc-python-tutorial.ml/hub/user-redirect/git-pull?repo=https://github.com/PVSC-Python-Tutorials/PVSC48-Python-Tutorial&branch=main):
+[link (step 2)](https://pvsc-python-tutorial.ml/hub/user-redirect/git-pull?repo=https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling&branch=main):
 
 You only need to download the repository once, but you can always use either link to start the tutorial during the conference.
 From now on you will see the pyData-2021-Solar-PV-Modeling tutorial folder in the list.
