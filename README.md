@@ -19,12 +19,12 @@ This tutorial focuses on PV computing packages, Python, data wrangling with Pand
 These tutorials are designed to run on [Jupyter](https://jupyter.org), a
 browser based interactive notebook that allows you to run the tutorial in the
 cloud without any additional setup. On the day of the tutorial, you can log
-into the tutorial [here](http://pvsc-python-tutorial.ml/).
+into the tutorial [here](https://pvsc-python-tutorial.eastus.cloudapp.azure.com/).
 
 ### THIS IS A 2-STEP PROCESS
 
-- **STEP 1**: click [this](http://pvsc-python-tutorial.ml/) --> http://pvsc-python-tutorial.ml/
-- **STEP 2**: click [this](https://pvsc-python-tutorial.ml/hub/user-redirect/git-pull?repo=https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling&branch=main) --> https://pvsc-python-tutorial.ml/hub/user-redirect/git-pull?repo=https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling&branch=main
+- **STEP 1**: click [this](https://pvsc-python-tutorial.eastus.cloudapp.azure.com/) --> https://pvsc-python-tutorial.eastus.cloudapp.azure.com/
+- **STEP 2**: click [this](https://pvsc-python-tutorial.eastus.cloudapp.azure.com/hub/user-redirect/git-pull?repo=https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling&branch=main) --> https://pvsc-python-tutorial.eastus.cloudapp.azure.com//hub/user-redirect/git-pull?repo=https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling&branch=main
 
 The first time you visit the tutorial, you will need to create an account. Use
 any username and password you like.
@@ -47,9 +47,9 @@ Click the folder to open, and you'll see the full list. Click `Tutorial 0 - Over
 
 ![full list of tutorials](images/readme_foldercontents.PNG)
 
-Sometimes, if you are idle too long, the tutorial dies. Just click the [link to the tutorial](http://pvsc-python-tutorial.ml/) again to reconnect.
+Sometimes, if you are idle too long, the tutorial dies. Just click the [link to the tutorial](https://pvsc-python-tutorial.eastus.cloudapp.azure.com/) again to reconnect.
 
-http://pvsc-python-tutorial.ml/
+https://pvsc-python-tutorial.eastus.cloudapp.azure.com/
 
 ### Jupyter Book docs
 
