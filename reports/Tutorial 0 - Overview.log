@@ -21,7 +21,7 @@ my_string =    # Add your text here. Remember to put it inside of single quotes 
 print(my_string)
 ------------------
 
-[0;36m  File [0;32m"/tmp/ipykernel_1701/3863091146.py"[0;36m, line [0;32m1[0m
+[0;36m  File [0;32m"/tmp/ipykernel_1680/3863091146.py"[0;36m, line [0;32m1[0m
 [0;31m    my_string =    # Add your text here. Remember to put it inside of single quotes or double quotes ( " " or '' )[0m
 [0m                                                                                                                  ^[0m
 [0;31mSyntaxError[0m[0;31m:[0m invalid syntax
