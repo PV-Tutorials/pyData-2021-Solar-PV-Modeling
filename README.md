@@ -24,7 +24,7 @@ into the tutorial [here](https://pvsc-python-tutorial.eastus.cloudapp.azure.com/
 ### THIS IS A 2-STEP PROCESS
 
 - **STEP 1**: click [this](https://pvsc-python-tutorial.eastus.cloudapp.azure.com/) --> https://pvsc-python-tutorial.eastus.cloudapp.azure.com/
-- **STEP 2**: click [this](https://pvsc-python-tutorial.eastus.cloudapp.azure.com/hub/user-redirect/git-pull?repo=https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling&branch=main) --> https://pvsc-python-tutorial.eastus.cloudapp.azure.com//hub/user-redirect/git-pull?repo=https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling&branch=main
+- **STEP 2**: click [this](https://pvsc-python-tutorial.eastus.cloudapp.azure.com/hub/user-redirect/git-pull?repo=https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling&branch=main) --> https://pvsc-python-tutorial.eastus.cloudapp.azure.com/hub/user-redirect/git-pull?repo=https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling&branch=main
 
 The first time you visit the tutorial, you will need to create an account. Use
 any username and password you like.
