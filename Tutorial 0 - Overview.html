@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Welcome! &#8212; PyData 2021: Solar PV Modeling</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -39,12 +37,13 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -60,7 +59,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -69,9 +82,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -89,14 +103,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="Tutorial%201%20-%20TMY%20Weather%20Data.html">
+                    Tutorial 1 - Weather Data: Accesing it, understanding it, visualizing it!
+                </a>
+            </li>
+        </ul>
         <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Tutorial%201%20-%20TMY%20Weather%20Data.html">
-   Tutorial 1 - Weather Data: Accesing it, understanding it, visualizing it!
-  </a>
- </li>
-</ul>
-<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Tutorial%202%20-%20POA%20Irradiance.html">
    Tutorial 2 - POA Irradiance
@@ -130,116 +145,245 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/Tutorial 0 - Overview.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/issues/new?title=Issue%20on%20page%20%2FTutorial 0 - Overview.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/main?urlpath=tree/Tutorial 0 - Overview.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        <a class="jupyterhub-button" href="https://pvsc-python-tutorial.eastus.cloudapp.azure.com/hub/user-redirect/git-pull?repo=https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling&urlpath=tree/pyData-2021-Solar-PV-Modeling/Tutorial 0 - Overview.ipynb&branch=main"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
-                data-placement="left"><img class="jupyterhub-button-logo"
-                    src="_static/images/logo_jupyterhub.svg"
-                    alt="Interact on JupyterHub">JupyterHub</button></a>
-        
-        
-        <button type="button" class="btn btn-secondary topbarbtn"
-            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
-                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/main?urlpath=tree/Tutorial 0 - Overview.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://pvsc-python-tutorial.eastus.cloudapp.azure.com/hub/user-redirect/git-pull?repo=https%3A//github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling&urlpath=tree/pyData-2021-Solar-PV-Modeling/Tutorial+0+-+Overview.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/issues/new?title=Issue%20on%20page%20%2FTutorial 0 - Overview.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/Tutorial 0 - Overview.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#more-on-your-teachers">
    More on your teachers:
@@ -341,12 +485,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Welcome!</h1>
@@ -464,20 +607,21 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
   <p><img alt="tutorial banner" src="_images/tutorial_banner.PNG" /></p>
-<div class="tex2jax_ignore mathjax_ignore section" id="welcome">
-<h1>Welcome!<a class="headerlink" href="#welcome" title="Permalink to this headline">¶</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="welcome">
+<h1>Welcome!<a class="headerlink" href="#welcome" title="Permalink to this headline">#</a></h1>
 <p>Welcome to the pyData Global 2021 Tutorial: Data and tools to model PV Systems</p>
 <p>Modeling tools for all aspects of photovoltaic systems are rapidly growing, and there are solutions for many of the things you might want to simulate. Python is becoming one of the scientific languages of choice, and many open-source tools are available for PV modeling. This tutorial will focus on teaching attendees PV modeling in python through the use of PVlib.</p>
 <p>In this interactive tutorial we will go from getting acquainted with some common data used or measured in pv systems (i.e. weather), to modeling the AC energy output of a single-axis tracker system. This includes learning and simulating sun position, plane of array irradiances, temperature models, single-diode models and more.</p>
 <p>We will review common vocabulary around python and <code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">aggregation</span></code> by hour, week, month, and visualization.</p>
 <p>The tutorial will present hands-on examples in python, enabled via jupyter notebooks and a Jupyterhub (remote hosted server for jupyter notebooks and python language) so you, the attendee, don’t have to install anything, and can follow along while we go over the theory and code! In case it’s not obvious, a computer <b> is </b> required.</p>
 <p>The tutorial will wrap up with an overview of other available open-source tools for other aspects of modeling PV systems.</p>
-<div class="section" id="more-on-your-teachers">
-<h2>More on your teachers:<a class="headerlink" href="#more-on-your-teachers" title="Permalink to this headline">¶</a></h2>
+<section id="more-on-your-teachers">
+<h2>More on your teachers:<a class="headerlink" href="#more-on-your-teachers" title="Permalink to this headline">#</a></h2>
 <p>The three of us have ample experience in data, coding, and PV field performance modeling, so we look forward to all of your questions.</p>
 <table class="colwidths-auto table">
 <thead>
@@ -500,9 +644,9 @@ const thebe_selector_output = ".output, .cell_output"
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="learning-objectives">
-<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="learning-objectives">
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
 <ol class="simple">
 <li><p>Why Model PV?</p></li>
 <li><p>Access weather data (TMY3), understand irradiance data, and visualize it monthly.</p></li>
@@ -511,13 +655,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Use POA and module temperature to forecast a module’s performance.</p></li>
 <li><p>Other Tools</p></li>
 </ol>
-</div>
-<div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h2>
 <p>The sketch below from <a class="reference external" href="https://pvpmc.sandia.gov/">the Sandia PV Performance Modeling Collaborative (PVPMC)</a> outlines the topics we will cover in this tutorial:</p>
 <p><img alt="Overview" src="_images/tutorial_overview.PNG" /></p>
-<div class="section" id="why-learn-this">
-<h3>Why learn this?<a class="headerlink" href="#why-learn-this" title="Permalink to this headline">¶</a></h3>
+<section id="why-learn-this">
+<h3>Why learn this?<a class="headerlink" href="#why-learn-this" title="Permalink to this headline">#</a></h3>
 <p>PV-lib is a library of algorithms and routines that you might encounter the need to use if you’re doing anything PV-modeling related.  It is managed by members of the PV research community, who make sure the formulas and code are not only sleek but accurate.</p>
 <ul class="simple">
 <li><p>You want to know the sun position? No need to code from zero the SPA (Solar Position algorithm), it’s in PVlib.</p></li>
@@ -525,14 +669,14 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>You can find the most well-known <a class="reference external" href="https://pvpmc.sandia.gov/">models</a>, as well as recently accepted values and approaches in published PV literature.</p></li>
 <li><p>We hope adding this tool to your skillset will empower you to do better, faster research with an already solid foundation. Don’t reinvent the wheel!</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="how-to-use-this-tutorial">
-<h2>How to use this tutorial?<a class="headerlink" href="#how-to-use-this-tutorial" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="how-to-use-this-tutorial">
+<h2>How to use this tutorial?<a class="headerlink" href="#how-to-use-this-tutorial" title="Permalink to this headline">#</a></h2>
 <p>This tutorial is a <a class="reference external" href="https://jupyter.org">Jupyter</a> notebook. Jupyter is a browser based interactive tool that combines text, images, equations, and code that can be shared with others. Please see the setup section in the <a class="reference internal" href="README.html"><span class="doc std std-doc">README</span></a> to learn more about how to get started.</p>
-</div>
-<div class="section" id="useful-links">
-<h2>Useful links<a class="headerlink" href="#useful-links" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="useful-links">
+<h2>Useful links<a class="headerlink" href="#useful-links" title="Permalink to this headline">#</a></h2>
 <ol class="simple">
 <li><p>References</p>
 <ul class="simple">
@@ -548,9 +692,9 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ol>
-</div>
-<div class="section" id="tutorial-structure">
-<h2>Tutorial Structure<a class="headerlink" href="#tutorial-structure" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="tutorial-structure">
+<h2>Tutorial Structure<a class="headerlink" href="#tutorial-structure" title="Permalink to this headline">#</a></h2>
 <p>This tutorial is made up of multiple Jupyter Notebooks. These notebooks mix
 code, text, visualization, and exercises.</p>
 <p>If you haven’t used JupyterLab before, it’s similar to the Jupyter Notebook. If
@@ -563,9 +707,9 @@ you haven’t used the Notebook, the quick intro is</p>
 <li><p>The toolbar has commands for executing, converting, and creating cells.</p></li>
 </ol>
 <p>The layout of the tutorial will be as follows:</p>
-</div>
-<div class="section" id="exercise-print-hello-world">
-<h2>Exercise: Print Hello, world!<a class="headerlink" href="#exercise-print-hello-world" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="exercise-print-hello-world">
+<h2>Exercise: Print Hello, world!<a class="headerlink" href="#exercise-print-hello-world" title="Permalink to this headline">#</a></h2>
 <p>Each notebook will have exercises for you to solve. You’ll be given a blank or
 partially completed cell, followed by a hidden cell with a solution. For
 example.</p>
@@ -583,9 +727,9 @@ example.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="exercise-1-modify-to-print-something-else">
-<h2>Exercise 1: Modify to print something else:<a class="headerlink" href="#exercise-1-modify-to-print-something-else" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="exercise-1-modify-to-print-something-else">
+<h2>Exercise 1: Modify to print something else:<a class="headerlink" href="#exercise-1-modify-to-print-something-else" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_string</span> <span class="o">=</span>    <span class="c1"># Add your text here. Remember to put it inside of single quotes or double quotes ( &quot; &quot; or &#39;&#39; )</span>
@@ -594,7 +738,7 @@ example.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/tmp/ipykernel_1680/3863091146.py&quot;</span><span class="gt">, line </span><span class="mi">1</span>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/tmp/ipykernel_1989/3863091146.py&quot;</span><span class="gt">, line </span><span class="mi">1</span>
     <span class="n">my_string</span> <span class="o">=</span>    <span class="c1"># Add your text here. Remember to put it inside of single quotes or double quotes ( &quot; &quot; or &#39;&#39; )</span>
                                                                                                                   <span class="o">^</span>
 <span class="ne">SyntaxError</span>: invalid syntax
@@ -602,13 +746,13 @@ example.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="let-s-go-over-some-python-concepts">
-<h2>Let’s go over some Python Concepts<a class="headerlink" href="#let-s-go-over-some-python-concepts" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="let-s-go-over-some-python-concepts">
+<h2>Let’s go over some Python Concepts<a class="headerlink" href="#let-s-go-over-some-python-concepts" title="Permalink to this headline">#</a></h2>
 <p>(A lot of this examples were shamely taken from <a class="reference external" href="https://jckantor.github.io/CBE30338/01.01-Getting-Started-with-Python-and-Jupyter-Notebooks.html">https://jckantor.github.io/CBE30338/01.01-Getting-Started-with-Python-and-Jupyter-Notebooks.html</a> :$)</p>
-</div>
-<div class="section" id="basic-arithmetic-operations">
-<h2>Basic Arithmetic Operations<a class="headerlink" href="#basic-arithmetic-operations" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="basic-arithmetic-operations">
+<h2>Basic Arithmetic Operations<a class="headerlink" href="#basic-arithmetic-operations" title="Permalink to this headline">#</a></h2>
 <p>Basic arithmetic operations are built into the Python langauge. Here are some examples. In particular, note that exponentiation is done with the ** operator.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -628,9 +772,9 @@ example.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="python-libraries">
-<h2>Python Libraries<a class="headerlink" href="#python-libraries" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="python-libraries">
+<h2>Python Libraries<a class="headerlink" href="#python-libraries" title="Permalink to this headline">#</a></h2>
 <p>The Python language has only very basic operations. Most math functions are in various math libraries. The numpy library is convenient library. This next cell shows how to import numpy with the prefix np, then use it to call a common mathematical functions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -672,9 +816,9 @@ example.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="concatenation">
-<h2>Concatenation<a class="headerlink" href="#concatenation" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="concatenation">
+<h2>Concatenation<a class="headerlink" href="#concatenation" title="Permalink to this headline">#</a></h2>
 <p>Concatentation is the operation of joining one list to another.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -703,9 +847,9 @@ example.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="loops">
-<h2>Loops<a class="headerlink" href="#loops" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="loops">
+<h2>Loops<a class="headerlink" href="#loops" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xList</span><span class="p">:</span>
@@ -722,9 +866,9 @@ sin(4) = -0.75680
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="working-with-dictionaries">
-<h2>Working with Dictionaries<a class="headerlink" href="#working-with-dictionaries" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="working-with-dictionaries">
+<h2>Working with Dictionaries<a class="headerlink" href="#working-with-dictionaries" title="Permalink to this headline">#</a></h2>
 <p>Dictionaries are useful for storing and retrieving data as key-value pairs. For example, here is a short dictionary of molar masses. The keys are molecular formulas, and the values are the corresponding molar masses.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -747,9 +891,9 @@ sin(4) = -0.75680
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="plotting">
-<h2>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="plotting">
+<h2>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">#</a></h2>
 <p>Importing the matplotlib.pyplot library gives IPython notebooks plotting functionality very similar to Matlab’s. Here are some examples using functions from the</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -775,28 +919,28 @@ sin(4) = -0.75680
 <img alt="_images/Tutorial 0 - Overview_27_0.png" src="_images/Tutorial 0 - Overview_27_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="going-deeper">
-<h2>Going Deeper<a class="headerlink" href="#going-deeper" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="going-deeper">
+<h2>Going Deeper<a class="headerlink" href="#going-deeper" title="Permalink to this headline">#</a></h2>
 <p>We’ve designed the notebooks above to cover the basics of pvlib from beginning
 to end. To help you go deeper, we’ve also create a list of notebooks that
 demonstrate real-world applications of pvlib in a variety of use cases. These
 need not be explored in any particular sequence, instead they are meant to
 provide a sampling of what pvlib can be used for.</p>
-<div class="section" id="pvlib-and-weather-climate-model-data">
-<h3>PVLIB and Weather/Climate Model Data<a class="headerlink" href="#pvlib-and-weather-climate-model-data" title="Permalink to this headline">¶</a></h3>
+<section id="pvlib-and-weather-climate-model-data">
+<h3>PVLIB and Weather/Climate Model Data<a class="headerlink" href="#pvlib-and-weather-climate-model-data" title="Permalink to this headline">#</a></h3>
 <p>Check out the pvlib python <a class="reference external" href="https://pvlib-python.readthedocs.io/en/stable/auto_examples/index.html">examples gallery</a>.
 Start with <a class="reference external" href="https://pvlib-python.readthedocs.io/en/stable/auto_examples/plot_sunpath_diagrams.html">Sun path diagram</a>,
 then feel free to explore the rest of the notebooks.</p>
-</div>
-<div class="section" id="open-pv-tools">
-<h3>Open PV Tools<a class="headerlink" href="#open-pv-tools" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="open-pv-tools">
+<h3>Open PV Tools<a class="headerlink" href="#open-pv-tools" title="Permalink to this headline">#</a></h3>
 <p>There is a curated list of <a class="reference external" href="https://openpvtools.readthedocs.io/">open source PV tools</a> from <a class="reference external" href="http://dx.doi.org/10.1109/PVSC.2018.8548231">“Review of Open Source Tools for PV Modeling” by Will Holmgren, <em>et al.</em> at IEEE 7th World Conference on PV Energy Conversion 2018</a>.</p>
 <p><a class="reference external" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
 <p>This work is licensed under a <a class="reference external" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -820,28 +964,34 @@ then feel free to explore the rest of the notebooks.</p>
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
 <div class='prev-next-area'>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Silvana Ayala Pelaez, Mark Mikofski, Kevin Anderson<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Silvana Ayala Pelaez, Mark Mikofski, Kevin Anderson<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

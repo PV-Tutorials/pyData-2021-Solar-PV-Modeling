@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Tutorial 2 - POA Irradiance &#8212; PyData 2021: Solar PV Modeling</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -39,12 +37,13 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -62,7 +61,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -71,9 +84,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -91,14 +105,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Tutorial%201%20-%20TMY%20Weather%20Data.html">
-   Tutorial 1 - Weather Data: Accesing it, understanding it, visualizing it!
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="Tutorial%201%20-%20TMY%20Weather%20Data.html">
+                    Tutorial 1 - Weather Data: Accesing it, understanding it, visualizing it!
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Tutorial 2 - POA Irradiance
@@ -132,116 +147,245 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/Tutorial 2 - POA Irradiance.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/issues/new?title=Issue%20on%20page%20%2FTutorial 2 - POA Irradiance.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/main?urlpath=tree/Tutorial 2 - POA Irradiance.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        <a class="jupyterhub-button" href="https://pvsc-python-tutorial.eastus.cloudapp.azure.com/hub/user-redirect/git-pull?repo=https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling&urlpath=tree/pyData-2021-Solar-PV-Modeling/Tutorial 2 - POA Irradiance.ipynb&branch=main"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
-                data-placement="left"><img class="jupyterhub-button-logo"
-                    src="_static/images/logo_jupyterhub.svg"
-                    alt="Interact on JupyterHub">JupyterHub</button></a>
-        
-        
-        <button type="button" class="btn btn-secondary topbarbtn"
-            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
-                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/main?urlpath=tree/Tutorial 2 - POA Irradiance.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://pvsc-python-tutorial.eastus.cloudapp.azure.com/hub/user-redirect/git-pull?repo=https%3A//github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling&urlpath=tree/pyData-2021-Solar-PV-Modeling/Tutorial+2+-+POA+Irradiance.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/issues/new?title=Issue%20on%20page%20%2FTutorial 2 - POA Irradiance.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/Tutorial 2 - POA Irradiance.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pv-concepts">
    PV Concepts
@@ -286,12 +430,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Tutorial 2 - POA Irradiance</h1>
@@ -352,51 +495,52 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
   <p><img alt="tutorialpromo" src="_images/tutorial_banner.PNG" /></p>
-<div class="tex2jax_ignore mathjax_ignore section" id="tutorial-2-poa-irradiance">
-<h1>Tutorial 2 - POA Irradiance<a class="headerlink" href="#tutorial-2-poa-irradiance" title="Permalink to this headline">¶</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="tutorial-2-poa-irradiance">
+<h1>Tutorial 2 - POA Irradiance<a class="headerlink" href="#tutorial-2-poa-irradiance" title="Permalink to this headline">#</a></h1>
 <p>This notebook shows how to use pvlib to transform the three irradiance components (GHI, DHI, and DNI) into POA irradiance, the main driver of a PV system.</p>
 <p><img alt="Overview" src="_images/tutorial_2_overview.PNG" /></p>
-<div class="section" id="pv-concepts">
-<h2>PV Concepts<a class="headerlink" href="#pv-concepts" title="Permalink to this headline">¶</a></h2>
+<section id="pv-concepts">
+<h2>PV Concepts<a class="headerlink" href="#pv-concepts" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Plane of Array Irradiance</p></li>
 <li><p>Angle of Incidence</p></li>
 <li><p>Time delta for solar position</p></li>
 <li><p>GHI vs POA for fixed tilt system and tracked systems</p></li>
 </ul>
-</div>
-<div class="section" id="python-concepts">
-<h2>Python Concepts<a class="headerlink" href="#python-concepts" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="python-concepts">
+<h2>Python Concepts<a class="headerlink" href="#python-concepts" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>pandas Timedelta</p></li>
 <li><p>making a new dataframe from existing columns</p></li>
 <li><p>resampling</p></li>
 <li><p>bar ploting</p></li>
 </ul>
-</div>
-<div class="section" id="what-is-transposition">
-<h2>What is transposition?<a class="headerlink" href="#what-is-transposition" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="what-is-transposition">
+<h2>What is transposition?<a class="headerlink" href="#what-is-transposition" title="Permalink to this headline">#</a></h2>
 <p>The amount of sunlight collected by a PV panel depends on how well the panel orientation matches incoming sunlight.  For example, a rooftop array facing West will produce hardly any energy in the morning when the sun is in the East because the panel can only “see” the dim part of the sky away from the sun.</p>
 <p><img alt="Overview" src="_images/t2_solarpanel_directions.PNG" /></p>
 <p>As the sun comes into view and moves towards the center of the panel’s field of view, the panel will collect more and more irradiance.  This concept is what defines plane-of-array irradiance – the amount of sunlight available to be collected at a given panel orientation.  Like the three “basic” irradiance components, POA irradiance is measured in watts per square meter.</p>
 <p>Each irradiance component is considered separately when modeling POA irradiance.  For example, calculating the component of direct irradiance (DNI) that is incident on a panel is solved with straightforward geometry based on the angle of incidence.  Finding the POA component of diffuse irradiance (DHI) is more complex and can vary based on atmospheric conditions.  Many models, ranging from simple models with lots of assumptions to strongly empirical models, have been published to transpose DHI into the diffuse POA component.  A third component of POA irradiance is light that reflects off the ground before being collected by the PV panel.  Functions to calculate each of these components are provided by pvlib.</p>
 <p><img alt="Overview" src="_images/t2_POA.PNG" /></p>
-</div>
-<div class="section" id="how-is-array-orientation-defined">
-<h2>How is array orientation defined?<a class="headerlink" href="#how-is-array-orientation-defined" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="how-is-array-orientation-defined">
+<h2>How is array orientation defined?<a class="headerlink" href="#how-is-array-orientation-defined" title="Permalink to this headline">#</a></h2>
 <p>Two parameters define the panel orientation, one that measures the cardinal direction (North, East, South, West), and one that measures how high in the sky the panel faces:</p>
 <ul class="simple">
 <li><p>tilt; measured in degrees from horizontal.  A flat panel is at tilt=0 and a panel standing on its edge has tilt=90.</p></li>
 <li><p>azimuth; measured in degrees from North.  The direction along the horizon the panel is facing.  N=0, E=90, S=180, W=270.</p></li>
 </ul>
 <p>A fixed array has fixed tilt and azimuth, but a tracker array constantly changes its orientation to best match the sun’s position.  So depending on the system configuration, tilt and azimuth may or may not be time series values.</p>
-</div>
-<div class="section" id="modeling-poa-from-ghi-dhi-and-dni">
-<h2>Modeling POA from GHI, DHI, and DNI<a class="headerlink" href="#modeling-poa-from-ghi-dhi-and-dni" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="modeling-poa-from-ghi-dhi-and-dni">
+<h2>Modeling POA from GHI, DHI, and DNI<a class="headerlink" href="#modeling-poa-from-ghi-dhi-and-dni" title="Permalink to this headline">#</a></h2>
 <p>As mentioned earlier, pvlib makes it easy to calculate POA irradiance.  First, let’s load in the example TMY dataset from the previous tutorial:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -528,9 +672,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <p>The two values needed here are the solar zenith (how close the sun is to overhead) and azimuth (what direction along the horizon the sun is, like panel azimuth).  The difference between <code class="docutils literal notranslate"><span class="pre">apparent_zenith</span></code> and <code class="docutils literal notranslate"><span class="pre">zenith</span></code> is that <code class="docutils literal notranslate"><span class="pre">apparent_zenith</span></code> includes the effect of atmospheric refraction.</p>
 <p>Now that we have a time series of solar position that matches our irradiance data, let’s run a transposition model using the convenient wrapper function <a class="reference external" href="https://pvlib-python.readthedocs.io/en/latest/generated/pvlib.irradiance.get_total_irradiance.html"><code class="docutils literal notranslate"><span class="pre">pvlib.irradiance.get_total_irradiance</span></code></a>. The more complex transposition models like Perez and Hay Davies require additional weather inputs, so for simplicity we’ll just use the basic <code class="docutils literal notranslate"><span class="pre">isotropic</span></code> model here, which is the default if nothing is passed for <code class="docutils literal notranslate"><span class="pre">model</span></code> keyword argument.  As an example, we’ll model a fixed array tilted south at 20 degrees.</p>
-</div>
-<div class="section" id="fixed-tilt-poa">
-<h2>Fixed Tilt POA<a class="headerlink" href="#fixed-tilt-poa" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="fixed-tilt-poa">
+<h2>Fixed Tilt POA<a class="headerlink" href="#fixed-tilt-poa" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_poa</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">irradiance</span><span class="o">.</span><span class="n">get_total_irradiance</span><span class="p">(</span>
@@ -561,8 +705,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="section" id="what-angle-should-you-tilt-your-modules-at">
-<h3>What angle should you tilt your modules at?<a class="headerlink" href="#what-angle-should-you-tilt-your-modules-at" title="Permalink to this headline">¶</a></h3>
+<section id="what-angle-should-you-tilt-your-modules-at">
+<h3>What angle should you tilt your modules at?<a class="headerlink" href="#what-angle-should-you-tilt-your-modules-at" title="Permalink to this headline">#</a></h3>
 <p><a class="reference external" href="https://www.pveducation.org/pvcdrom/properties-of-sunlight/solar-radiation-on-a-tilted-surface">PVEducation Solar Radiation on a Tilted Surface</a></p>
 <p>The total POA irradiance is called <code class="docutils literal notranslate"><span class="pre">poa_global</span></code> and is the one we’ll focus on. Like the previous tutorial, let’s visualize monthly irradiance to summarize the difference between the insolation received by a flat panel (GHI) and that of a tilted panel (POA):</p>
 <div class="cell docutils container">
@@ -606,10 +750,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>The difference between GHI and POA is of course dependent on the tilt defining POA, but because it also depends on solar position, it varies from location to location.  Luckily, tools like pvlib make it easy to model!</p>
-</div>
-</div>
-<div class="section" id="modeling-poa-for-a-tracking-system">
-<h2>Modeling POA for a tracking system<a class="headerlink" href="#modeling-poa-for-a-tracking-system" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="modeling-poa-for-a-tracking-system">
+<h2>Modeling POA for a tracking system<a class="headerlink" href="#modeling-poa-for-a-tracking-system" title="Permalink to this headline">#</a></h2>
 <p>The previous section calculated the transposition assuming a fixed array tilt and azimuth.  Now we’ll do the same for a tracking array that follows the sun across the sky.  The most common type of tracking array is what’s called a single-axis tracker (SAT) that rotates from East to West to follow the sun.  We can calculate the time-dependent orientation of a SAT array with pvlib:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -667,8 +811,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Note that the POA calculations discussed above do not address the partial blocking of diffuse light in arrays with multiple tilted rows of PV modules, so the results will be slightly (typically 1-3%) optimistic relative to real conditions or to commercial modeling software. Such corrections are likely to be added to pvlib in the future for specific generic geometries like fixed racks.</p>
 <p><a class="reference external" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
 <p>This work is licensed under a <a class="reference external" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -692,9 +836,11 @@ const thebe_selector_output = ".output, .cell_output"
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="Tutorial%201%20-%20TMY%20Weather%20Data.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -710,24 +856,28 @@ const thebe_selector_output = ".output, .cell_output"
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Silvana Ayala Pelaez, Mark Mikofski, Kevin Anderson<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Silvana Ayala Pelaez, Mark Mikofski, Kevin Anderson<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
