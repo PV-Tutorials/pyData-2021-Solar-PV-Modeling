@@ -34,3 +34,4 @@ html:
 launch_buttons:
   jupyterhub_url: "https://pvsc-python-tutorial.eastus.cloudapp.azure.com"
   thebe: true
+  colab_url: "https://colab.research.google.com"
