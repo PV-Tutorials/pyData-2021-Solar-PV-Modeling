@@ -32,5 +32,4 @@ html:
   use_repository_button: true
 
 launch_buttons:
-  jupyterhub_url: "https://pvsc-python-tutorial.eastus.cloudapp.azure.com"
   thebe: true
