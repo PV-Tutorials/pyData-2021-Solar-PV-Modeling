@@ -220,6 +220,24 @@ title="Launch on Binder"
       </li>
       
       <li>
+        <a href="https://colab.research.google.com/github/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/blob/main/Tutorial D - pySAM Modeling the Bifacial Tracker Field at NREL.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+      <li>
         
 <button onclick="initThebeSBT()"
   class="headerbtn headerbtn-launch-thebe"
@@ -535,6 +553,14 @@ title="Print to PDF"
         <li> <a href='#step4b'> Get File from the SAM repository URL </a></li></ul>
     <li> <a href='#step5'> Run, Save and Explore Outputs </a></li>
     </ol> <li> <a href='#stepExtra1'> Extra: Comparison of pySAM Default vs SAM GUI exported values </a></li>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># if running on google colab, uncomment the next line and execute this cell to install the dependencies and prevent &quot;ModuleNotFoundError&quot; in later cells:</span>
+<span class="c1"># !pip install -r https://raw.githubusercontent.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/main/requirements.txt</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datafolder</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;data&#39;</span>
@@ -9195,7 +9221,7 @@ title="Print to PDF"
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1919</span><span class="o">/</span><span class="mf">233394445.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1957</span><span class="o">/</span><span class="mf">233394445.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">fileee</span><span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:\Users\sayala\Documents\GitHub\RTCanalysis\BEST_Sam_PVsyst_BR_BVF_Results\pySAM\CEC Modules.csv&#39;</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> 
 <span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">fileee</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>

@@ -221,6 +221,24 @@ title="Launch on Binder"
       </li>
       
       <li>
+        <a href="https://colab.research.google.com/github/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/blob/main/Tutorial B - pvfree.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+      <li>
         
 <button onclick="initThebeSBT()"
   class="headerbtn headerbtn-launch-thebe"
@@ -373,11 +391,19 @@ title="Print to PDF"
   <p><img alt="tutorialpromo" src="_images/tutorial_banner.PNG" /></p>
 <section class="tex2jax_ignore mathjax_ignore" id="tutorial-b-pvfree">
 <h1>Tutorial B - pvfree<a class="headerlink" href="#tutorial-b-pvfree" title="Permalink to this headline">#</a></h1>
-<p>Another option to get CEC module parameters is to use <a class="reference external" href="https://pvfree.herokuapp.com">pvfree</a>.</p>
+<p>Another option to get CEC module parameters is to use <a class="reference external" href="https://pvfree.azurewebsites.net/">pvfree</a>.</p>
 <div class="alert alert-block alert-info">
-<b>Let's Explore:</b> <a href='https://pvfree.herokuapp.com'> Click here to see the pvfree Website</a></div>
+<b>Let's Explore:</b> <a href='https://pvfree.azurewebsites.net/'> Click here to see the pvfree Website</a></div>
 <p><img alt="pvfree_table" src="_images/pvfree_table.png" /></p>
-<p>You can search the table of the <a class="reference external" href="https://pvfree.herokuapp.com/cec_modules/">CEC modules</a>. Once you find the desired module, you can get a JSON dictionary of the CEC module parameters from the API. For example, <a class="reference external" href="https://pvfree.herokuapp.com/cec_modules/1733/">Canadian Solar Inc. CS5P-220M</a> can be downloaded from the API here: <a class="reference external" href="https://pvfree.herokuapp.com/api/v1/cecmodule/1733/?format=json">https://pvfree.herokuapp.com/api/v1/cecmodule/1733/?format=json</a>. You can copy and paste or use python to call the API. The API also has search filters you can use. For example: <a class="reference external" href="https://pvfree.herokuapp.com/api/v1/cecmodule/?format=json&amp;Name__istartswith=canadian&amp;STC__gt=219&amp;STC__lt=221">https://pvfree.herokuapp.com/api/v1/cecmodule/?format=json&amp;Name__istartswith=canadian&amp;STC__gt=219&amp;STC__lt=221</a> searches for all modules starting with “canadian” and with nameplate between 219-W and 221-W which returns a list of 6 modules in a JSON dictionary. Limiting the short circuit currentl (Isc) to less than 6-A reduces this list to 2 modules.</p>
+<p>You can search the table of the <a class="reference external" href="https://pvfree.azurewebsites.net/cec_modules/">CEC modules</a>. Once you find the desired module, you can get a JSON dictionary of the CEC module parameters from the API. For example, <a class="reference external" href="https://pvfree.azurewebsites.net/cec_modules/1733/">Canadian Solar Inc. CS5P-220M</a> can be downloaded from the API here: <a class="reference external" href="https://pvfree.azurewebsites.net/api/v1/cecmodule/1733/?format=json">https://pvfree.azurewebsites.net/api/v1/cecmodule/1733/?format=json</a>. You can copy and paste or use python to call the API. The API also has search filters you can use. For example: <a class="reference external" href="https://pvfree.azurewebsites.net/api/v1/cecmodule/?format=json&amp;Name__istartswith=canadian&amp;STC__gt=219&amp;STC__lt=221">https://pvfree.azurewebsites.net/api/v1/cecmodule/?format=json&amp;Name__istartswith=canadian&amp;STC__gt=219&amp;STC__lt=221</a> searches for all modules starting with “canadian” and with nameplate between 219-W and 221-W which returns a list of 6 modules in a JSON dictionary. Limiting the short circuit currentl (Isc) to less than 6-A reduces this list to 2 modules.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># if running on google colab, uncomment the next line and execute this cell to install the dependencies and prevent &quot;ModuleNotFoundError&quot; in later cells:</span>
+<span class="c1"># !pip install -r https://raw.githubusercontent.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/main/requirements.txt</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">urllib</span><span class="o">,</span> <span class="nn">json</span>
@@ -385,7 +411,7 @@ title="Print to PDF"
     <span class="s1">&#39;Name__istartswith&#39;</span><span class="p">:</span> <span class="s1">&#39;canadian&#39;</span><span class="p">,</span>
     <span class="s1">&#39;STC__gt&#39;</span><span class="p">:</span> <span class="mi">219</span><span class="p">,</span> <span class="s1">&#39;STC__lt&#39;</span><span class="p">:</span> <span class="mi">221</span><span class="p">,</span>
     <span class="s1">&#39;I_sc_ref__lt&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">})</span>
-<span class="k">with</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;https://pvfree.herokuapp.com/api/v1/cecmodule/?</span><span class="si">{</span><span class="n">params</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+<span class="k">with</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;https://pvfree.azurewebsites.net/api/v1/cecmodule/?</span><span class="si">{</span><span class="n">params</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
     <span class="n">cs_220_mods</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total count of Canadian Solar 220-W with Isc &lt; 6A: </span><span class="si">{</span><span class="n">cs_220_mods</span><span class="p">[</span><span class="s1">&#39;meta&#39;</span><span class="p">][</span><span class="s1">&#39;total_count&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="n">cs_220_mods</span><span class="p">[</span><span class="s1">&#39;objects&#39;</span><span class="p">]</span>

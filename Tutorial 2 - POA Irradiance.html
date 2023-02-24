@@ -221,6 +221,24 @@ title="Launch on Binder"
       </li>
       
       <li>
+        <a href="https://colab.research.google.com/github/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/blob/main/Tutorial 2 - POA Irradiance.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+      <li>
         
 <button onclick="initThebeSBT()"
   class="headerbtn headerbtn-launch-thebe"
@@ -526,6 +544,14 @@ title="Print to PDF"
 <p>As mentioned earlier, pvlib makes it easy to calculate POA irradiance.  First, let’s load in the example TMY dataset from the previous tutorial:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># if running on google colab, uncomment the next line and execute this cell to install the dependencies and prevent &quot;ModuleNotFoundError&quot; in later cells:</span>
+<span class="c1"># !pip install -r https://raw.githubusercontent.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/main/requirements.txt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pvlib</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>  <span class="c1"># for data wrangling</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>  <span class="c1"># for visualization</span>
@@ -704,7 +730,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Tutorial 2 - POA Irradiance_17_0.png" src="_images/Tutorial 2 - POA Irradiance_17_0.png" />
+<img alt="_images/Tutorial 2 - POA Irradiance_18_0.png" src="_images/Tutorial 2 - POA Irradiance_18_0.png" />
 </div>
 </div>
 <p>This plot shows that, compared with a flat array, a tilted array receives significantly more insolation in the winter.  However, it comes at the cost of slightly less insolation in the summer.  The difference is all about solar position – tilting up from horizontal gives a better match to solar position in winter, when the sun is low in the sky.  However it gives a slightly worse match in summer when the sun is very high in the sky.</p>
@@ -717,7 +743,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Tutorial 2 - POA Irradiance_19_0.png" src="_images/Tutorial 2 - POA Irradiance_19_0.png" />
+<img alt="_images/Tutorial 2 - POA Irradiance_20_0.png" src="_images/Tutorial 2 - POA Irradiance_20_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -728,7 +754,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Tutorial 2 - POA Irradiance_20_0.png" src="_images/Tutorial 2 - POA Irradiance_20_0.png" />
+<img alt="_images/Tutorial 2 - POA Irradiance_21_0.png" src="_images/Tutorial 2 - POA Irradiance_21_0.png" />
 </div>
 </div>
 <p>The difference between GHI and POA is of course dependent on the tilt defining POA, but because it also depends on solar position, it varies from location to location.  Luckily, tools like pvlib make it easy to model!</p>
@@ -754,7 +780,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Tutorial 2 - POA Irradiance_22_0.png" src="_images/Tutorial 2 - POA Irradiance_22_0.png" />
+<img alt="_images/Tutorial 2 - POA Irradiance_23_0.png" src="_images/Tutorial 2 - POA Irradiance_23_0.png" />
 </div>
 </div>
 <p>This plot shows a single day of tracker operation.  The y-axis shows the tracker rotation from horizontal, so 0 degrees means the panels are flat.  In the morning, the trackers rotate to negative angles to face East towards the morning sun; in the afternoon they rotate to positive angles to face West towards the evening sun.  In the middle of the day, the trackers are flat because the sun is more or less overhead.</p>
@@ -785,7 +811,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Tutorial 2 - POA Irradiance_26_0.png" src="_images/Tutorial 2 - POA Irradiance_26_0.png" />
+<img alt="_images/Tutorial 2 - POA Irradiance_27_0.png" src="_images/Tutorial 2 - POA Irradiance_27_0.png" />
 </div>
 </div>
 <p>Notice how different the daily profile is for the tracker array!  This is because the array can tilt steeply East and West to face towards the sun in early morning and late afternoon, meaning the edges of day get much higher irradiance than for a south-facing array.</p>

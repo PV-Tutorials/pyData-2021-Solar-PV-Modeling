@@ -222,6 +222,24 @@ title="Launch on Binder"
       </li>
       
       <li>
+        <a href="https://colab.research.google.com/github/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/blob/main/Tutorial 1 - TMY Weather Data.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+      <li>
         
 <button onclick="initThebeSBT()"
   class="headerbtn headerbtn-launch-thebe"
@@ -701,6 +719,14 @@ title="Print to PDF"
 <p>TMY datasets are created by selecting individual months out of an extended period of weather measurememts (say, 20 years of data) to construct a single year’s worth of data. There are several methods for selecting which months to include, but the general idea is to calculate monthly summary statistics and take the month that lies in the middle of the distribution.  For example, no two Januaries will be exactly the same, so summing the total solar irradiance for each January will give a <a class="reference external" href="https://en.wikipedia.org/wiki/Normal_distribution">normal distribution</a>, and the month that falls closest to the <a class="reference external" href="https://en.wikipedia.org/wiki/Median">median</a> is chosen as the representative month. The same process is followed for February, March, and so on, and all twelve representative months are stitched together into a year-long dataset.</p>
 <p>The oldest TMYs were calculated using data from the nearest weather station (airports and such). Today, it’s common to use TMYs calculated using simulated weather data from satellite imagery because of the improved spatial resolution.</p>
 <p>To get a better feel for TMY data, we’ll first explore an example TMY dataset that is bundled with pvlib.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># if running on google colab, uncomment the next line and execute this cell to install the dependencies and prevent &quot;ModuleNotFoundError&quot; in later cells:</span>
+<span class="c1"># !pip install -r https://raw.githubusercontent.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/main/requirements.txt</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="first-step-import-libraries">
 <h2>First Step: Import Libraries<a class="headerlink" href="#first-step-import-libraries" title="Permalink to this headline">#</a></h2>
@@ -1334,7 +1360,7 @@ Number of columns: 71
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Tutorial 1 - TMY Weather Data_29_0.png" src="_images/Tutorial 1 - TMY Weather Data_29_0.png" />
+<img alt="_images/Tutorial 1 - TMY Weather Data_30_0.png" src="_images/Tutorial 1 - TMY Weather Data_30_0.png" />
 </div>
 </div>
 <p>Let’s control the parameters a bit more</p>
@@ -1349,7 +1375,7 @@ Number of columns: 71
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Tutorial 1 - TMY Weather Data_31_0.png" src="_images/Tutorial 1 - TMY Weather Data_31_0.png" />
+<img alt="_images/Tutorial 1 - TMY Weather Data_32_0.png" src="_images/Tutorial 1 - TMY Weather Data_32_0.png" />
 </div>
 </div>
 <section id="exercise">
@@ -1381,7 +1407,7 @@ plt.ylabel(‘Irradiance [W/m<span class="math notranslate nohighlight">\(^2\)</
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Tutorial 1 - TMY Weather Data_38_0.png" src="_images/Tutorial 1 - TMY Weather Data_38_0.png" />
+<img alt="_images/Tutorial 1 - TMY Weather Data_39_0.png" src="_images/Tutorial 1 - TMY Weather Data_39_0.png" />
 </div>
 </div>
 </section>
@@ -1397,7 +1423,7 @@ plt.ylabel(‘Irradiance [W/m<span class="math notranslate nohighlight">\(^2\)</
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Tutorial 1 - TMY Weather Data_40_0.png" src="_images/Tutorial 1 - TMY Weather Data_40_0.png" />
+<img alt="_images/Tutorial 1 - TMY Weather Data_41_0.png" src="_images/Tutorial 1 - TMY Weather Data_41_0.png" />
 </div>
 </div>
 </section>
@@ -1412,7 +1438,7 @@ plt.ylabel(‘Irradiance [W/m<span class="math notranslate nohighlight">\(^2\)</
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Tutorial 1 - TMY Weather Data_42_0.png" src="_images/Tutorial 1 - TMY Weather Data_42_0.png" />
+<img alt="_images/Tutorial 1 - TMY Weather Data_43_0.png" src="_images/Tutorial 1 - TMY Weather Data_43_0.png" />
 </div>
 </div>
 </section>
@@ -1447,7 +1473,7 @@ Freq: M, Name: GHI, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Tutorial 1 - TMY Weather Data_45_0.png" src="_images/Tutorial 1 - TMY Weather Data_45_0.png" />
+<img alt="_images/Tutorial 1 - TMY Weather Data_46_0.png" src="_images/Tutorial 1 - TMY Weather Data_46_0.png" />
 </div>
 </div>
 <p>We can also take monthly averages instead of monthly sums:</p>
@@ -1466,7 +1492,7 @@ Freq: M, Name: GHI, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Tutorial 1 - TMY Weather Data_47_0.png" src="_images/Tutorial 1 - TMY Weather Data_47_0.png" />
+<img alt="_images/Tutorial 1 - TMY Weather Data_48_0.png" src="_images/Tutorial 1 - TMY Weather Data_48_0.png" />
 </div>
 </div>
 <section id="id2">
@@ -1599,7 +1625,7 @@ Freq: M, Name: GHI, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Tutorial 1 - TMY Weather Data_57_0.png" src="_images/Tutorial 1 - TMY Weather Data_57_0.png" />
+<img alt="_images/Tutorial 1 - TMY Weather Data_58_0.png" src="_images/Tutorial 1 - TMY Weather Data_58_0.png" />
 </div>
 </div>
 <p>It’s not too surprising to see that our New Mexico location is significantly sunnier than the one in North Carolina.</p>

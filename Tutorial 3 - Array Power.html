@@ -221,6 +221,24 @@ title="Launch on Binder"
       </li>
       
       <li>
+        <a href="https://colab.research.google.com/github/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/blob/main/Tutorial 3 - Array Power.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+      <li>
         
 <button onclick="initThebeSBT()"
   class="headerbtn headerbtn-launch-thebe"
@@ -465,6 +483,14 @@ title="Print to PDF"
 <p>We’ll read in weather data, run the irradiance transposition, and model cell temperature as in previous tutorials:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># if running on google colab, uncomment the next line and execute this cell to install the dependencies and prevent &quot;ModuleNotFoundError&quot; in later cells:</span>
+<span class="c1"># !pip install -r https://raw.githubusercontent.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/main/requirements.txt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pvlib</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>  <span class="c1"># for data wrangling</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>  <span class="c1"># for visualization</span>
@@ -557,7 +583,7 @@ Some PV thermal models go to the trouble of modeling the entire heat balance equ
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Tutorial 3 - Array Power_9_0.png" src="_images/Tutorial 3 - Array Power_9_0.png" />
+<img alt="_images/Tutorial 3 - Array Power_10_0.png" src="_images/Tutorial 3 - Array Power_10_0.png" />
 </div>
 </div>
 <section id="calculating-hte-power">
@@ -581,7 +607,7 @@ Some PV thermal models go to the trouble of modeling the entire heat balance equ
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Tutorial 3 - Array Power_13_0.png" src="_images/Tutorial 3 - Array Power_13_0.png" />
+<img alt="_images/Tutorial 3 - Array Power_14_0.png" src="_images/Tutorial 3 - Array Power_14_0.png" />
 </div>
 </div>
 <p>Let’s take a look at the array’s response to irradiance and temperature:</p>
@@ -596,7 +622,7 @@ Some PV thermal models go to the trouble of modeling the entire heat balance equ
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Tutorial 3 - Array Power_15_0.png" src="_images/Tutorial 3 - Array Power_15_0.png" />
+<img alt="_images/Tutorial 3 - Array Power_16_0.png" src="_images/Tutorial 3 - Array Power_16_0.png" />
 </div>
 </div>
 <p>This plot shows a strong, near-linear trend of power with POA irradiance.  However, it also shows a performance change with temperature – as ambient temperature increases, array output drops.  The gradient is smoother if we color by cell temperature:</p>
@@ -611,7 +637,7 @@ Some PV thermal models go to the trouble of modeling the entire heat balance equ
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Tutorial 3 - Array Power_17_0.png" src="_images/Tutorial 3 - Array Power_17_0.png" />
+<img alt="_images/Tutorial 3 - Array Power_18_0.png" src="_images/Tutorial 3 - Array Power_18_0.png" />
 </div>
 </div>
 <p>We can also compare with a hypothetical module with a smaller temperature coefficient, which shows a correspondingly smaller temperature effect:</p>
@@ -627,7 +653,7 @@ Some PV thermal models go to the trouble of modeling the entire heat balance equ
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Tutorial 3 - Array Power_19_0.png" src="_images/Tutorial 3 - Array Power_19_0.png" />
+<img alt="_images/Tutorial 3 - Array Power_20_0.png" src="_images/Tutorial 3 - Array Power_20_0.png" />
 </div>
 </div>
 <p>Another way of viewing the temperature effect is to compare monthly energy production with monthly POA insolation, noticing how production dips relative to insolation in the summertime.  Note that insolation and production happen to be about the same scale here; that’s just a coincidence because of the array size we chose.</p>
@@ -647,7 +673,7 @@ Some PV thermal models go to the trouble of modeling the entire heat balance equ
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Energy [Wh]&#39;)
 </pre></div>
 </div>
-<img alt="_images/Tutorial 3 - Array Power_21_1.png" src="_images/Tutorial 3 - Array Power_21_1.png" />
+<img alt="_images/Tutorial 3 - Array Power_22_1.png" src="_images/Tutorial 3 - Array Power_22_1.png" />
 </div>
 </div>
 </section>
@@ -677,10 +703,10 @@ Some PV thermal models go to the trouble of modeling the entire heat balance equ
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fa33a6b6a90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f93187c8290&gt;
 </pre></div>
 </div>
-<img alt="_images/Tutorial 3 - Array Power_24_1.png" src="_images/Tutorial 3 - Array Power_24_1.png" />
+<img alt="_images/Tutorial 3 - Array Power_25_1.png" src="_images/Tutorial 3 - Array Power_25_1.png" />
 </div>
 </div>
 </section>

@@ -27,7 +27,7 @@ df[mymod].T
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-[0;32m/tmp/ipykernel_1919/233394445.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_1957/233394445.py[0m in [0;36m<module>[0;34m[0m
 [1;32m      2[0m [0mfileee[0m[0;34m=[0m [0;34mr'C:\Users\sayala\Documents\GitHub\RTCanalysis\BEST_Sam_PVsyst_BR_BVF_Results\pySAM\CEC Modules.csv'[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      3[0m [0;34m[0m[0m
 [0;32m----> 4[0;31m [0mdf[0m [0;34m=[0m [0mpd[0m[0;34m.[0m[0mread_csv[0m[0;34m([0m[0mfileee[0m[0;34m,[0m [0mindex_col[0m[0;34m=[0m[0;36m0[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
