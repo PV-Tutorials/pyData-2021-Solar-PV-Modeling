@@ -33,3 +33,4 @@ html:
 
 launch_buttons:
   thebe: true
+  colab_url: "https://colab.research.google.com"
