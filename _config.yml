@@ -21,7 +21,7 @@ latex:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling
+  url: https://github.com/PV-Tutorials/pyData-2021-Solar-PV-Modeling
   #path_to_book: docs  # Optional path to your book, relative to the repository root
   branch: main
 
