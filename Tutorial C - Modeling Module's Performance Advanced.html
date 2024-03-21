@@ -1,48 +1,59 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Tutorial C - PV Module Performance Advanced &#8212; PyData 2021: Solar PV Modeling</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -52,61 +63,93 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Tutorial C - Modeling Module's Performance Advanced';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="6 - pySAM Simulation" href="Tutorial%20D%20-%20pySAM%20Modeling%20the%20Bifacial%20Tracker%20Field%20at%20NREL.html" />
     <link rel="prev" title="Tutorial B - pvfree" href="Tutorial%20B%20-%20pvfree.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="Tutorial%201%20-%20TMY%20Weather%20Data.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/tutorial_banner.PNG" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">PyData 2021: Solar PV Modeling</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="_static/tutorial_banner.PNG" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/tutorial_banner.PNG" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -116,482 +159,297 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Tutorial%202%20-%20POA%20Irradiance.html">
-   Tutorial 2 - POA Irradiance
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Tutorial%203%20-%20Array%20Power.html">
-   Tutorial 3 - Modeling an Array Power
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Tutorial%20A%20-%20Single%20Diode%20Model.html">
-   Tutorial A - Single Diode Model
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Tutorial%20B%20-%20pvfree.html">
-   Tutorial B - pvfree
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Tutorial C - PV Module Performance Advanced
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Tutorial%20D%20-%20pySAM%20Modeling%20the%20Bifacial%20Tracker%20Field%20at%20NREL.html">
-   6 - pySAM Simulation
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial%202%20-%20POA%20Irradiance.html">Tutorial 2 - POA Irradiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial%203%20-%20Array%20Power.html">Tutorial 3 - Modeling an Array Power</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial%20A%20-%20Single%20Diode%20Model.html">Tutorial A - Single Diode Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial%20B%20-%20pvfree.html">Tutorial B - pvfree</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tutorial C - PV Module Performance Advanced</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial%20D%20-%20pySAM%20Modeling%20the%20Bifacial%20Tracker%20Field%20at%20NREL.html">6 - pySAM Simulation</a></li>
+
+
+
+
+
+
+
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/main?urlpath=tree/Tutorial C - Modeling Module's Performance Advanced.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
   
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
+  <div id="rtd-footer-container"></div>
 
-      </li>
+
+      </div>
       
-      <li>
-        <a href="https://colab.research.google.com/github/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/blob/main/Tutorial C - Modeling Module's Performance Advanced.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/blob/main/Tutorial C - Modeling Module's Performance Advanced.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="_static/images/logo_colab.png">
   </span>
-<span class="headerbtn__text-container">Colab</span>
+<span class="btn__text-container">Colab</span>
 </a>
-
-      </li>
+</li>
+      
+      
+      
       
       <li>
-        
 <button onclick="initThebeSBT()"
-  class="headerbtn headerbtn-launch-thebe"
-  data-toggle="tooltip"
-data-placement="left"
-title="Launch Thebe"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-play"></i>
   </span>
-<span class="headerbtn__text-container">Live Code</span>
+<span class="btn__text-container">Live Code</span>
 </button>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/issues/new?title=Issue%20on%20page%20%2FTutorial C - Modeling Module's Performance Advanced.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Tutorial C - Modeling Module's Performance Advanced.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/issues/new?title=Issue%20on%20page%20%2FTutorial C - Modeling Module's Performance Advanced.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/Tutorial C - Modeling Module's Performance Advanced.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pv-concepts">
-   PV Concepts:
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#python-concepts">
-   Python Concepts:
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#standard-test-conditions-stc">
-   Standard Test Conditions (STC)
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#air-mass-am">
-     Air mass (AM)
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#iec-61853-test-conditions">
-   IEC 61853 test conditions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#single-diode-model-sdm-iv-curve">
-   Single Diode Model (SDM) &amp; IV Curve
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cec-model-aka-sam-or-6-parameter-model">
-   CEC Model (
-   <em>
-    aka
-   </em>
-   SAM or 6-parameter model)
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pvlib-python">
-     pvlib python
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cec-modules-library">
-     CEC modules library
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pop-quiz-1">
-     Pop Quiz #1
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#calculate-cec-parameters">
-   Calculate CEC Parameters
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#nnsvth-what-s-this">
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       nNsVth
-      </span>
-     </code>
-     , what’s this?
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#iv-curve-info">
-   IV Curve Info
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusions">
-   Conclusions
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Tutorial C - PV Module Performance Advanced</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pv-concepts">
-   PV Concepts:
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#python-concepts">
-   Python Concepts:
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#standard-test-conditions-stc">
-   Standard Test Conditions (STC)
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#air-mass-am">
-     Air mass (AM)
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#iec-61853-test-conditions">
-   IEC 61853 test conditions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#single-diode-model-sdm-iv-curve">
-   Single Diode Model (SDM) &amp; IV Curve
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cec-model-aka-sam-or-6-parameter-model">
-   CEC Model (
-   <em>
-    aka
-   </em>
-   SAM or 6-parameter model)
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pvlib-python">
-     pvlib python
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cec-modules-library">
-     CEC modules library
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pop-quiz-1">
-     Pop Quiz #1
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#calculate-cec-parameters">
-   Calculate CEC Parameters
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#nnsvth-what-s-this">
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       nNsVth
-      </span>
-     </code>
-     , what’s this?
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#iv-curve-info">
-   IV Curve Info
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusions">
-   Conclusions
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Tutorial C - PV Module Performance Advanced</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pv-concepts">PV Concepts:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-concepts">Python Concepts:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-test-conditions-stc">Standard Test Conditions (STC)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#air-mass-am">Air mass (AM)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iec-61853-test-conditions">IEC 61853 test conditions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#single-diode-model-sdm-iv-curve">Single Diode Model (SDM) &amp; IV Curve</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cec-model-aka-sam-or-6-parameter-model">CEC Model (<em>aka</em> SAM or 6-parameter model)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pvlib-python">pvlib python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cec-modules-library">CEC modules library</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pop-quiz-1">Pop Quiz #1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-cec-parameters">Calculate CEC Parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nnsvth-what-s-this"><code class="docutils literal notranslate"><span class="pre">nNsVth</span></code>, what’s this?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iv-curve-info">IV Curve Info</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <p><img alt="tutorialpromo" src="_images/tutorial_banner.PNG" /></p>
 <section class="tex2jax_ignore mathjax_ignore" id="tutorial-c-pv-module-performance-advanced">
-<h1>Tutorial C - PV Module Performance Advanced<a class="headerlink" href="#tutorial-c-pv-module-performance-advanced" title="Permalink to this headline">#</a></h1>
+<h1>Tutorial C - PV Module Performance Advanced<a class="headerlink" href="#tutorial-c-pv-module-performance-advanced" title="Permalink to this heading">#</a></h1>
 <p>Now that we know how to obtain the plane of array (POA) irradiance and cell temperature, let’s calculate a module’s performance assuming a subset of irradiance and temperature conditions. The objectives for this tutorial are to use pvlib python to do the following:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Retrieve a set of module CEC parameters from the latest <a class="reference external" href="https://sam.nrel.gov/">NREL System Advisor Model (SAM)</a> library.</p></li>
 <li><p>Calculate the single diode model (SDM) parameters at standard test conditions (STC) and for a set of PV module test conditions known as IEC61853.</p></li>
 <li><p>Produce an IV curve for each of the IEC61853 test conditions.</p></li>
@@ -599,7 +457,7 @@ title="Print to PDF"
 </ol>
 <p><img alt="Overview" src="_images/tutorial_4_overview.PNG" /></p>
 <section id="pv-concepts">
-<h2>PV Concepts:<a class="headerlink" href="#pv-concepts" title="Permalink to this headline">#</a></h2>
+<h2>PV Concepts:<a class="headerlink" href="#pv-concepts" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>STC Parameters</p></li>
 <li><p>IV Curve</p></li>
@@ -625,7 +483,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="python-concepts">
-<h2>Python Concepts:<a class="headerlink" href="#python-concepts" title="Permalink to this headline">#</a></h2>
+<h2>Python Concepts:<a class="headerlink" href="#python-concepts" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.meshgrid.html"><code class="docutils literal notranslate"><span class="pre">numpy.meshgrid</span></code></a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">try:</span> <span class="pre">except</span></code> clauses to catch errors</p></li>
@@ -634,7 +492,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="standard-test-conditions-stc">
-<h2>Standard Test Conditions (STC)<a class="headerlink" href="#standard-test-conditions-stc" title="Permalink to this headline">#</a></h2>
+<h2>Standard Test Conditions (STC)<a class="headerlink" href="#standard-test-conditions-stc" title="Permalink to this heading">#</a></h2>
 <p>The most basic condition is called “standard test conditions” or STC, which is considered the reference for most PV modules. For example, all of the PV modules in the SAM CEC module database list their nameplate power at STC.</p>
 <ul class="simple">
 <li><p>irradiance: 1000-W/m²</p></li>
@@ -643,12 +501,12 @@ title="Print to PDF"
 <li><p>spectrum: AM1.5g (ASTM G-173)</p></li>
 </ul>
 <section id="air-mass-am">
-<h3>Air mass (AM)<a class="headerlink" href="#air-mass-am" title="Permalink to this headline">#</a></h3>
+<h3>Air mass (AM)<a class="headerlink" href="#air-mass-am" title="Permalink to this heading">#</a></h3>
 <p>The standard reference AM1.5g (ASTM G-173) is defined as the solar spectrum of global irradiance that passes through 1.5 atmospheres. For more information see <a class="reference external" href="https://www.nrel.gov/grid/solar-resource/spectra.html">NREL Solar Spectra</a>.</p>
 </section>
 </section>
 <section id="iec-61853-test-conditions">
-<h2>IEC 61853 test conditions<a class="headerlink" href="#iec-61853-test-conditions" title="Permalink to this headline">#</a></h2>
+<h2>IEC 61853 test conditions<a class="headerlink" href="#iec-61853-test-conditions" title="Permalink to this heading">#</a></h2>
 <p>Another common set of test conditions is the IEC 61853 standard which provides a PV module test matrix that covers the expected range of inicident irradiance and cell temperatures for PV modules assuming that the irradiance is normal and the solar spectrum is similar to AM1.5g.</p>
 <ul class="simple">
 <li><p>irradiance (W/m²): 100, 200, 400, 600, 800, 1000, 1100</p></li>
@@ -664,7 +522,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># if running on google colab, uncomment the next line and execute this cell to install the dependencies and prevent &quot;ModuleNotFoundError&quot; in later cells:</span>
-<span class="c1"># !pip install -r https://raw.githubusercontent.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/main/requirements.txt</span>
+<span class="c1"># !pip install -r https://raw.githubusercontent.com/PV-Tutorials/pyData-2021-Solar-PV-Modeling/main/requirements.txt</span>
 </pre></div>
 </div>
 </div>
@@ -723,7 +581,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="single-diode-model-sdm-iv-curve">
-<h2>Single Diode Model (SDM) &amp; IV Curve<a class="headerlink" href="#single-diode-model-sdm-iv-curve" title="Permalink to this headline">#</a></h2>
+<h2>Single Diode Model (SDM) &amp; IV Curve<a class="headerlink" href="#single-diode-model-sdm-iv-curve" title="Permalink to this heading">#</a></h2>
 <p>PV module performance can be modeled using <em>point</em> or <em>continuous</em> IV-curve models.</p>
 <p>Point models like PVWatts and The Sandia Array Performance Model (SAPM, <em>aka</em> King model) yield the current (I), voltage (V), and power (P) at a single or discrete set of points.
 PVWatts only yields the performance at the max power point (MPP) of the module, whereas the SAPM also yields the short circuit current (Isc), open circuit voltage (Voc).</p>
@@ -742,10 +600,10 @@ PVWatts only yields the performance at the max power point (MPP) of the module, 
 <p>the thermal voltage (<span class="math notranslate nohighlight">\(V_T = k_T / q_e\)</span>), elementary charge (<span class="math notranslate nohighlight">\(q_e\)</span>), Boltzmann constant (<span class="math notranslate nohighlight">\(k_T\)</span>), and the shunt current (<span class="math notranslate nohighlight">\(I_{sh} = V_D / R_{sh}\)</span>)</p>
 </section>
 <section id="cec-model-aka-sam-or-6-parameter-model">
-<h2>CEC Model (<em>aka</em> SAM or 6-parameter model)<a class="headerlink" href="#cec-model-aka-sam-or-6-parameter-model" title="Permalink to this headline">#</a></h2>
+<h2>CEC Model (<em>aka</em> SAM or 6-parameter model)<a class="headerlink" href="#cec-model-aka-sam-or-6-parameter-model" title="Permalink to this heading">#</a></h2>
 <p>The California Energy Commision (CEC) contracted authorized testing labs to measure at STC the nameplate power (Pmp), Isc, Voc, and the MPP voltage and current (Vmp, Imp), as well as Isc and Voc temperature coefficients, the module dimensions, the number of series cells (Ns), parallel substrings (Np), module area in m² (Ac), and more. Tables of the CEC module parameters are available from the <a class="reference external" href="https://www.energy.ca.gov/programs-and-topics/programs/solar-equipment-lists">Solar Equipment Lists</a>. These measurements have been fit to the SDM by the NREL System Advisor Model (SAM) and stored in a CSV file that is bundled with SAM. You can access the <a class="reference external" href="https://github.com/NREL/SAM/tree/develop/deploy/libraries">SAM library on GitHub</a>. This SAM library of module coefficients derived from the CEC measurements are collectively called CEC modules and the SAM model that uses the derived SDM coefficients is called the CEC model. The CEC model used in SAM is sometimes also called the 6-parameter model because of the <code class="docutils literal notranslate"><span class="pre">Adjust</span></code> additional parameter which differentiates it from the DeSoto model.</p>
 <section id="pvlib-python">
-<h3>pvlib python<a class="headerlink" href="#pvlib-python" title="Permalink to this headline">#</a></h3>
+<h3>pvlib python<a class="headerlink" href="#pvlib-python" title="Permalink to this heading">#</a></h3>
 <p>There are several functions we can use in pvlib python:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://pvlib-python.readthedocs.io/en/latest/generated/pvlib.pvsystem.retrieve_sam.html#pvlib.pvsystem.retrieve_sam"><code class="docutils literal notranslate"><span class="pre">pvlib.pvsystem.retrieve_sam()</span></code></a></p></li>
@@ -935,7 +793,7 @@ PVWatts only yields the performance at the max power point (MPP) of the module, 
 </div>
 </section>
 <section id="cec-modules-library">
-<h3>CEC modules library<a class="headerlink" href="#cec-modules-library" title="Permalink to this headline">#</a></h3>
+<h3>CEC modules library<a class="headerlink" href="#cec-modules-library" title="Permalink to this heading">#</a></h3>
 <p>Periodically a static copy of CEC module parameters is copied from the SAM library to pvlib python. The modules are roughly named according the following scheme:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;manufacturer name&gt; &lt;model name&gt;
 </pre></div>
@@ -948,7 +806,7 @@ PVWatts only yields the performance at the max power point (MPP) of the module, 
 <div class="alert alert-block alert-info">
 <b>Let's Explore:</b> <a href='https://www.ecodirect.com/Canadian-Solar-CS6X-300M-300W-36V-PV-Panel-p/canadian-solar-cs6x-300m.htm'> Click here to see the panel's Datasheet. </a></div>
 <p>The main CEC module parameters are defined as follows:</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>parameter</p></th>
 <th class="head"><p>data type</p></th>
@@ -1197,7 +1055,7 @@ Name: Canadian_Solar_Inc__CS5P_220M, dtype: object
 </div>
 </section>
 <section id="pop-quiz-1">
-<h3>Pop Quiz #1<a class="headerlink" href="#pop-quiz-1" title="Permalink to this headline">#</a></h3>
+<h3>Pop Quiz #1<a class="headerlink" href="#pop-quiz-1" title="Permalink to this heading">#</a></h3>
 <p>Get any CEC module from the <code class="docutils literal notranslate"><span class="pre">CECMODS</span></code> or pvfree.</p>
 <ul class="simple">
 <li><p>Which module did you get?</p></li>
@@ -1230,10 +1088,10 @@ Name: Canadian_Solar_Inc__CS5P_220M, dtype: object
 </section>
 </section>
 <section id="calculate-cec-parameters">
-<h2>Calculate CEC Parameters<a class="headerlink" href="#calculate-cec-parameters" title="Permalink to this headline">#</a></h2>
+<h2>Calculate CEC Parameters<a class="headerlink" href="#calculate-cec-parameters" title="Permalink to this heading">#</a></h2>
 <p>The module parameters are given at the reference condition. Use <a class="reference external" href="https://pvlib-python.readthedocs.io/en/latest/generated/pvlib.pvsystem.calcparams_cec.html"><code class="docutils literal notranslate"><span class="pre">pvlib.pvsystem.calcparams_cec()</span></code></a> to generate the five SDM parameters at your desired irradiance and temperature to use with <a class="reference external" href="https://pvlib-python.readthedocs.io/en/latest/generated/pvlib.pvsystem.singlediode.html"><code class="docutils literal notranslate"><span class="pre">pvlib.pvsystem.singlediode()</span></code></a> to calculate the IV curve information.</p>
 <section id="nnsvth-what-s-this">
-<h3><code class="docutils literal notranslate"><span class="pre">nNsVth</span></code>, what’s this?<a class="headerlink" href="#nnsvth-what-s-this" title="Permalink to this headline">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">nNsVth</span></code>, what’s this?<a class="headerlink" href="#nnsvth-what-s-this" title="Permalink to this heading">#</a></h3>
 <p>The diode ideality factor (n) is combined with the number of cells (Ns) and the thermal voltage (Vth) to create a convenience parameter. This is <a class="reference external" href="https://en.wikipedia.org/wiki/Syntactic_sugar">syntactic sugar</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1272,7 +1130,7 @@ Name: Canadian_Solar_Inc__CS5P_220M, dtype: object
 </section>
 </section>
 <section id="iv-curve-info">
-<h2>IV Curve Info<a class="headerlink" href="#iv-curve-info" title="Permalink to this headline">#</a></h2>
+<h2>IV Curve Info<a class="headerlink" href="#iv-curve-info" title="Permalink to this heading">#</a></h2>
 <p>Now that we have the 5 SDM parameters (<code class="docutils literal notranslate"><span class="pre">IL</span></code>, <code class="docutils literal notranslate"><span class="pre">Io</span></code>, <code class="docutils literal notranslate"><span class="pre">Rs</span></code>, <code class="docutils literal notranslate"><span class="pre">Rsh</span></code>, and <code class="docutils literal notranslate"><span class="pre">nNsVth</span></code>) corresponding to each of the test conditions in the IEC61853 test matrix, we can calculate the IV curve information for that irradiance and cell temperature.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1338,12 +1196,12 @@ Name: Canadian_Solar_Inc__CS5P_220M, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Tutorial C - Modeling Module's Performance Advanced_22_0.png" src="_images/Tutorial C - Modeling Module's Performance Advanced_22_0.png" />
+<img alt="_images/af8d14019147d505c45d9b6578131ba275f1c5fe25a2c351f6f95ccdb24fb0de.png" src="_images/af8d14019147d505c45d9b6578131ba275f1c5fe25a2c351f6f95ccdb24fb0de.png" />
 </div>
 </div>
 </section>
 <section id="conclusions">
-<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">#</a></h2>
+<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this heading">#</a></h2>
 <p>So is this what you expected? What do you notice about the relation between voltage and temperature? What about the relation between current and irradiance? What other patterns do you observe?</p>
 <p><a class="reference external" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
 <p>This work is licensed under a <a class="reference external" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
@@ -1370,50 +1228,124 @@ Name: Canadian_Solar_Inc__CS5P_220M, dtype: object
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Tutorial%20B%20-%20pvfree.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Tutorial B - pvfree</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Tutorial%20B%20-%20pvfree.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Tutorial B - pvfree</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="Tutorial%20D%20-%20pySAM%20Modeling%20the%20Bifacial%20Tracker%20Field%20at%20NREL.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="Tutorial%20D%20-%20pySAM%20Modeling%20the%20Bifacial%20Tracker%20Field%20at%20NREL.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">6 - pySAM Simulation</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Silvana Ayala Pelaez, Mark Mikofski, Kevin Anderson<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
-    
-</div>
-
-
       </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pv-concepts">PV Concepts:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-concepts">Python Concepts:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-test-conditions-stc">Standard Test Conditions (STC)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#air-mass-am">Air mass (AM)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iec-61853-test-conditions">IEC 61853 test conditions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#single-diode-model-sdm-iv-curve">Single Diode Model (SDM) &amp; IV Curve</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cec-model-aka-sam-or-6-parameter-model">CEC Model (<em>aka</em> SAM or 6-parameter model)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pvlib-python">pvlib python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cec-modules-library">CEC modules library</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pop-quiz-1">Pop Quiz #1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-cec-parameters">Calculate CEC Parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nnsvth-what-s-this"><code class="docutils literal notranslate"><span class="pre">nNsVth</span></code>, what’s this?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iv-curve-info">IV Curve Info</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Silvana Ayala Pelaez, Mark Mikofski, Kevin Anderson
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

@@ -1,48 +1,59 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Tutorial 1 - Weather Data: Accesing it, understanding it, visualizing it! &#8212; PyData 2021: Solar PV Modeling</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -52,60 +63,92 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Tutorial 1 - TMY Weather Data';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Tutorial 2 - POA Irradiance" href="Tutorial%202%20-%20POA%20Irradiance.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/tutorial_banner.PNG" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">PyData 2021: Solar PV Modeling</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="_static/tutorial_banner.PNG" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/tutorial_banner.PNG" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
@@ -115,577 +158,319 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Tutorial%202%20-%20POA%20Irradiance.html">
-   Tutorial 2 - POA Irradiance
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Tutorial%203%20-%20Array%20Power.html">
-   Tutorial 3 - Modeling an Array Power
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Tutorial%20A%20-%20Single%20Diode%20Model.html">
-   Tutorial A - Single Diode Model
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Tutorial%20B%20-%20pvfree.html">
-   Tutorial B - pvfree
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Tutorial%20C%20-%20Modeling%20Module%27s%20Performance%20Advanced.html">
-   Tutorial C - PV Module Performance Advanced
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Tutorial%20D%20-%20pySAM%20Modeling%20the%20Bifacial%20Tracker%20Field%20at%20NREL.html">
-   6 - pySAM Simulation
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial%202%20-%20POA%20Irradiance.html">Tutorial 2 - POA Irradiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial%203%20-%20Array%20Power.html">Tutorial 3 - Modeling an Array Power</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial%20A%20-%20Single%20Diode%20Model.html">Tutorial A - Single Diode Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial%20B%20-%20pvfree.html">Tutorial B - pvfree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial%20C%20-%20Modeling%20Module%27s%20Performance%20Advanced.html">Tutorial C - PV Module Performance Advanced</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial%20D%20-%20pySAM%20Modeling%20the%20Bifacial%20Tracker%20Field%20at%20NREL.html">6 - pySAM Simulation</a></li>
+
+
+
+
+
+
+
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/main?urlpath=tree/Tutorial 1 - TMY Weather Data.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
   
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
+  <div id="rtd-footer-container"></div>
 
-      </li>
+
+      </div>
       
-      <li>
-        <a href="https://colab.research.google.com/github/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/blob/main/Tutorial 1 - TMY Weather Data.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/blob/main/Tutorial 1 - TMY Weather Data.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="_static/images/logo_colab.png">
   </span>
-<span class="headerbtn__text-container">Colab</span>
+<span class="btn__text-container">Colab</span>
 </a>
-
-      </li>
+</li>
+      
+      
+      
       
       <li>
-        
 <button onclick="initThebeSBT()"
-  class="headerbtn headerbtn-launch-thebe"
-  data-toggle="tooltip"
-data-placement="left"
-title="Launch Thebe"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-play"></i>
   </span>
-<span class="headerbtn__text-container">Live Code</span>
+<span class="btn__text-container">Live Code</span>
 </button>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/issues/new?title=Issue%20on%20page%20%2FTutorial 1 - TMY Weather Data.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Tutorial 1 - TMY Weather Data.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/issues/new?title=Issue%20on%20page%20%2FTutorial 1 - TMY Weather Data.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/Tutorial 1 - TMY Weather Data.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#steps">
-   Steps:
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pv-concepts">
-   PV Concepts:
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#python-concepts">
-   Python Concepts:
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#weather-data-pv">
-   Weather Data &amp; PV
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#typical-meteorological-year">
-   Typical Meteorological Year
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#first-step-import-libraries">
-   First Step: Import Libraries
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reading-a-tmy-dataset-with-pvlib">
-   Reading a TMY dataset with pvlib
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#irradiance">
-   Irradiance
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#wind">
-   Wind
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#air-temperature">
-   Air temperature
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#downselect-columns">
-   Downselect columns
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#plotting-time-series-data-with-pandas-and-matplotlib">
-   Plotting time series data with pandas and matplotlib
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     Irradiance
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#exercise">
-       Exercise
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#temperature">
-     Temperature
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#wind-speed">
-     Wind speed
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#aggregating-hourly-data-to-monthly-summaries">
-   Aggregating hourly data to monthly summaries
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     Exercise
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#where-to-get-free-solar-irradiance-data">
-   Where to get
-   <em>
-    Free
-   </em>
-   Solar Irradiance Data?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#where-else-can-you-get-historical-irradiance-data">
-   Where else can you get historical irradiance data?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#nrel-api-key">
-   NREL API Key
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#application-programming-interface-api">
-     Application Programming Interface (API)
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#fetching-tmys-from-the-nsrdb">
-   Fetching TMYs from the NSRDB
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Tutorial 1 - Weather Data: Accesing it, understanding it, visualizing it!</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#steps">
-   Steps:
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pv-concepts">
-   PV Concepts:
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#python-concepts">
-   Python Concepts:
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#weather-data-pv">
-   Weather Data &amp; PV
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#typical-meteorological-year">
-   Typical Meteorological Year
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#first-step-import-libraries">
-   First Step: Import Libraries
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reading-a-tmy-dataset-with-pvlib">
-   Reading a TMY dataset with pvlib
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#irradiance">
-   Irradiance
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#wind">
-   Wind
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#air-temperature">
-   Air temperature
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#downselect-columns">
-   Downselect columns
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#plotting-time-series-data-with-pandas-and-matplotlib">
-   Plotting time series data with pandas and matplotlib
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     Irradiance
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#exercise">
-       Exercise
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#temperature">
-     Temperature
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#wind-speed">
-     Wind speed
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#aggregating-hourly-data-to-monthly-summaries">
-   Aggregating hourly data to monthly summaries
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     Exercise
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#where-to-get-free-solar-irradiance-data">
-   Where to get
-   <em>
-    Free
-   </em>
-   Solar Irradiance Data?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#where-else-can-you-get-historical-irradiance-data">
-   Where else can you get historical irradiance data?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#nrel-api-key">
-   NREL API Key
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#application-programming-interface-api">
-     Application Programming Interface (API)
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#fetching-tmys-from-the-nsrdb">
-   Fetching TMYs from the NSRDB
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Tutorial 1 - Weather Data: Accesing it, understanding it, visualizing it!</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steps">Steps:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pv-concepts">PV Concepts:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-concepts">Python Concepts:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weather-data-pv">Weather Data &amp; PV</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typical-meteorological-year">Typical Meteorological Year</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-step-import-libraries">First Step: Import Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-a-tmy-dataset-with-pvlib">Reading a TMY dataset with pvlib</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#irradiance">Irradiance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wind">Wind</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#air-temperature">Air temperature</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downselect-columns">Downselect columns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-time-series-data-with-pandas-and-matplotlib">Plotting time series data with pandas and matplotlib</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Irradiance</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature">Temperature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wind-speed">Wind speed</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregating-hourly-data-to-monthly-summaries">Aggregating hourly data to monthly summaries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Exercise</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-to-get-free-solar-irradiance-data">Where to get <em>Free</em> Solar Irradiance Data?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-else-can-you-get-historical-irradiance-data">Where else can you get historical irradiance data?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nrel-api-key">NREL API Key</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#application-programming-interface-api">Application Programming Interface (API)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fetching-tmys-from-the-nsrdb">Fetching TMYs from the NSRDB</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <p><img alt="tutorialpromo" src="_images/tutorial_banner.PNG" /></p>
 <section class="tex2jax_ignore mathjax_ignore" id="tutorial-1-weather-data-accesing-it-understanding-it-visualizing-it">
-<h1>Tutorial 1 - Weather Data: Accesing it, understanding it, visualizing it!<a class="headerlink" href="#tutorial-1-weather-data-accesing-it-understanding-it-visualizing-it" title="Permalink to this headline">#</a></h1>
+<h1>Tutorial 1 - Weather Data: Accesing it, understanding it, visualizing it!<a class="headerlink" href="#tutorial-1-weather-data-accesing-it-understanding-it-visualizing-it" title="Permalink to this heading">#</a></h1>
 <p>This notebook explores a standard type of weather data, the typical meteorological year (TMY), and how to summarize it with Python and <a class="reference external" href="https://pandas.pydata.org/">Pandas</a>.</p>
 <p><img alt="Overview" src="_images/tutorial_1_overview.PNG" /></p>
 <section id="steps">
-<h2>Steps:<a class="headerlink" href="#steps" title="Permalink to this headline">#</a></h2>
+<h2>Steps:<a class="headerlink" href="#steps" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="#Weather-Data-&amp;-PV">Weather data in PV performance models</a></p></li>
+<li><p><span class="xref myst">Weather data in PV performance models</span></p></li>
 <li><p>Looking at a sample weather data file</p></li>
 <li><p>Where to get weather data from?</p></li>
 <li><p>Weather data to API</p></li>
 </ul>
 </section>
 <section id="pv-concepts">
-<h2>PV Concepts:<a class="headerlink" href="#pv-concepts" title="Permalink to this headline">#</a></h2>
+<h2>PV Concepts:<a class="headerlink" href="#pv-concepts" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>TMY</p></li>
 <li><p>GHI, DNI, DHI</p></li>
@@ -694,7 +479,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="python-concepts">
-<h2>Python Concepts:<a class="headerlink" href="#python-concepts" title="Permalink to this headline">#</a></h2>
+<h2>Python Concepts:<a class="headerlink" href="#python-concepts" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Exploring a Pandas dataframe (<code class="docutils literal notranslate"><span class="pre">df</span></code>): <code class="docutils literal notranslate"><span class="pre">len()</span></code>, <code class="docutils literal notranslate"><span class="pre">df.head()</span></code>, <code class="docutils literal notranslate"><span class="pre">df.keys()</span></code></p></li>
 <li><p><a class="reference external" href="https://pvlib-python.readthedocs.io/en/stable/api.html#io-tools">pvlib input-output tools</a></p></li>
@@ -705,14 +490,14 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="weather-data-pv">
-<h2>Weather Data &amp; PV<a class="headerlink" href="#weather-data-pv" title="Permalink to this headline">#</a></h2>
+<h2>Weather Data &amp; PV<a class="headerlink" href="#weather-data-pv" title="Permalink to this heading">#</a></h2>
 <p>Weather and irradiance data are used as input to PV performance models.</p>
 <p><img alt="SRRL" src="_images/tutorial_1_SRRL.PNG" /></p>
 <p>These data are directly measured, derived from measured data, or simulated using a stochastic model.</p>
-<p>If you want to learn more about irradiance data, you can visit the <a class="reference external" href="https://www.pmodwrc.ch/en/world-radiation-center-2/srs/">Solar RAdiometry webpage</a></p>
+<p>If you want to learn more about irradiance data, you can visit the <a class="reference external" href="https://www.pmodwrc.ch/en/world-radiation-center-2/srs/">Solar Radiometry webpage</a></p>
 </section>
 <section id="typical-meteorological-year">
-<h2>Typical Meteorological Year<a class="headerlink" href="#typical-meteorological-year" title="Permalink to this headline">#</a></h2>
+<h2>Typical Meteorological Year<a class="headerlink" href="#typical-meteorological-year" title="Permalink to this heading">#</a></h2>
 <p>TMY datasets are intended to represent the weather for a typical year at a given location.</p>
 <p>TMY datasets provide hourly <strong>solar irradiance</strong>, <strong>air temperature</strong>, <strong>wind speed</strong>, and other weather measurements for a hypothetical year that represents more or less a “median year” for solar resource.</p>
 <p><img alt="TMY3 screenshot" src="_images/tutorial_1_tmy3_example.PNG" /></p>
@@ -722,14 +507,14 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># if running on google colab, uncomment the next line and execute this cell to install the dependencies and prevent &quot;ModuleNotFoundError&quot; in later cells:</span>
-<span class="c1"># !pip install -r https://raw.githubusercontent.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/main/requirements.txt</span>
+<span class="c1"># !pip install -r https://raw.githubusercontent.com/PV-Tutorials/pyData-2021-Solar-PV-Modeling/main/requirements.txt</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="first-step-import-libraries">
-<h2>First Step: Import Libraries<a class="headerlink" href="#first-step-import-libraries" title="Permalink to this headline">#</a></h2>
+<h2>First Step: Import Libraries<a class="headerlink" href="#first-step-import-libraries" title="Permalink to this heading">#</a></h2>
 <p>In Python, some functions are builtin like <code class="docutils literal notranslate"><span class="pre">print()</span></code> but others must be imported before they can be used. For this notebook we’re going to import three packages:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://pvlib-python.readthedocs.io/en/stable/">pvlib</a> - library for simulating performance of photovoltaic energy systems.</p></li>
@@ -763,7 +548,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="reading-a-tmy-dataset-with-pvlib">
-<h2>Reading a TMY dataset with pvlib<a class="headerlink" href="#reading-a-tmy-dataset-with-pvlib" title="Permalink to this headline">#</a></h2>
+<h2>Reading a TMY dataset with pvlib<a class="headerlink" href="#reading-a-tmy-dataset-with-pvlib" title="Permalink to this heading">#</a></h2>
 <p>First, we’ll read the TMY dataset with <a class="reference external" href="https://pvlib-python.readthedocs.io/en/stable/generated/pvlib.iotools.read_tmy3.html"><code class="docutils literal notranslate"><span class="pre">pvlib.iotools.read_tmy3()</span></code></a> which returns a <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html">Pandas DataFrame</a> of the timeseries weather data and a second output with a Python dictionary of the TMY metadata like longitude, latitude, elevation, etc.</p>
 <p>We will use the Python <a class="reference external" href="https://docs.python.org/3/library/pathlib.html"><code class="docutils literal notranslate"><span class="pre">pathlib</span></code></a> to get the path to the <code class="docutils literal notranslate"><span class="pre">'data'</span></code> directory which comes with the <code class="docutils literal notranslate"><span class="pre">pvlib</span></code> package. Then we can use the slash operator, <code class="docutils literal notranslate"><span class="pre">/</span></code> to make the full path to the TMY file.</p>
 <div class="cell docutils container">
@@ -1161,25 +946,25 @@ Number of columns: 71
 <p>There are 71 columns, which is quite a lot!  For now, let’s focus just on the ones that are most important for PV modeling – the irradiance, temperature, and wind speed columns, and extract them into a new DataFrame.</p>
 </section>
 <section id="irradiance">
-<h2>Irradiance<a class="headerlink" href="#irradiance" title="Permalink to this headline">#</a></h2>
+<h2>Irradiance<a class="headerlink" href="#irradiance" title="Permalink to this heading">#</a></h2>
 <p>Irradiance is an instantaneous measurement of solar power over some area.  For practical purposes of measurement and interpretation, irradiance is expressed and separated into different components.</p>
 <p><img alt="overview irradiance" src="_images/tutorial_1_DNIDHIGHI.PNG" /></p>
 <p>The units of irradiance are watts per square meter.</p>
 </section>
 <section id="wind">
-<h2>Wind<a class="headerlink" href="#wind" title="Permalink to this headline">#</a></h2>
+<h2>Wind<a class="headerlink" href="#wind" title="Permalink to this heading">#</a></h2>
 <p>Wind speed is measured with an anemometer.  The most common type is a the cup-type anemometer, shown on the right side of the picture below.  The number of rotations per time interval is used to calculate the wind speed.  The vane on the left is used to measure the direction of the wind.  Wind direction is reported as the direction from which the wind is blowing.</p>
-<p><img src="https://pvpmc.sandia.gov/wp-content/uploads/2012/04/anemometer.jpg"></img></p>
+<p><img src="https://pvpmc.sandia.gov/app/uploads/sites/243/2022/11/anemometer.jpg"></img></p>
 </section>
 <section id="air-temperature">
-<h2>Air temperature<a class="headerlink" href="#air-temperature" title="Permalink to this headline">#</a></h2>
+<h2>Air temperature<a class="headerlink" href="#air-temperature" title="Permalink to this heading">#</a></h2>
 <p>Also known as dry-bulb temperature, is the temperature of the ambient air when the measurement device is shielded from radiation and moisture. The most common method of air temperature measurement uses a resistive temperature device (RTD) or thermocouple within a radiation shield. The shield blocks sunlight from reaching the sensor (avoiding radiative heating), yet allows natural air flow around the sensor. More accurate temperature measurement devices utilize a shield which forces air across the sensor.</p>
 <p>Air temperature is typically measured on the Celsius scale.</p>
 <p>Air temperature plays a large role in PV system performance as PV modules and inverters are cooled convectively by the surrounding air.</p>
-<p><img src="https://pvpmc.sandia.gov/wp-content/uploads/2012/04/AmbTemp.jpg" width="400" height="400"> </img></p>
+<p><img src="https://www.sandia.gov/app/uploads/sites/243/2022/11/AmbTemp-768x1024-1.jpg" width="400" height="400"> </img></p>
 </section>
 <section id="downselect-columns">
-<h2>Downselect columns<a class="headerlink" href="#downselect-columns" title="Permalink to this headline">#</a></h2>
+<h2>Downselect columns<a class="headerlink" href="#downselect-columns" title="Permalink to this heading">#</a></h2>
 <p>There are a lot more weather data in that file that you can access. To investigate all the column headers, we used <code class="docutils literal notranslate"><span class="pre">.keys()</span></code> above. Always read the <a class="reference external" href="https://www.nrel.gov/docs/fy08osti/43156.pdf">Instruction Manual</a> for the weather files to get more details on how the data is aggregated, units, etc.</p>
 <p>At this point we are interested in <b> GHI, DHI, DNI, DryBulb </b> and <b> Wind Speed </b>. For this NREL TMY3 dataset the units of irradiance are W/m², dry bulb temperature is in °C, and wind speed is m/s.</p>
 <div class="cell docutils container">
@@ -1346,10 +1131,10 @@ Number of columns: 71
 </div>
 </section>
 <section id="plotting-time-series-data-with-pandas-and-matplotlib">
-<h2>Plotting time series data with pandas and matplotlib<a class="headerlink" href="#plotting-time-series-data-with-pandas-and-matplotlib" title="Permalink to this headline">#</a></h2>
+<h2>Plotting time series data with pandas and matplotlib<a class="headerlink" href="#plotting-time-series-data-with-pandas-and-matplotlib" title="Permalink to this heading">#</a></h2>
 <p>Let’s make some plots to get a better idea of what TMY data gives us.</p>
 <section id="id1">
-<h3>Irradiance<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<h3>Irradiance<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <p>First, the three irradiance fields:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1360,7 +1145,7 @@ Number of columns: 71
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Tutorial 1 - TMY Weather Data_30_0.png" src="_images/Tutorial 1 - TMY Weather Data_30_0.png" />
+<img alt="_images/68f86cd433a3f321c20702728f9121aa776c5cab10b83eb0a29edb0872e82dc0.png" src="_images/68f86cd433a3f321c20702728f9121aa776c5cab10b83eb0a29edb0872e82dc0.png" />
 </div>
 </div>
 <p>Let’s control the parameters a bit more</p>
@@ -1375,11 +1160,11 @@ Number of columns: 71
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Tutorial 1 - TMY Weather Data_32_0.png" src="_images/Tutorial 1 - TMY Weather Data_32_0.png" />
+<img alt="_images/64cd8545ffc46cbe1729dfdf51c0deee6a597911ee3e43de7679170017a3a0dd.png" src="_images/64cd8545ffc46cbe1729dfdf51c0deee6a597911ee3e43de7679170017a3a0dd.png" />
 </div>
 </div>
 <section id="exercise">
-<h4>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h4>
+<h4>Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h4>
 <p>How does the Irradiance look like in YOUR birthday?</p>
 <p>Hint: the next cell is ‘Markdown’, you need to switch it to ‘Code’ for it to run</p>
 <p>birthday = df.loc[] # Type your birthday here using the 1990 year, i.e. ‘1990-11-06’:’1990-11-06’
@@ -1407,13 +1192,13 @@ plt.ylabel(‘Irradiance [W/m<span class="math notranslate nohighlight">\(^2\)</
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Tutorial 1 - TMY Weather Data_39_0.png" src="_images/Tutorial 1 - TMY Weather Data_39_0.png" />
+<img alt="_images/e1e50621db3cc25c2560308b9f5f3df92898c90f8e10617cb012848c2e07e12c.png" src="_images/e1e50621db3cc25c2560308b9f5f3df92898c90f8e10617cb012848c2e07e12c.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="temperature">
-<h3>Temperature<a class="headerlink" href="#temperature" title="Permalink to this headline">#</a></h3>
+<h3>Temperature<a class="headerlink" href="#temperature" title="Permalink to this heading">#</a></h3>
 <p>Next up is temperature:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1423,12 +1208,12 @@ plt.ylabel(‘Irradiance [W/m<span class="math notranslate nohighlight">\(^2\)</
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Tutorial 1 - TMY Weather Data_41_0.png" src="_images/Tutorial 1 - TMY Weather Data_41_0.png" />
+<img alt="_images/283c2441c692b569a1461ac0bffc315869671983b36065e564f22f679935959a.png" src="_images/283c2441c692b569a1461ac0bffc315869671983b36065e564f22f679935959a.png" />
 </div>
 </div>
 </section>
 <section id="wind-speed">
-<h3>Wind speed<a class="headerlink" href="#wind-speed" title="Permalink to this headline">#</a></h3>
+<h3>Wind speed<a class="headerlink" href="#wind-speed" title="Permalink to this heading">#</a></h3>
 <p>And finally, wind speed:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1438,13 +1223,13 @@ plt.ylabel(‘Irradiance [W/m<span class="math notranslate nohighlight">\(^2\)</
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Tutorial 1 - TMY Weather Data_43_0.png" src="_images/Tutorial 1 - TMY Weather Data_43_0.png" />
+<img alt="_images/f7ca6a480746e0cbe1ad37fd8fa4d326e7c59b8dcf173fa28569eab2279d7e1f.png" src="_images/f7ca6a480746e0cbe1ad37fd8fa4d326e7c59b8dcf173fa28569eab2279d7e1f.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="aggregating-hourly-data-to-monthly-summaries">
-<h2>Aggregating hourly data to monthly summaries<a class="headerlink" href="#aggregating-hourly-data-to-monthly-summaries" title="Permalink to this headline">#</a></h2>
+<h2>Aggregating hourly data to monthly summaries<a class="headerlink" href="#aggregating-hourly-data-to-monthly-summaries" title="Permalink to this heading">#</a></h2>
 <p>Pandas makes it easy to roll-up timeseries data into summary values. We can use the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.resample.html"><code class="docutils literal notranslate"><span class="pre">DataFrame.resample()</span></code></a> function with <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects"><code class="docutils literal notranslate"><span class="pre">DateOffsets</span></code></a> like <code class="docutils literal notranslate"><span class="pre">'M'</span></code> for months.  For example, we can calculate total monthly GHI as a quick way to visualize the seasonality of solar resource:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1473,7 +1258,7 @@ Freq: M, Name: GHI, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Tutorial 1 - TMY Weather Data_46_0.png" src="_images/Tutorial 1 - TMY Weather Data_46_0.png" />
+<img alt="_images/0ddb14edbc4f1d5472706762143c3c313cd987409d640606506ac51089e03618.png" src="_images/0ddb14edbc4f1d5472706762143c3c313cd987409d640606506ac51089e03618.png" />
 </div>
 </div>
 <p>We can also take monthly averages instead of monthly sums:</p>
@@ -1492,11 +1277,11 @@ Freq: M, Name: GHI, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Tutorial 1 - TMY Weather Data_48_0.png" src="_images/Tutorial 1 - TMY Weather Data_48_0.png" />
+<img alt="_images/712e82d14edbd4cf2dfc19d73e626462b42cd445b7e07fd7a7012be970657d55.png" src="_images/712e82d14edbd4cf2dfc19d73e626462b42cd445b7e07fd7a7012be970657d55.png" />
 </div>
 </div>
 <section id="id2">
-<h3>Exercise<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<h3>Exercise<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <p>Plot the Average DNI per Day</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1517,7 +1302,7 @@ Freq: M, Name: GHI, dtype: int64
 </section>
 </section>
 <section id="where-to-get-free-solar-irradiance-data">
-<h2>Where to get <em>Free</em> Solar Irradiance Data?<a class="headerlink" href="#where-to-get-free-solar-irradiance-data" title="Permalink to this headline">#</a></h2>
+<h2>Where to get <em>Free</em> Solar Irradiance Data?<a class="headerlink" href="#where-to-get-free-solar-irradiance-data" title="Permalink to this heading">#</a></h2>
 <p>There are many different sources of solar irradiance data. For your projects, these are some of the most common:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://nsrdb.nrel.gov/data-sets/archives.html">TMY3/TMY2</a> - like the data we loaded earlier on this example. This database of TMY3 <code class="docutils literal notranslate"><span class="pre">.csv</span></code> files and TMY2 files have been archived by NREL.</p></li>
@@ -1528,7 +1313,7 @@ Freq: M, Name: GHI, dtype: int64
 </ul>
 </section>
 <section id="where-else-can-you-get-historical-irradiance-data">
-<h2>Where else can you get historical irradiance data?<a class="headerlink" href="#where-else-can-you-get-historical-irradiance-data" title="Permalink to this headline">#</a></h2>
+<h2>Where else can you get historical irradiance data?<a class="headerlink" href="#where-else-can-you-get-historical-irradiance-data" title="Permalink to this heading">#</a></h2>
 <p>There are several commercial providers of solar irradiance data. Data is available at different spatial and time resolutions. Each provider offers data under subscription that will provide access to irradiance (and other weather variables) via API to leverage in python.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.solaranywhere.com/">SolarAnywhere</a></p></li>
@@ -1540,14 +1325,14 @@ Freq: M, Name: GHI, dtype: int64
 <p><img alt="NSRDB Example" src="_images/tutorial_1_NSRDB_example.PNG" /></p>
 </section>
 <section id="nrel-api-key">
-<h2>NREL API Key<a class="headerlink" href="#nrel-api-key" title="Permalink to this headline">#</a></h2>
+<h2>NREL API Key<a class="headerlink" href="#nrel-api-key" title="Permalink to this heading">#</a></h2>
 <p>At the <a class="reference external" href="https://developer.nrel.gov/">NREL Developer Network</a>, there are <a class="reference external" href="https://en.wikipedia.org/wiki/API">APIs</a> to a lot of valuable <a class="reference external" href="https://developer.nrel.gov/docs/solar/">solar resources</a> like <a class="reference external" href="https://developer.nrel.gov/docs/solar/nsrdb/">weather data from the NSRDB</a>, <a class="reference external" href="https://developer.nrel.gov/docs/solar/pvdaq-v3/">operational data from PVDAQ</a>, or indicative calculations using <a class="reference external" href="https://developer.nrel.gov/docs/solar/pvwatts/">PVWatts</a>. In order to use these resources from NREL, you need to <a class="reference external" href="https://developer.nrel.gov/signup/">register for a free API key</a>. You can test out the APIs using the <code class="docutils literal notranslate"><span class="pre">DEMO_KEY</span></code> but it has limited bandwidth compared to the <a class="reference external" href="https://developer.nrel.gov/docs/rate-limits/">usage limit for registered users</a>. NREL has some <a class="reference external" href="https://developer.nrel.gov/docs/api-key/">API usage instructions</a>, but pvlib has a few builtin functions, like <a class="reference external" href="https://pvlib-python.readthedocs.io/en/stable/generated/pvlib.iotools.get_psm3.html"><code class="docutils literal notranslate"><span class="pre">pvlib.iotools.get_psm3()</span></code></a>, that wrap the NREL API, and call them for you to make it much easier to use. Skip ahead to the next section to learn more. But before you do…</p>
 <p><strong>Please pause now to visit <a class="reference external" href="https://developer.nrel.gov/signup/">https://developer.nrel.gov/signup/</a> and get an API key.</strong></p>
 <section id="application-programming-interface-api">
-<h3>Application Programming Interface (API)<a class="headerlink" href="#application-programming-interface-api" title="Permalink to this headline">#</a></h3>
+<h3>Application Programming Interface (API)<a class="headerlink" href="#application-programming-interface-api" title="Permalink to this heading">#</a></h3>
 <p>What exactly is an API? Nowadays, the phrase is used interchangeably with a “web API” but in general an API is just a recipe for how to interface with a application programmatically, <em>IE</em>: in code. An API could be as simple as a function signature or its published documentation, <em>EG</em>: the API for the <code class="docutils literal notranslate"><span class="pre">solarposition</span></code> function is you give it an ISO8601 formatted date with a timezone, the latitude, longitude, and elevation as numbers, and it returns the zenith and azimuth as numbers.</p>
 <p>A web API is the same, except the application is a web service, that you access at its URL using web methods. We won’t go into too much more detail here, but the most common web method is <code class="docutils literal notranslate"><span class="pre">GET</span></code> which is pretty self explanatory. Look over the <a class="reference external" href="https://developer.nrel.gov/docs/api-key/">NREL web usage instructions</a> for some examples, but interacting with a web API can be as easy as entering a URL into a browser. Try the URL below to <em>get</em> the PVWatts energy output for a fixed tilt site in <a class="reference external" href="https://goo.gl/maps/awkEcNGzSur9Has18">Broomfield, CO</a>.</p>
-<p><a class="reference external" href="https://developer.nrel.gov/api/pvwatts/v6.json?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;system_capacity=4&amp;azimuth=180&amp;tilt=40&amp;array_type=1&amp;module_type=1&amp;losses=10">https://developer.nrel.gov/api/pvwatts/v6.json?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;system_capacity=4&amp;azimuth=180&amp;tilt=40&amp;array_type=1&amp;module_type=1&amp;losses=10</a></p>
+<p><a class="reference external" href="https://developer.nrel.gov/api/pvwatts/v6.json?api_key=DEMO_KEY&amp;amp;lat=40&amp;amp;lon=-105&amp;amp;system_capacity=4&amp;amp;azimuth=180&amp;amp;tilt=40&amp;amp;array_type=1&amp;amp;module_type=1&amp;amp;losses=10">https://developer.nrel.gov/api/pvwatts/v6.json?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;system_capacity=4&amp;azimuth=180&amp;tilt=40&amp;array_type=1&amp;module_type=1&amp;losses=10</a></p>
 <p>In addition to just using your browser, you can also access web APIs programmatically. The most popular Python package to interact with web APIs is <a class="reference external" href="https://docs.python-requests.org/en/master/">requests</a>. There’s also free open source command-line tools like <a class="reference external" href="https://curl.se/">cURL</a> and <a class="reference external" href="https://httpie.io/">HTTPie</a>, and a popular nagware/freemium GUI application called <a class="reference external" href="https://www.postman.com/">Postman</a>.</p>
 <p><strong>If you have an NREL API key please enter it in the next cell.</strong></p>
 <div class="cell docutils container">
@@ -1570,7 +1355,7 @@ Freq: M, Name: GHI, dtype: int64
 </section>
 </section>
 <section id="fetching-tmys-from-the-nsrdb">
-<h2>Fetching TMYs from the NSRDB<a class="headerlink" href="#fetching-tmys-from-the-nsrdb" title="Permalink to this headline">#</a></h2>
+<h2>Fetching TMYs from the NSRDB<a class="headerlink" href="#fetching-tmys-from-the-nsrdb" title="Permalink to this heading">#</a></h2>
 <p>The example TMY dataset used here is from an airport in North Carolina, but what if we wanted to model a PV system somewhere else? The NSRDB, one of many sources of weather data intended for PV modeling, is free and easy to access using pvlib. As an example, we’ll fetch a TMY dataset for Albuquerque, New Mexico at coordinates <a class="reference external" href="https://www.google.com/maps/&#64;35.0844,-106.6504,9z">(35.0844, -106.6504)</a>. We use <a class="reference external" href="https://pvlib-python.readthedocs.io/en/stable/generated/pvlib.iotools.get_psm3.html"><code class="docutils literal notranslate"><span class="pre">pvlib.iotools.get_psm3()</span></code></a> which returns a Python dictionary of metadata and a Pandas dataframe of the timeseries weather data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1625,7 +1410,7 @@ Freq: M, Name: GHI, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Tutorial 1 - TMY Weather Data_58_0.png" src="_images/Tutorial 1 - TMY Weather Data_58_0.png" />
+<img alt="_images/3dc7e1edf5ea235d63f384953a0e3f01a46c8874b0a987e42331cc00fd986225.png" src="_images/3dc7e1edf5ea235d63f384953a0e3f01a46c8874b0a987e42331cc00fd986225.png" />
 </div>
 </div>
 <p>It’s not too surprising to see that our New Mexico location is significantly sunnier than the one in North Carolina.</p>
@@ -1656,43 +1441,126 @@ Freq: M, Name: GHI, dtype: int64
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="Tutorial%202%20-%20POA%20Irradiance.html" title="next page">
-    <div class="prev-next-info">
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="right-next"
+       href="Tutorial%202%20-%20POA%20Irradiance.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Tutorial 2 - POA Irradiance</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Silvana Ayala Pelaez, Mark Mikofski, Kevin Anderson<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
-    
-</div>
-
-
       </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steps">Steps:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pv-concepts">PV Concepts:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-concepts">Python Concepts:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weather-data-pv">Weather Data &amp; PV</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typical-meteorological-year">Typical Meteorological Year</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-step-import-libraries">First Step: Import Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-a-tmy-dataset-with-pvlib">Reading a TMY dataset with pvlib</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#irradiance">Irradiance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wind">Wind</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#air-temperature">Air temperature</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downselect-columns">Downselect columns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-time-series-data-with-pandas-and-matplotlib">Plotting time series data with pandas and matplotlib</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Irradiance</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature">Temperature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wind-speed">Wind speed</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregating-hourly-data-to-monthly-summaries">Aggregating hourly data to monthly summaries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Exercise</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-to-get-free-solar-irradiance-data">Where to get <em>Free</em> Solar Irradiance Data?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-else-can-you-get-historical-irradiance-data">Where else can you get historical irradiance data?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nrel-api-key">NREL API Key</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#application-programming-interface-api">Application Programming Interface (API)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fetching-tmys-from-the-nsrdb">Fetching TMYs from the NSRDB</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Silvana Ayala Pelaez, Mark Mikofski, Kevin Anderson
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
