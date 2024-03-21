@@ -55,7 +55,7 @@ https://pvsc-python-tutorial.eastus.cloudapp.azure.com/
 
 The full tutorial is now also hosted as a beautiful [Jupyter book](https://jupyterbook.org/intro.html). This book has navigation, search, and can even run code cells interactively. Check it out!
 
-https://pvsc-python-tutorials.github.io/pyData-2021-Solar-PV-Modeling/index.html
+https://pv-tutorials.github.io/pyData-2021-Solar-PV-Modeling/index.html
 
 ### My Binder
 
@@ -63,7 +63,7 @@ After the conference the tutorials will remain available here on GitHub, and you
 the tutorial anytime in [Binder](https://mybinder.org) by clicking the
 following link:
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling/main)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/PV-Tutorials/pyData-2021-Solar-PV-Modeling/main)
 
 ### Locally
 
@@ -76,7 +76,7 @@ steps:
 1. Clone the repository:
 
    ```
-   git clone https://github.com/PVSC-Python-Tutorials/pyData-2021-Solar-PV-Modeling.git
+   git clone https://github.com/PV-Tutorials/pyData-2021-Solar-PV-Modeling.git
    ```
 
 1. Create the environment and install the requirements. The repository includes
@@ -84,8 +84,8 @@ steps:
    this tutorial. To install them using conda run:
 
    ```
-   conda create -n pvsc48 jupyter -c pvlib --file requirements.txt
-   conda activate pvsc48
+   conda create -n pvtutorials jupyter -c pvlib --file requirements.txt
+   conda activate pvtutorials
    ```
 
 1. Start a Jupyter session:
@@ -94,7 +94,7 @@ steps:
    jupyter notebook
    ```
 
-1. Use the file explorer in Jupyter lab to browse to `PVSC48-Python-Tutorial`
+1. Use the file explorer in Jupyter lab to browse to `PV-Tutorial`
    and start the first Tutorial.
 
 
